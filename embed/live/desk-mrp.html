@@ -237,7 +237,7 @@ LIVE.run({
     const ths = V.th('#', { w: 44 }) + V.th('อะไหล่/วัสดุ') + V.th('คงเหลือ', { w: 82, r: 1 }) + V.th('จองแล้ว', { w: 82, r: 1 }) + V.th('ค้างรับ', { w: 76, r: 1 }) + V.th('ขั้นต่ำ', { w: 70, r: 1 }) + V.th('รอของ (วัน)', { w: 100, r: 1 }) + V.th('ต่ำกว่าขั้นต่ำ', { w: 118 }) + V.th('แนะนำสั่ง', { w: 96, r: 1 }) + V.th('สั่งภายใน', { w: 118 }) + V.th('มูลค่า (บาท)', { w: 120, r: 1 }) + V.th('', { w: 150 });
     const rows = PARTS.map((p, i) => {
       const need = !!p[7] || i === 0;
-      const act = i === 0 ? `<span id="act0"></span>` : need ? V.btn('ขอซื้อ', '', 's', 'style="min-height:32px;padding:0 12px;font-size:14px"') : V.badge('ok', 'พอ');
+      const act = i === 0 ? `<span id="act0"></span>` : need ? V.badge('warn', 'ต้องสั่ง') : V.badge('ok', 'พอ');
       return `<tr class="${V.TR}" id="p${i}">${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td(`<span class="block truncate">${p[1]}</span>`)}${[2, 3, 4, 5, 6].map(k => V.td(`<span class="tabular-nums">${p[k]}</span>`, { r: 1 })).join('')}
         ${V.td(`<span class="lo">${p[7] || '—'}</span>`)}${V.td(`<span class="tabular-nums q">${p[8] || '—'}</span>`, { r: 1 })}${V.td(`<span class="tabular-nums by${p[9] ? ' font-semibold text-warn' : ''}">${p[9] || '—'}</span>`)}${V.td(`<span class="tabular-nums val">${p[10] || '—'}</span>`, { r: 1 })}${V.td(act)}</tr>`;
     }).join('');
@@ -248,13 +248,13 @@ LIVE.run({
       <section class="vo-card" id="gridCard" style="padding:0"><div class="flex items-center justify-between gap-3 px-4 py-2.5"><h2 class="text-base font-medium text-text" id="gTitle">เลือกอะไหล่เพื่อดูรายสัปดาห์</h2><span class="text-sm text-text-2" id="gMeta"></span></div>
         <div class="grid12">${V.table(gth, grows)}</div></section>
       <section class="vo-card" id="pr" hidden style="padding:0">
-        <header class="border-b border-line bg-surface-2 px-5 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex items-center gap-3"><h1 class="text-lg leading-snug text-text">ใบขอซื้อ</h1><span class="tabular-nums text-base text-text-2">PR-2026-0006</span><span id="prSt">${V.badge('warn', 'ร่าง')}</span></div><div class="flex items-center gap-3"><span id="tst2"></span>${V.btn('บันทึกร่าง', '', 's')}${V.btn('ส่งอนุมัติ', 'send', 'p', 'id="bSend"')}</div></div></header>
+        <header class="border-b border-line bg-surface-2 px-5 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex items-center gap-3"><h1 class="text-lg leading-snug text-text">รายงานรายการที่ต้องสั่งซื้อ</h1><span class="tabular-nums text-base text-text-2">MRP · 19 พ.ย. 69</span><span id="prSt">${V.badge('warn', 'ยังไม่ส่ง')}</span></div><div class="flex items-center gap-3"><span id="tst2"></span>${V.btn('พิมพ์ PDF', 'list', 's')}${V.btn('ส่งออก Excel ให้จัดซื้อ', 'send', 'p', 'id="bSend"')}</div></div></header>
         <div class="grid gap-4 px-5 pt-3 pb-3" style="grid-template-columns:2fr 1fr 1fr 1.4fr 1.4fr">
-          <div class="fld"><label>ผู้ขาย</label><span class="fake" data-f="หจก. ไทยแอร์คอมพ์ ซัพพลาย"></span></div>
-          <div class="fld"><label>วันที่</label><span class="fake" data-f="19-11-2026"></span></div>
+          <div class="fld"><label>ผู้ขายประจำ (อ้างอิง)</label><span class="fake" data-f="หจก. ไทยแอร์คอมพ์ ซัพพลาย"></span></div>
+          <div class="fld"><label>ส่งถึง</label><span class="fake" data-f="ฝ่ายจัดซื้อโรงงาน"></span></div>
           <div class="fld"><label>วันที่ต้องการ</label><span class="fake" data-f="28-12-2026"></span></div>
           <div class="fld"><label>เลขอ้างอิง</label><span class="fake" data-f="MRP · PM-CMP-GA37"></span></div>
-          <div class="fld"><label>ผู้บันทึก</label><span class="fake" data-f="วรวุฒิ เจริญผล"></span></div></div>
+          <div class="fld"><label>ผู้จัดทำ</label><span class="fake" data-f="วรวุฒิ เจริญผล"></span></div></div>
         ${V.table(V.th('#', { w: 48 }) + V.th('รหัส', { w: 200 }) + V.th('รายการ') + V.th('จำนวน', { w: 90, r: 1 }) + V.th('หน่วย', { w: 80 }) + V.th('ราคา/หน่วย', { w: 120, r: 1 }) + V.th('วันที่ต้องการ', { w: 140 }) + V.th('จำนวนเงิน', { w: 140, r: 1 }) + V.th('ที่มา', { w: 190 }),
           [['28-12-2026', 'สัปดาห์ 6 · สั่งภายใน 7 ธ.ค.'], ['11-01-2027', 'สัปดาห์ 8 · สั่งภายใน 21 ธ.ค.']].map((l, i) => `<tr class="${V.TR} pl" hidden>${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td('<span class="tabular-nums">P-AIR-FILTER-GA37</span>')}${V.td('ไส้กรองอากาศคอมเพรสเซอร์ GA37')}${V.td('<span class="tabular-nums">2</span>', { r: 1 })}${V.td('ชิ้น')}${V.td('<span class="tabular-nums">1,850.00</span>', { r: 1 })}${V.td(`<span class="tabular-nums">${l[0]}</span>`)}${V.td('<span class="tabular-nums">3,700.00</span>', { r: 1 })}${V.td(`<span class="text-text-2">${l[1]}</span>`)}</tr>`).join(''))}
         <div class="flex items-center justify-end gap-4 px-5 py-3"><span class="text-base text-text-2">ยอดรวม (บาท)</span><span class="text-2xl font-medium tabular-nums text-text" id="prTot">0.00</span></div>
@@ -287,17 +287,17 @@ LIVE.run({
       a.text('#p0 .lo', 'สัปดาห์ 6'); await a.w(150); a.text('#p0 .q', '4 ชิ้น'); await a.w(150);
       a.text('#p0 .by', '7 ธ.ค. 69'); a.cls('#p0 .by', 'font-semibold text-warn'); await a.w(150);
       await a.count('#p0 .val', 7400, { dec: 2, dur: 800 });
-      a.set('#act0', V.btn('ขอซื้อ', 'cart', 'p', 'id="bPr" style="min-height:32px;padding:0 12px;font-size:14px"').replace('<i data-ic="cart" data-s="18"></i>', a.ic('cart', 16))); a.show('#bPr', 'fx-pop');
+      a.set('#act0', V.btn('รายงานสั่งซื้อ', 'list', 'p', 'id="bPr" style="min-height:32px;padding:0 12px;font-size:14px"').replace('<i data-ic="list" data-s="18"></i>', a.ic('list', 16))); a.show('#bPr', 'fx-pop');
     } },
-    { cap: 'กด ขอซื้อ — เปิดใบขอซื้อ VibeOps ที่กรอกจากแผนให้ครบ', run: async a => {
+    { cap: 'กด รายงานสั่งซื้อ — ระบบสรุปรายการ จำนวน และวันที่ต้องสั่งให้ครบ', run: async a => {
       await a.click('#bPr'); a.hide('#gridCard'); a.show('#pr');
       for (const f of a.$('#pr').querySelectorAll('[data-f]')) { await a.type(f, f.dataset.f, 14); }
       await a.stagger('#pr tr.pl', 220);
       await a.count('#prTot', 7400, { dec: 2, dur: 800 });
     } },
-    { cap: 'ส่งอนุมัติ — ฝ่ายจัดซื้อเห็นในรายการใบขอซื้อทันที', run: async a => {
-      await a.click('#bSend'); a.set('#prSt', V.badge('info', 'รออนุมัติ'));
-      a.toast('#tst2', 'บันทึกแล้ว'); a.set('#act0', V.badge('info', 'PR-2026-0006'));
+    { cap: 'ส่งออกให้ฝ่ายจัดซื้อ — ไปเปิดใบสั่งซื้อในระบบจัดซื้อเดิมของโรงงาน', run: async a => {
+      await a.click('#bSend'); a.set('#prSt', V.badge('ok', 'ส่งจัดซื้อแล้ว'));
+      a.toast('#tst2', 'ส่งออกแล้ว'); a.set('#act0', V.badge('ok', 'ส่งจัดซื้อแล้ว'));
     } },
   ]
 });

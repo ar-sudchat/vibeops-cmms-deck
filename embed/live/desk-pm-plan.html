@@ -202,6 +202,9 @@ window.VO = {
 .tier{border:1px solid var(--vo-line);border-radius:12px;padding:14px 16px}
 #sc{position:relative}
 .fc li{border:1px solid var(--vo-line);border-radius:8px;padding:6px 12px;font-size:15px}
+.cb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:2px solid var(--vo-line-strong);border-radius:6px;color:transparent;background:var(--vo-surface)}
+tr.on .cb{background:var(--vo-primary);border-color:var(--vo-primary);color:#fff}
+tr.on>td{background:color-mix(in srgb,var(--vo-primary) 7%,transparent)}
 .fc li.yr{border-color:var(--vo-primary);background:color-mix(in srgb,var(--vo-primary) 10%,transparent)}
 </style>
 <style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
@@ -227,7 +230,7 @@ function topIn(a, sc, sel) { const c = a.$(sc), e = a.$(sel), k = c.getBoundingC
 const T1 = [['P-GREASE-EP2', 'จาระบี EP2', 'ใช้', '0.2', 'กก.', '1', '4.5']];
 const T2 = [['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 'เปลี่ยน', '1', 'ชิ้น', '1', '3'],
             ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 'เปลี่ยน', '1', 'ชิ้น', '2', '0'],
-            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ใช้', '1', 'ถัง 20 ลิตร', '2', '2']];
+            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ใช้', '1', 'ถัง 20 ลิตร', '2', '4']];
 const T3 = [['P-SEP-GA37', 'ไส้กรองแยกน้ำมัน GA37', 'เปลี่ยน', '1', 'ชิ้น', '1', '1'],
             ['P-VLV-KIT-GA37', 'ชุดซ่อมวาล์วดูด GA37', 'เปลี่ยน', '1', 'ชุด', '1', '1']];
 function bom(id, rows) {
@@ -243,19 +246,29 @@ function tier(id, name, freq, cl, rows) {
     <div class="flex items-center justify-between gap-3 mb-2"><span class="text-base font-medium text-text">อะไหล่ของระดับ ${name}</span>${V.btn('เพิ่มอะไหล่', 'plus', 's')}</div>${bom(id, rows)}</div>`;
 }
 const FC = [['7 ธ.ค. 69', 'ราย 3 เดือน'], ['28 ก.พ. 70', 'ราย 3 เดือน'], ['22 พ.ค. 70', 'ราย 3 เดือน'], ['13 ส.ค. 70', 'รายปี · รวม 3 เดือน', 1], ['4 พ.ย. 70', 'ราย 3 เดือน'], ['26 ม.ค. 71', 'ราย 3 เดือน'], ['18 เม.ย. 71', 'ราย 3 เดือน'], ['10 ก.ค. 71', 'รายปี · รวม 3 เดือน', 1], ['1 ต.ค. 71', 'ราย 3 เดือน'], ['23 ธ.ค. 71', 'ราย 3 เดือน'], ['16 มี.ค. 72', 'ราย 3 เดือน'], ['7 มิ.ย. 72', 'รายปี · รวม 3 เดือน', 1]];
-const PB = [['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุกรอบ', 1, 3],
-            ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุก 2 รอบ', 1, 0],
-            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ราย 3 เดือน', 'ใช้ 1 ถัง 20 ลิตร', 'ทุก 2 รอบ', 1, 2],
-            ['P-GREASE-EP2', 'จาระบี EP2 (กก.)', 'รายเดือน', 'ใช้ 0.2 กก.', 'ทุกรอบ', 0.6, 4.5],
+const MS = [['CMP-01', 'คอมเพรสเซอร์ GA37 ตัวที่ 1', 'คอมเพรสเซอร์ลม', ['ok', 'เดินอยู่']],
+            ['CMP-02', 'คอมเพรสเซอร์ GA37 ตัวที่ 2', 'คอมเพรสเซอร์ลม', ['ok', 'เดินอยู่']],
+            ['CMP-03', 'คอมเพรสเซอร์ GA37 ตัวที่ 3', 'คอมเพรสเซอร์ลม', ['mute', 'สำรอง']],
+            ['CMP-04', 'คอมเพรสเซอร์ GA22', 'คอมเพรสเซอร์ลม', ['ok', 'เดินอยู่']],
+            ['DRY-01', 'เครื่องทำลมแห้ง FD-120', 'เครื่องทำลมแห้ง', ['ok', 'เดินอยู่']]];
+const PB = [['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุกรอบ', 3, 3],
+            ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุก 2 รอบ', 3, 0],
+            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ราย 3 เดือน', 'ใช้ 1 ถัง 20 ลิตร', 'ทุก 2 รอบ', 3, 4],
+            ['P-GREASE-EP2', 'จาระบี EP2 (กก.)', 'รายเดือน', 'ใช้ 0.2 กก.', 'ทุกรอบ', 1.8, 4.5],
             ['P-SEP-GA37', 'ไส้กรองแยกน้ำมัน GA37', 'รายปี', 'เปลี่ยน 1 ชิ้น', 'ทุกรอบ', 0, 1]];
 
 LIVE.run({
   build(st) {
     st.querySelector('#hdForm').innerHTML = V.pagehead('แผน PM', 'สร้างแผน PM', { right: `<span id="tst"></span>` + V.btn('บันทึกแผน', '', 'p', 'id="bSave"') });
     st.querySelector('#formBody').innerHTML =
-      V.card('1. งานอะไร', `<div class="grid gap-4" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+      V.card('1. งานอะไร และเครื่องไหนบ้าง', `<div class="flex flex-col gap-3">
+        <div class="grid gap-4" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr)">
         <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5 flex items-center">ชื่อแผน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fName" data-ph="เช่น PM เครื่องฉีดรายเดือน"></span></div>
-        <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">เครื่องที่ทำ</label><div class="flex items-center gap-2" style="min-height:40px"><span class="fake" id="fFind" style="flex:1" data-ph="รหัสหรือชื่อเครื่อง เช่น IMM-03"></span><span id="chip" hidden class="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-primary px-3 text-base" style="background:color-mix(in srgb,var(--vo-primary) 10%,transparent)">CMP-01 · คอมเพรสเซอร์ GA37 <i data-ic="x" data-s="16"></i></span></div></div></div>`) +
+        <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">อาคาร</label><span class="fake sel" id="fBld"><span data-v class="text-muted">เลือกอาคาร</span><i data-ic="updown" data-s="16"></i></span></div>
+        <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">โซน</label><span class="fake sel" id="fZone"><span data-v class="text-muted">เลือกโซน</span><i data-ic="updown" data-s="16"></i></span></div></div>
+        <div id="mBox" hidden><div class="mb-2 flex items-center justify-between gap-3"><span class="text-base font-medium text-text">เครื่องในโซนนี้ (${MS.length}) · ติ๊กได้หลายเครื่อง</span>${V.btn('เลือกทั้งหมดในโซน', 'check', 's', 'id="bAll"')}</div>
+        ${V.table(V.th('', { w: 52 }) + V.th('#', { w: 48 }) + V.th('รหัส', { w: 130 }) + V.th('ชื่อเครื่อง') + V.th('ประเภท', { w: 180 }) + V.th('สถานะ', { w: 150 }), MS.map((m, i) => `<tr class="${V.TR}" id="m${i}" hidden>${V.td(`<span class="cb"><i data-ic="check" data-s="15"></i></span>`)}${V.td(`<span class="text-text-2">${i + 1}</span>`)}${V.td(`<span class="tabular-nums">${m[0]}</span>`)}${V.td(m[1])}${V.td(`<span class="text-text-2">${m[2]}</span>`)}${V.td(V.badge(m[3][0], m[3][1]))}</tr>`).join(''))}</div>
+        <div id="chips" hidden class="flex flex-wrap items-center gap-2"><span class="text-base font-medium text-text" id="selN">เลือกแล้ว 0 เครื่อง</span>${MS.slice(0, 3).map((m, i) => `<span id="ch${i}" hidden class="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-primary px-3 text-base" style="background:color-mix(in srgb,var(--vo-primary) 10%,transparent)">${m[0]} · ${m[1]} <i data-ic="x" data-s="16"></i></span>`).join('')}</div></div>`) +
       V.card('2. นับรอบอย่างไร', `<div class="flex flex-col gap-3"><div class="grid gap-2" style="grid-template-columns:repeat(3,1fr)">
         <button class="opt" type="button"><b>ตามวัน</b><span>เช่น ทุก 30 วัน</span></button>
         <button class="opt" type="button"><b>ตามชั่วโมงเดิน/มิเตอร์</b><span>เช่น ทุก 2,000 ชม.</span></button>
@@ -263,36 +276,45 @@ LIVE.run({
         <div class="grid gap-4" id="freqIn" hidden style="grid-template-columns:repeat(3,1fr)">
           <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">ทุกกี่เดือน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fMon"></span></div>
           <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">ทุกกี่ ชั่วโมงเดิน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fHr"></span></div>
-          <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">มิเตอร์</label><span class="fake sel">MT-CMP-01 · ชั่วโมงเดินเครื่อง<i data-ic="updown" data-s="16"></i></span></div></div>
+          <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">มิเตอร์</label><span class="fake sel">ชั่วโมงเดิน · แยกของแต่ละเครื่อง<i data-ic="updown" data-s="16"></i></span></div></div>
         <p class="freq" id="freq" hidden><span class="text-text-2">ความถี่: </span><span class="font-medium text-text">ทุก 3 เดือน หรือ 500 ชม. แล้วแต่ถึงก่อน</span></p></div>`) +
       V.card('3. ระดับงาน เช็กลิสต์ และอะไหล่ <span id="tierN"></span>', `<p class="mb-3 text-base text-text-2">รอบที่ตรงกันหลายระดับ ออกใบเดียวและใช้เช็กลิสต์ของระดับที่ใหญ่ที่สุด · "ทุกกี่รอบ" 2 = รอบเว้นรอบ</p><div class="flex flex-col gap-4">` +
-        tier('t1', 'รายเดือน', 'ทุก 1 เดือน', 'CL-CMP-01-M · ตรวจประจำเดือน 6 ข้อ', T1) +
-        tier('t2', 'ราย 3 เดือน', 'ทุก 3 เดือน หรือ 500 ชม.', 'CL-CMP-01-Q · 9 ข้อ', T2) +
-        tier('t3', 'รายปี', 'ทุก 4 รอบ (≈ ทุก 12 เดือน)', 'CL-CMP-01-Y · ยกเครื่อง 14 ข้อ', T3) + `</div>`, { right: V.btn('เพิ่มระดับงาน', 'plus', 's', 'id="bTier"') });
+        tier('t1', 'รายเดือน', 'ทุก 1 เดือน', 'CL-GA37-M · ตรวจประจำเดือน 6 ข้อ', T1) +
+        tier('t2', 'ราย 3 เดือน', 'ทุก 3 เดือน หรือ 500 ชม.', 'CL-GA37-Q · 9 ข้อ', T2) +
+        tier('t3', 'รายปี', 'ทุก 4 รอบ (≈ ทุก 12 เดือน)', 'CL-GA37-Y · ยกเครื่อง 14 ข้อ', T3) + `</div>`, { right: V.btn('เพิ่มระดับงาน', 'plus', 's', 'id="bTier"') });
 
-    st.querySelector('#hdPlan').innerHTML = V.pagehead('แผน PM', 'PM คอมเพรสเซอร์ GA37 · CMP-01', { code: 'PM-CMP-GA37 · บำรุงรักษาตามแผน', badge: V.badge('ok', 'ใช้งาน'), right: `<span id="tst2"></span>` + V.btn('แก้ไขแผน', 'pencil', 'p') });
+    st.querySelector('#hdPlan').innerHTML = V.pagehead('แผน PM', 'PM คอมเพรสเซอร์ GA37 · 3 เครื่อง', { code: 'PM-CMP-GA37 · บำรุงรักษาตามแผน', badge: V.badge('ok', 'ใช้งาน'), right: `<span id="tst2"></span>` + V.btn('แก้ไขแผน', 'pencil', 'p') });
     const bomRows = PB.map((r, i) => `<tr class="${V.TR}" id="pb${i}">${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td(`<span class="block truncate">${r[1]}</span><span class="block text-xs tabular-nums text-text-2">${r[0]}</span>`)}${V.td(r[2])}${V.td(r[3])}${V.td(r[4])}${V.td(`<span class="tabular-nums n" data-v="${r[5]}">–</span>`, { r: 1 })}${V.td(`<span class="tabular-nums a" data-v="${r[6]}">–</span>`, { r: 1 })}${V.td(`<span class="st"></span>`)}</tr>`).join('');
     st.querySelector('#planBody').innerHTML = `<main class="flex min-w-0 flex-col gap-4">
       <div class="vo-tabs-pill"><button type="button" aria-selected="true">ภาพรวมแผน</button><button type="button">ประวัติรอบ (0)</button></div>
       ${V.card('ครบครั้งถัดไป', `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1"><span class="text-4xl font-medium tabular-nums text-text">7 ธ.ค. 69</span><span class="text-lg text-text-2">อีก 18 วัน</span><span class="text-base text-text-2">ตามวัน (ครบ 3 เดือน ก่อนมิเตอร์ถึง 500 ชม.)</span></div>`)}
-      ${V.card('พยากรณ์ 12 รอบถัดไป', `<ol class="fc grid gap-2" style="grid-template-columns:repeat(4,1fr)">${FC.map(f => `<li class="${f[2] ? 'yr' : ''}" hidden><span class="block tabular-nums font-medium">${f[0]}</span><span class="block text-text-2">CMP-01 · ${f[1]}</span></li>`).join('')}</ol>`)}
+      ${V.card('พยากรณ์ 12 รอบถัดไป · 3 เครื่อง × 12 รอบ = 36 ใบงาน', `<ol class="fc grid gap-2" style="grid-template-columns:repeat(4,1fr)">${FC.map(f => `<li class="${f[2] ? 'yr' : ''}" hidden><span class="block tabular-nums font-medium">${f[0]}</span><span class="block text-text-2">3 เครื่อง · ${f[1]}</span></li>`).join('')}</ol>`)}
       <section class="vo-card" id="bomCard"><div class="mb-2 flex items-center justify-between gap-3 px-4 pt-4"><h2 class="text-base font-medium text-text">อะไหล่และวัสดุต่อรอบ (BOM · 5)</h2><span id="short"></span></div>
         <p class="px-4 pb-3 text-base text-text-2">"ใช้ใน 90 วัน" = รวมรอบที่จะครบภายใน 90 วัน ตาม "ทุกกี่รอบ" · เทียบของพร้อมจ่ายในคลัง</p>
         ${V.table(V.th('#', { w: 44 }) + V.th('อะไหล่/วัสดุ') + V.th('ระดับงาน', { w: 104 }) + V.th('ทำอะไร', { w: 140 }) + V.th('ทุกกี่รอบ', { w: 92 }) + V.th('ใช้ใน 90 วัน', { w: 106, r: 1 }) + V.th('พร้อมจ่าย', { w: 96, r: 1 }) + V.th('สต็อก', { w: 128 }), bomRows)}</section>
       </main>
       <aside class="flex min-w-0 flex-col gap-4">
-      ${V.card('ข้อมูลแผน', `<dl class="divide-y divide-line">${[['ความถี่', 'ทุก 3 เดือน หรือ 500 ชม. แล้วแต่ถึงก่อน'], ['ระดับงาน', 'รายเดือน · ราย 3 เดือน · รายปี'], ['วิธีนับ', 'นับจากวันที่ทำเสร็จจริง'], ['ออกใบล่วงหน้า', '7 วัน'], ['ทีม', 'ทีมซ่อมอาคาร A'], ['เวลาประมาณ', '2 ชม. ต่อเครื่อง'], ['มิเตอร์', 'MT-CMP-01 · ตอนนี้ 2,640 ชม.']].map(d => `<div class="grid gap-3 py-1.5 text-base" style="grid-template-columns:7.5rem 1fr"><dt class="text-text-2">${d[0]}</dt><dd class="min-w-0 break-words text-text">${d[1]}</dd></div>`).join('')}</dl>`)}
-      ${V.card('เครื่องในแผน (1)', `<ul><li class="flex items-start justify-between gap-3 py-2 text-base"><span class="min-w-0"><span class="block"><span class="tabular-nums">CMP-01</span> · คอมเพรสเซอร์ GA37</span><span class="block text-text-2">ห้องคอมเพรสเซอร์ อาคาร A</span></span><span class="shrink-0 text-right tabular-nums">7 ธ.ค. 69<span class="block text-text-2">อีก 18 วัน</span></span></li></ul>`)}
+      ${V.card('ข้อมูลแผน', `<dl class="divide-y divide-line">${[['ความถี่', 'ทุก 3 เดือน หรือ 500 ชม. แล้วแต่ถึงก่อน'], ['ระดับงาน', 'รายเดือน · ราย 3 เดือน · รายปี'], ['วิธีนับ', 'นับจากวันที่ทำเสร็จจริง'], ['ออกใบล่วงหน้า', '7 วัน'], ['ทีม', 'ทีมซ่อมอาคาร A'], ['ที่ตั้ง', 'อาคาร A › ห้องคอมเพรสเซอร์'], ['เวลาประมาณ', '2 ชม. ต่อเครื่อง'], ['มิเตอร์', 'ชั่วโมงเดินของแต่ละเครื่อง']].map(d => `<div class="grid gap-3 py-1.5 text-base" style="grid-template-columns:7.5rem 1fr"><dt class="text-text-2">${d[0]}</dt><dd class="min-w-0 break-words text-text">${d[1]}</dd></div>`).join('')}</dl>`)}
+      ${V.card('เครื่องในแผน (3)', `<ul class="divide-y divide-line"><li class="flex items-start justify-between gap-3 py-2 text-base"><span class="min-w-0"><span class="block"><span class="tabular-nums">CMP-01</span> · คอมเพรสเซอร์ GA37 ตัวที่ 1</span><span class="block text-text-2">ห้องคอมเพรสเซอร์ อาคาร A</span></span><span class="shrink-0 text-right tabular-nums">7 ธ.ค. 69<span class="block text-text-2">อีก 18 วัน</span></span></li><li class="flex items-start justify-between gap-3 py-2 text-base"><span class="min-w-0"><span class="block"><span class="tabular-nums">CMP-02</span> · คอมเพรสเซอร์ GA37 ตัวที่ 2</span><span class="block text-text-2">ห้องคอมเพรสเซอร์ อาคาร A</span></span><span class="shrink-0 text-right tabular-nums">7 ธ.ค. 69<span class="block text-text-2">อีก 18 วัน</span></span></li><li class="flex items-start justify-between gap-3 py-2 text-base"><span class="min-w-0"><span class="block"><span class="tabular-nums">CMP-03</span> · คอมเพรสเซอร์ GA37 ตัวที่ 3</span><span class="block text-text-2">ห้องคอมเพรสเซอร์ อาคาร A</span></span><span class="shrink-0 text-right tabular-nums">7 ธ.ค. 69<span class="block text-text-2">อีก 18 วัน</span></span></li></ul>`)}
       </aside>`;
   },
   steps: [
     { cap: 'หัวหน้าเปิดฟอร์มสร้างแผน PM ใหม่', run: async a => {} },
-    { cap: 'ตั้งชื่อแผน แล้วเลือกเครื่อง CMP-01 คอมเพรสเซอร์ GA37', run: async a => {
-      await a.click('#fName'); await a.type('#fName', 'PM คอมเพรสเซอร์ GA37 · CMP-01', 30);
-      await a.click('#fFind'); await a.type('#fFind', 'CMP-01', 60); await a.w(200);
-      a.text('#fFind', ''); a.show('#chip', 'fx-pop');
+    { cap: 'ตั้งชื่อแผน แล้วเลือกที่ตั้งแบบเดียวกับแจ้งซ่อม: อาคาร A › ห้องคอมเพรสเซอร์', run: async a => {
+      await a.click('#fName'); await a.type('#fName', 'PM คอมเพรสเซอร์ GA37', 30);
+      await a.click('#fBld'); a.set('#fBld [data-v]', 'อาคาร A'); a.cls('#fBld [data-v]', '', 'text-muted');
+      await a.click('#fZone'); a.set('#fZone [data-v]', 'ห้องคอมเพรสเซอร์'); a.cls('#fZone [data-v]', '', 'text-muted');
+      a.show('#mBox'); await a.stagger('#mBox tr[id]', 110);
+    } },
+    { cap: 'ติ๊กได้หลายเครื่อง: CMP-01 CMP-02 CMP-03 — แผนเดียวใช้กับทั้ง 3 เครื่อง', run: async a => {
+      a.show('#chips');
+      for (let i = 0; i < 3; i++) {
+        await a.click(`#m${i} .cb`); a.cls(`#m${i}`, 'on'); a.show(`#ch${i}`, 'fx-pop'); a.$('#selN').textContent = `เลือกแล้ว ${i + 1} เครื่อง`;
+      }
+      a.off();
     } },
     { cap: 'นับรอบแบบ ทุก 3 เดือน หรือ 500 ชม. แล้วแต่อะไรถึงก่อน', run: async a => {
+      await a.scroll('#sc', topIn(a, '#sc', '#formBody > section:nth-child(2)') - 6);
       await a.click('#oBoth', el => a.pick(el)); a.show('#freqIn');
       await a.click('#fMon'); await a.type('#fMon', '3', 80);
       await a.click('#fHr'); await a.type('#fHr', '500', 80); await a.w(150);
@@ -313,14 +335,12 @@ LIVE.run({
       await a.scroll('#sc', botTo(a, '#sc', '#t3'));
       await a.stagger('[data-r=t3]', 220);
     } },
-    { cap: 'กดบันทึกแผน', run: async a => {
-      await a.click('#bSave'); a.toast('#tst', 'บันทึกแล้ว'); await a.w(700);
-    } },
-    { cap: 'หน้าแผนพยากรณ์ 12 รอบถัดไปให้ทันที', run: async a => {
+    { cap: 'กดบันทึกแผน — พยากรณ์ 12 รอบถัดไปของทั้ง 3 เครื่องให้ทันที', run: async a => {
+      await a.click('#bSave'); a.toast('#tst', 'บันทึกแล้ว'); await a.w(600);
       a.off(); a.$('#vForm').style.display = 'none'; a.$('#vPlan').style.display = 'flex'; a.show('#vPlan');
       await a.w(400); await a.stagger('.fc li', 110);
     } },
-    { cap: 'เทียบอะไหล่ที่ต้องใช้ใน 90 วันกับของพร้อมจ่าย — ไส้กรองน้ำมันขาด', run: async a => {
+    { cap: 'รวมอะไหล่ 3 เครื่องที่ใช้ใน 90 วัน เทียบของพร้อมจ่าย — ไส้กรองน้ำมันขาด 3 ชิ้น', run: async a => {
       await a.scroll('#sc2', botTo(a, '#sc2', '#bomCard'), 700);
       for (let i = 0; i < PB.length; i++) {
         const r = PB[i], dec = String(r[5]).includes('.') || String(r[6]).includes('.') ? 1 : 0;

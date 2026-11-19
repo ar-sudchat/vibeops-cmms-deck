@@ -6,6 +6,39 @@
 <title>ผู้แจ้งซ่อม · มือถือ</title>
 <link rel="stylesheet" href="phone-kit.css">
 <link rel="stylesheet" href="phone-run.css">
+<style>
+.qs-cam{position:relative;margin:-16px -16px 0;height:560px;background:#000;overflow:hidden}
+.qs-cam>img{width:100%;height:100%;object-fit:cover;object-position:62% 8%;filter:brightness(.78) saturate(.9)}
+.qs-sticker{position:absolute;left:118px;top:150px;width:150px;padding:9px 9px 8px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.45);transform:rotate(-3deg)}
+.qs-sticker .qr-code{display:block;width:132px;height:132px}
+.qs-lab{text-align:center;margin-top:4px;line-height:1.15}.qs-lab b{display:block;font-size:17px;color:#111}.qs-lab small{font-size:11px;color:#555}
+.qs-frame{position:absolute;left:95px;top:128px;width:200px;height:228px;transition:transform .3s}
+.qs-frame i{position:absolute;width:38px;height:38px;border:5px solid #fff;transition:border-color .25s}
+.qs-frame i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:12px 0 0 0}
+.qs-frame i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 12px 0 0}
+.qs-frame i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 12px}
+.qs-frame i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 12px 0}
+.qs-line{position:absolute;left:10px;right:10px;top:12px;height:3px;border-radius:2px;background:#5eead4;box-shadow:0 0 12px 3px rgba(94,234,212,.75);opacity:0}
+.qs-scan .qs-line{opacity:1;animation:qsl 1.25s ease-in-out}
+@keyframes qsl{0%{top:12px}50%{top:210px}100%{top:12px}}
+.qs-found .qs-frame i{border-color:#22c55e}.qs-found .qs-frame{transform:scale(.97)}
+.qs-found .qs-frame::after{content:"";position:absolute;inset:0;border-radius:12px;background:rgba(34,197,94,.16)}
+.qs-hint{position:absolute;left:0;right:0;bottom:120px;margin:0;text-align:center;color:#fff;font-size:17px;font-weight:600;text-shadow:0 1px 4px #000}
+.qs-ok{position:absolute;left:24px;right:24px;bottom:56px;display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.qs-ok>.ic{width:30px;height:30px;flex:none;padding:5px;border-radius:50%;background:#22c55e;color:#fff;stroke:#fff}
+.qs-ok b{display:block;font-size:18px}.qs-ok small{color:var(--text-2,#666);font-size:14px}
+.qs-man{align-self:center}
+.qs-buzz{animation:qsb .4s}
+@keyframes qsb{0%,100%{transform:translateX(0)}20%{transform:translateX(-4px)}40%{transform:translateX(4px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+.qm-card{border-radius:18px;overflow:hidden;background:var(--surface,#fff);border:1px solid var(--line,#e5e7eb);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.qm-img{position:relative;height:170px}.qm-img img{width:100%;height:100%;object-fit:cover;object-position:62% 10%}
+.qm-tag{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:600}
+.qm-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.qm-b>b{font-size:24px}.qm-n{font-size:17px;color:var(--text,#111)}
+.qm-loc{display:flex;align-items:center;gap:6px;font-size:15px;color:var(--text-2,#555)}
+.qm-auto{display:flex;align-items:center;gap:6px;margin-top:6px;padding:9px 11px;border-radius:12px;background:#ecfdf5;color:#047857;font-size:14.5px;font-weight:600}
+.qm-warn{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;color:var(--text-2,#555);padding:0 2px}
+</style>
 </head>
 <body>
 <script src="phone-kit.js"></script>
@@ -18,32 +51,65 @@ const selRow = (el, on) => {
   const c = el.querySelector('.chev');
   if (c) { c.style.color = on ? 'var(--primary)' : ''; c.innerHTML = PK.I(on ? 'check' : 'chev'); }
 };
+/* ── สแกน QR ที่เครื่อง (คำแนะนำเพื่อนคุณท่าน 19 พ.ย.: แจ้งซ่อมด้วย QR ไม่ต้องเลือกเครื่อง) ── */
+const QR_SVG = (() => {
+  const n = 25, on = (x, y) => {
+    const f = (cx, cy) => x >= cx && x < cx + 7 && y >= cy && y < cy + 7;
+    for (const [cx, cy] of [[0,0],[n-7,0],[0,n-7]]) if (f(cx, cy)) { const dx = x - cx, dy = y - cy; return dx === 0 || dx === 6 || dy === 0 || dy === 6 || (dx >= 2 && dx <= 4 && dy >= 2 && dy <= 4); }
+    if ((x < 8 && y < 8) || (x >= n-8 && y < 8) || (x < 8 && y >= n-8)) return false;
+    return ((x * 7 + y * 13 + x * y * 3) % 5) < 2;
+  };
+  let r = '';
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) if (on(x, y)) r += `<rect x="${x}" y="${y}" width="1.02" height="1.02"/>`;
+  return `<svg viewBox="-2 -2 ${n+4} ${n+4}" class="qr-code"><rect x="-2" y="-2" width="${n+4}" height="${n+4}" fill="#fff"/><g fill="#111">${r}</g></svg>`;
+})();
+const QR_SCREENS = [
+ { role: 'opr', id: 'q1', n: 2, cap: 'สแกน QR', note: '', title: 'สแกน QR ที่เครื่อง', sub: 'เล็งกล้องที่สติกเกอร์', back: 'r1', tab: 2, right: '',
+   body: `<div class="qs-cam"><img src="img/oil-leak.jpg" alt="">
+     <div class="qs-sticker">${QR_SVG}<div class="qs-lab"><b>IMM-06</b><small>แจ้งซ่อม · สแกนเลย</small></div></div>
+     <div class="qs-frame"><i></i><i></i><i></i><i></i><span class="qs-line"></span></div>
+     <p class="qs-hint">วาง QR ให้อยู่ในกรอบ</p>
+     <div class="qs-ok pr-hide"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>พบเครื่อง IMM-06</b><small>เครื่องฉีดพลาสติก 650 ตัน</small></span></div>
+   </div>
+   <button class="link qs-man">ไม่มี QR? เลือกที่ตั้งเอง</button>` },
+ { role: 'opr', id: 'q2', n: 3, cap: 'เครื่องที่สแกน', note: '', title: 'แจ้งซ่อม', sub: 'ขั้น 2 จาก 5 · เครื่องที่สแกน', back: 'q1', prog: 40, tab: 1,
+   body: `<div class="qm-card">
+     <div class="qm-img"><img src="img/oil-leak.jpg" alt=""><span class="qm-tag"><svg class="ic s" aria-hidden="true"><use href="#i-qr"/></svg>จาก QR</span></div>
+     <div class="qm-b"><b>IMM-06</b><span class="qm-n">เครื่องฉีดพลาสติก 650 ตัน</span>
+       <div class="qm-loc"><svg class="ic s" aria-hidden="true"><use href="#i-pin"/></svg>อาคาร A › โซนฉีด 1 › ไลน์ 2</div>
+       <div class="qm-auto"><svg class="ic s" aria-hidden="true"><use href="#i-check"/></svg>ระบบกรอกเครื่องและที่ตั้งให้แล้ว ไม่ต้องเลือกเครื่องเอง</div>
+     </div></div>
+   <div class="qm-warn"><svg class="ic s" aria-hidden="true"><use href="#i-history"/></svg><span>เรื่องล่าสุดของเครื่องนี้: เปลี่ยนซีลปั๊ม 12 ต.ค. · ไม่มีเรื่องค้าง</span></div>
+   <button class="link" style="align-self:flex-start">ไม่ใช่เครื่องนี้? เลือกที่ตั้งเอง</button>`,
+   act: `<button class="btn sec">สแกนใหม่</button><button class="btn pri">ถัดไป: อาการ</button>` },
+];
 const next = a => a.tap('.act .btn.pri', { after: 120 });
 PR.run({
   role: 'ผู้แจ้ง',
+  extra: QR_SCREENS,
   steps: [
-    { cap: '<b>ผู้แจ้งเปิดแอป</b><small>ปุ่มแจ้งซ่อมใหญ่ อยู่ในระยะนิ้วโป้ง</small>',
+    { cap: '<b>ผู้แจ้งเปิดแอป</b><small>ปุ่มแจ้งซ่อมและปุ่มสแกน QR อยู่ในระยะนิ้วโป้ง</small>',
       run: async a => { await a.go('r1'); } },
-    { cap: '<b>แตะแจ้งซ่อม</b><small>สแกน QR ที่เครื่อง หรือเลือกที่ตั้งทีละชั้น</small>',
+    { cap: '<b>แตะสแกน QR</b><small>กล้องเปิดทันที เล็งที่สติกเกอร์บนเครื่อง</small>',
       run: async a => {
-        const r2 = a.find('@ไลน์ 2', PRs('r2')); selRow(r2, false);
-        await a.tap('.hero-btn'); await a.go('r2');
+        const q = PRs('q1'); q.classList.remove('qs-found'); q.querySelector('.qs-ok').classList.add('pr-hide');
+        q.querySelector('.qs-hint').classList.remove('pr-hide');
+        await a.tap('@สแกน QR ที่เครื่อง'); await a.go('q1');
       } },
-    { cap: '<b>ที่ไหน</b><small>อาคาร A › โซนฉีด 1 › ไลน์ 2</small>',
+    { cap: '<b>เจอเครื่องทันที</b><small>อ่าน QR ได้ใน 1 วินาที · สั่นเตือนเมื่อพบ</small>',
       run: async a => {
-        const r3 = PRs('r3');
-        r3.querySelectorAll('.tile').forEach(t => t.setAttribute('aria-pressed', 'false'));
-        const lbl = r3.querySelectorAll('.lbl')[0], list = r3.querySelectorAll('.list')[0];
-        lbl.id = 'r3lbl'; list.id = 'r3list'; lbl.classList.add('pr-hide'); list.classList.add('pr-hide');
-        selRow(a.find('@IMM-06', r3), false);
-        const el = await a.tap('@ไลน์ 2'); selRow(el, true);
+        const q = PRs('q1');
+        q.classList.add('qs-scan'); await a.wait(1300); q.classList.remove('qs-scan');
+        q.classList.add('qs-found');
+        if (!a.fast) { const ph = document.querySelector('.pr-phone'); ph.classList.add('qs-buzz'); setTimeout(() => ph.classList.remove('qs-buzz'), 420); }
+        q.querySelector('.qs-hint').classList.add('pr-hide');
+        await a.pop('.qs-ok');
       } },
-    { cap: '<b>อะไรเสีย</b><small>เลือกประเภท แล้วเหลือเฉพาะของในจุดนั้น</small>',
+    { cap: '<b>ได้เครื่องและที่ตั้งเอง</b><small>IMM-06 · อาคาร A › โซนฉีด 1 › ไลน์ 2 — ไม่ต้องเลือกเครื่องเอง</small>',
       run: async a => {
-        await next(a); await a.go('r3');
-        await a.tap('@เครื่องจักรผลิต');
-        await a.pop('#r3lbl'); await a.pop('#r3list');
-        const el = await a.tap('@IMM-06'); selRow(el, true);
+        const q2 = PRs('q2'); q2.querySelector('.qm-card').id = 'qmc'; q2.querySelector('.qm-card').classList.add('pr-hide');
+        await a.wait(350); await a.go('q2');
+        await a.pop('#qmc');
       } },
     { cap: '<b>เกิดอะไรขึ้น</b><small>แตะอาการ แล้วพิมพ์หรือพูดเพิ่ม</small>',
       run: async a => {

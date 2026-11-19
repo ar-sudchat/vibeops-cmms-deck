@@ -256,7 +256,7 @@ main{flex:1;overflow:auto;padding:18px;min-width:0;display:flex;flex-direction:c
 .cta .box{flex:0 0 auto;background:#DDF956;color:#3D4F06;border-radius:16px;padding:16px 30px;
      font-size:21px;font-weight:800;box-shadow:0 10px 26px -8px rgba(0,0,0,.35)}
 
-/* ════════════ CSS จอมือถือ BESIDE Mobile (ยกจากคลังหน้าจอ · CI เดียวกัน) ════════════ */
+
 .frame{background:linear-gradient(160deg,#213247,#0F1B2D 55%);border-radius:30px;padding:11px;
   box-shadow:0 2px 3px rgba(0,0,0,.28),0 26px 46px -24px rgba(11,71,160,.5),inset 0 1px 0 rgba(255,255,255,.09)}
 :root{
@@ -1374,7 +1374,7 @@ html.cap .n7 .lv-calls .c{transition:none}
     <button data-m="width" title="เต็มความกว้าง (1)">กว้าง</button><button data-m="page" title="เห็นทั้งหน้าในจอเดียว (2)">ทั้งหน้า</button>
   </span>
   <span id="zpc" title="ขนาดที่แสดงอยู่"></span>
-  
+  <span id="dl"><a href="export/cmms-pitch-th.pdf" data-ext="pdf" download title="ดาวน์โหลด PDF หน้าตาเหมือนในจอ">PDF</a><a href="export/cmms-pitch-th.pptx" data-ext="pptx" download title="ดาวน์โหลด PowerPoint">PPTX</a></span>
   <button id="fs" title="เต็มจอ (F)">⛶</button>
   <button id="prev" title="ก่อนหน้า (←)">‹</button>
   <span class="count" id="count"></span>
@@ -1397,9 +1397,9 @@ html.cap .n7 .lv-calls .c{transition:none}
     <div class="nsec">ลูกค้าได้อะไร</div>
     <a href="#n7-features"><span class="idx">4</span><span class="txt"><span class="nm">Features</span><span class="cd">ฟีเจอร์แยกตามโมดูล</span></span></a>
     <div class="nsec">Flow การทำงาน</div>
-    <a href="#n7-flow"><span class="idx">5</span><span class="txt"><span class="nm">Flow 8 ขั้น</span><span class="cd">แจ้งซ่อมถึงรายงาน</span></span></a>
+    <a href="#n7-flow"><span class="idx">5</span><span class="txt"><span class="nm">Flow 7 ขั้น</span><span class="cd">แจ้งซ่อมถึงรายงาน</span></span></a>
     <a href="#n7-loc"><span class="idx">6</span><span class="txt"><span class="nm">ผังที่ตั้งหลายชั้น</span><span class="cd">อาคาร › โซน › ไลน์ › เครื่อง</span></span></a>
-    <a href="#n7-s1p"><span class="idx">7</span><span class="txt"><span class="nm">แจ้งซ่อมบนมือถือ</span><span class="cd">QR · ที่ตั้ง · รูปเสียง · ผลกระทบ</span></span></a>
+    <a href="#n7-s1p"><span class="idx">7</span><span class="txt"><span class="nm">แจ้งซ่อมบนมือถือ</span><span class="cd">สแกน QR · รูปเสียง · ผลกระทบ</span></span></a>
     <a href="#n7-s1d"><span class="idx">8</span><span class="txt"><span class="nm">แจ้งซ่อมบนคอม</span><span class="cd">ฟอร์มทีละขั้น</span></span></a>
     <a href="#n7-s2a"><span class="idx">9</span><span class="txt"><span class="nm">คิวคัดกรอง</span><span class="cd">หัวหน้าเห็นทุกเรื่องในจอเดียว</span></span></a>
     <a href="#n7-s2b"><span class="idx">10</span><span class="txt"><span class="nm">งานของทีมวันนี้</span><span class="cd">สถานะทุกใบงานในคิวเดียว</span></span></a>
@@ -1409,13 +1409,12 @@ html.cap .n7 .lv-calls .c{transition:none}
     <a href="#n7-s5b"><span class="idx">14</span><span class="txt"><span class="nm">PM · ระบบเดินรอบ</span><span class="cd">พยากรณ์ 12 รอบ</span></span></a>
     <a href="#n7-s5c"><span class="idx">15</span><span class="txt"><span class="nm">PM · เช็กลิสต์</span><span class="cd">แม่แบบมีเวอร์ชัน</span></span></a>
     <a href="#n7-s6"><span class="idx">16</span><span class="txt"><span class="nm">MRP อะไหล่</span><span class="cd">สั่งอะไร เมื่อไร</span></span></a>
-    <a href="#n7-s7"><span class="idx">17</span><span class="txt"><span class="nm">ใบขอซื้อในระบบเดิม</span><span class="cd">PR → PO → รับของ</span></span></a>
-    <a href="#n7-s8a"><span class="idx">18</span><span class="txt"><span class="nm">แดชบอร์ดซ่อมบำรุง</span><span class="cd">MTBF MTTR PM ตรงรอบ</span></span></a>
-    <a href="#n7-s8b"><span class="idx">19</span><span class="txt"><span class="nm">ต้นทุนงานซ่อม</span><span class="cd">ค่าแรง อะไหล่ จ้างนอก</span></span></a>
+    <a href="#n7-s8a"><span class="idx">17</span><span class="txt"><span class="nm">แดชบอร์ดซ่อมบำรุง</span><span class="cd">MTBF MTTR PM ตรงรอบ</span></span></a>
+    <a href="#n7-s8b"><span class="idx">18</span><span class="txt"><span class="nm">ต้นทุนงานซ่อม</span><span class="cd">ค่าแรง อะไหล่ จ้างนอก</span></span></a>
     <div class="nsec">ใช้บนโทรศัพท์</div>
-    <a href="#n7-mob"><span class="idx">20</span><span class="txt"><span class="nm">บนโทรศัพท์ทุกบทบาท</span><span class="cd">หัวหน้า คลัง ผู้แจ้ง</span></span></a>
+    <a href="#n7-mob"><span class="idx">19</span><span class="txt"><span class="nm">บนโทรศัพท์ทุกบทบาท</span><span class="cd">หัวหน้า คลัง ผู้แจ้ง</span></span></a>
     <div class="nsec">ขั้นต่อไป</div>
-    <a href="#n7-close"><span class="idx">21</span><span class="txt"><span class="nm">ติดต่อเรา</span><span class="cd">ขอบคุณ</span></span></a>
+    <a href="#n7-close"><span class="idx">20</span><span class="txt"><span class="nm">ติดต่อเรา</span><span class="cd">ขอบคุณ</span></span></a>
   </nav>
 
   <main>
@@ -1541,7 +1540,7 @@ html.cap .n7 .lv-calls .c{transition:none}
 <ul><li><span>แผน PM ตามวัน /<br>ชั่วโมงเครื่อง</span></li><li><span>ระดับงาน<br>รายเดือน–รายปี</span></li><li><span>เช็กลิสต์ตาม<br>เครื่อง × ความถี่</span></li><li><span>BOM ต่อรอบ</span></li><li><span>ปฏิทิน PM</span></li><li><span>พยากรณ์ 12 รอบ</span></li><li><span>บันทึกมิเตอร์</span></li></ul>
 <div class="bn"><span>PM ตรงรอบ ไม่หลุด</span></div></div>
 <div class="c a-up" style="--d:0.95s"><div class="hd"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span><span class="no">04</span><b>Spare Parts &amp; MRP</b><small>อะไหล่</small></div>
-<ul><li><span>BOM ประจำเครื่อง</span></li><li><span>MRP ล่วงหน้า<br>12 สัปดาห์</span></li><li><span>ขั้นต่ำ &amp; จุดสั่งซื้อ</span></li><li><span>ใบขอซื้อ PR <span class="tg">VibeOps</span></span></li><li><span>เบิก / คืน <span class="tg">VibeOps</span></span></li><li><span>งานจ้างนอก</span></li></ul>
+<ul><li><span>BOM ประจำเครื่อง</span></li><li><span>MRP ล่วงหน้า<br>12 สัปดาห์</span></li><li><span>ขั้นต่ำ &amp; จุดสั่งซื้อ</span></li><li><span>รายงานสั่งซื้อ<br>ส่งจัดซื้อโรงงาน</span></li><li><span>เบิก / คืน <span class="tg">VibeOps</span></span></li><li><span>งานจ้างนอก</span></li></ul>
 <div class="bn"><span>รู้ว่าต้องซื้ออะไร เมื่อไร</span></div></div>
 <div class="c a-up" style="--d:1.15s"><div class="hd"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V10l5 3V10l5 3V6l8 4v11z"/><path d="M3 21h18M8 17h1M12 17h1M16 17h1"/></svg></span><span class="no">05</span><b>Asset &amp; Location</b><small>เครื่องและสถานที่</small></div>
 <ul><li><span>ทะเบียนเครื่องจักร</span></li><li><span>ผังสถานที่หลายชั้น</span></li><li><span>ป้าย QR</span></li><li><span>ประวัติเครื่อง</span></li><li><span>ทีม / กะ / ช่าง</span></li><li><span>ผู้รับเหมา</span></li></ul>
@@ -1550,21 +1549,21 @@ html.cap .n7 .lv-calls .c{transition:none}
 <ul><li><span>แดชบอร์ด</span></li><li><span>MTBF / MTTR</span></li><li><span>ความพร้อมใช้เครื่อง</span></li><li><span>PM ตรงเวลา</span></li><li><span>อาการที่เจอบ่อย</span></li><li><span>ต้นทุนงานซ่อม</span></li><li><span>เวลาเครื่องหยุด<br>จากฝั่งผลิต</span></li></ul>
 <div class="bn"><span>ตัดสินใจด้วยตัวเลขจริง</span></div></div>
 </div>
-<div class="ft-lg a-up" style="--d:1.6s"><span><i>●</i>ทำใน VibeOps CMMS</span><span><span class="tg">VibeOps</span>ใช้โปรแกรมเดิมของ VibeOps (จัดซื้อ · คลัง)</span></div>
+<div class="ft-lg a-up" style="--d:1.6s"><span><i>●</i>ทำใน VibeOps CMMS</span><span><span class="tg">VibeOps</span>ใช้โปรแกรมเดิมของ VibeOps (เบิก · คืน คลัง)</span></div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-flow"><div class="vs">
 <style>
-/* n7-flow · เส้นทางเคสเดียว 8 ขั้น (19 พ.ย. 2026) — ใช้เฉพาะสไลด์นี้ */
+/* n7-flow · เส้นทางเคสเดียว 7 ขั้น (19 พ.ย. 2026) — ใช้เฉพาะสไลด์นี้ */
 [data-key="n7-flow"] .jr{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
 [data-key="n7-flow"] .jr .trk{fill:none;stroke:rgba(255,255,255,.16);stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
 [data-key="n7-flow"] .jr .run{fill:none;stroke:#DDF956;stroke-width:6;stroke-linecap:round;stroke-dasharray:100;animation:f5draw 3.6s linear both;animation-delay:.5s}
 [data-key="n7-flow"] .jr .pm{fill:none;stroke:#DDF956;stroke-width:3.5;stroke-dasharray:4 12;stroke-linecap:round;opacity:.9}
 [data-key="n7-flow"] .dot{position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#DDF956;
   box-shadow:0 0 0 7px rgba(221,249,86,.28),0 6px 14px rgba(0,10,50,.45);
-  offset-path:path('M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 420 770');offset-rotate:0deg;
+  offset-path:path('M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 560 770');offset-rotate:0deg;
   animation:n7fRun 3.6s linear both,n7fEnd 3.9s linear both;animation-delay:.5s,.5s}
 [data-key="n7-flow"] .dot.pmd{width:16px;height:16px;box-shadow:0 0 0 5px rgba(221,249,86,.25);
-  offset-path:path('M 420 708 C 560 596 1540 596 1680 708');offset-rotate:0deg;animation:n7fRun 2.6s cubic-bezier(.45,0,.2,1) infinite,f5fade .4s ease-out both;animation-delay:4.3s,4.3s}
+  offset-path:path('M 560 708 C 700 596 1540 596 1680 708');offset-rotate:0deg;animation:n7fRun 2.6s cubic-bezier(.45,0,.2,1) infinite,f5fade .4s ease-out both;animation-delay:4.3s,4.3s}
 @keyframes n7fRun{from{offset-distance:0%}to{offset-distance:100%}}
 @keyframes n7fEnd{0%,92%{opacity:1}100%{opacity:0}}
 html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
@@ -1628,15 +1627,15 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
 </defs></svg>
 
 <div class="n7-eb a-up" style="--d:.05s">Flow การทำงาน</div>
-<div class="n7-h a-up" style="--d:.15s">เครื่องเสียหนึ่งครั้ง เดินผ่าน 8 ขั้น</div>
+<div class="n7-h a-up" style="--d:.15s">เครื่องเสียหนึ่งครั้ง เดินผ่าน 7 ขั้น</div>
 <div class="n7-sub a-up" style="--d:.25s">ตามเคสจริงหนึ่งเคส ข้อมูลส่งต่อเองทุกขั้น ไม่ต้องพิมพ์ซ้ำ</div>
 
 <!-- เส้นทาง -->
 <svg class="jr" viewBox="0 0 1920 1080" aria-hidden="true">
   <defs><marker id="n7f-ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9z" fill="#DDF956"/></marker></defs>
-  <path class="trk a-fade" style="--d:.3s" d="M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 420 770"/>
-  <path class="run" pathLength="100" d="M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 420 770"/>
-  <path class="pm a-fade" style="--d:4.2s" marker-end="url(#n7f-ah)" d="M 420 708 C 560 596 1540 596 1672 702"/>
+  <path class="trk a-fade" style="--d:.3s" d="M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 560 770"/>
+  <path class="run" pathLength="100" d="M 336 480 L 1680 480 C 1868 480 1868 770 1680 770 L 560 770"/>
+  <path class="pm a-fade" style="--d:4.2s" marker-end="url(#n7f-ah)" d="M 560 708 C 700 596 1540 596 1672 702"/>
 </svg>
 
 <!-- หมุดเริ่ม -->
@@ -1659,14 +1658,12 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
 <div class="nd pv a-pop" style="left:1680px;top:770px;--d:2.75s"><svg><use href="#n7f-i5"/></svg><span class="no">5</span></div>
 <div class="lb dn a-up" style="left:1680px;--d:2.82s"><b>แผน PM</b><div class="who"><span>หัวหน้า</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art th">เปลี่ยนซีล ทุก 3 เดือน</div></div>
 
-<div class="nd pv a-pop" style="left:1260px;top:770px;--d:3.25s"><svg><use href="#n7f-i6"/></svg><span class="no">6</span></div>
-<div class="lb dn a-up" style="left:1260px;--d:3.32s"><b>MRP อะไหล่</b><div class="who"><span>คลัง</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art th">ซีล ×4 · สั่งภายใน 7 ธ.ค.</div></div>
+<div class="nd pv a-pop" style="left:1120px;top:770px;--d:3.25s"><svg><use href="#n7f-i6"/></svg><span class="no">6</span></div>
+<div class="lb dn a-up" style="left:1120px;--d:3.32s"><b>MRP อะไหล่</b><div class="who"><span>คลัง</span><span>ส่งจัดซื้อ</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art th">ซีล ×4 · สั่งภายใน 7 ธ.ค.</div></div>
 
-<div class="nd pv a-pop" style="left:840px;top:770px;--d:3.75s"><svg><use href="#n7f-i7"/></svg><span class="no">7</span></div>
-<div class="lb dn a-up" style="left:840px;--d:3.82s"><b>ขอซื้อในระบบเดิม</b><div class="who"><span>จัดซื้อ</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art">PR-2026-0006</div></div>
 
-<div class="nd pv a-pop" style="left:420px;top:770px;--d:4.1s"><svg><use href="#n7f-i8"/></svg><span class="no">8</span></div>
-<div class="lb dn a-up" style="left:420px;--d:4.17s"><b>รายงาน</b><div class="who"><span>ผู้จัดการ</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art"><span>MTTR 2.4</span> <span style="font-family:Sarabun">ชม.</span></div></div>
+<div class="nd pv a-pop" style="left:560px;top:770px;--d:3.75s"><svg><use href="#n7f-i8"/></svg><span class="no">7</span></div>
+<div class="lb dn a-up" style="left:560px;--d:3.82s"><b>รายงาน</b><div class="who"><span>ผู้จัดการ</span><i title="คอม"><svg><use href="#n7f-pc"/></svg></i></div><div class="art"><span>MTTR 2.4</span> <span style="font-family:Sarabun">ชม.</span></div></div>
 
 <!-- วน PM -->
 <div class="pmt a-pop" style="--d:4.3s"><svg><use href="#n7f-loop"/></svg>PM ป้องกันครั้งหน้า</div>
@@ -1680,43 +1677,40 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
 <div class="n7-eb a-up" style="--d:.05s">ผังที่ตั้ง</div><div class="n7-h a-up" style="--d:.15s">ทุกเครื่องมีที่อยู่ หาได้ทีละชั้น</div><div class="n7-sub a-up" style="--d:.25s">อาคาร › โซน › ไลน์ › เครื่อง · ทุกจุดมีทีมรับผิดชอบ</div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-locations.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ผังหลายชั้น</b><span>กางอาคาร โซน ไลน์ ลงไปทีละชั้น</span></div></div><div class="c a-up" data-lv="0:3-4" style="--d:0.70s"><i>2</i><div><b>เห็นเครื่องและงานในจุดนั้น</b><span>ไลน์ 2 มีเครื่องอะไร งานเปิดกี่เรื่อง</span></div></div><div class="c a-up" data-lv="0:5-6" style="--d:0.90s"><i>3</i><div><b>สถานะไหลขึ้นถึงอาคาร</b><span>เครื่องหยุดเห็นแดงทั้งสาย · ส่งถึงทีมที่ดูแลเอง</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s1p"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">1/8</span>แจ้งซ่อม</div><div class="n7-h a-up" style="--d:.15s">แจ้งได้ในราว 30 วินาที</div><div class="n7-sub a-up" style="--d:.25s">ไม่ต้องจำรหัสเครื่อง ไม่ต้องไล่รายการยาว</div><div class="n7-trk a-fade" style="--d:.1s"><i class="on" title="แจ้งซ่อม">1</i><i class="" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-ph a-up" style="left:150px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-requester.html?range=0-7&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-role a-up" style="left:720px;top:236px;--d:.4s">ผู้แจ้ง · ฝ่ายผลิต</div><div class="lv-calls big" style="left:700px;top:300px;width:1100px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ที่ไหน</b><span>สแกน QR ที่เครื่อง หรือเลือก อาคาร › โซน › จุด</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>อะไรเสีย · อาการ · รูป</b><span>แจ้งได้ทั้งเครื่องจักร หลอดไฟ อาคาร · รูปมีเวลาและจุดให้เอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>ผลกระทบ แล้วส่ง</b><span>ระบบเสนอความด่วนให้หัวหน้า ผู้แจ้งไม่ต้องเลือกเอง</span></div></div></div><div class="lv-cap a-up" style="left:700px;top:846px;width:1100px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">1/7</span>แจ้งซ่อม</div><div class="n7-h a-up" style="--d:.15s">แจ้งได้ในราว 30 วินาที</div><div class="n7-sub a-up" style="--d:.25s">สแกน QR ที่เครื่อง ไม่ต้องจำรหัส ไม่ต้องเลือกเครื่อง</div><div class="n7-trk a-fade" style="--d:.1s"><i class="on" title="แจ้งซ่อม">1</i><i class="" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-ph a-up" style="left:150px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-requester.html?range=0-7&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-role a-up" style="left:720px;top:236px;--d:.4s">ผู้แจ้ง · ฝ่ายผลิต</div><div class="lv-calls big" style="left:700px;top:300px;width:1100px"><div class="c a-up" data-lv="0:0-3" style="--d:0.50s"><i>1</i><div><b>สแกน QR ที่เครื่อง</b><span>ได้เครื่องและที่ตั้งทันที ไม่ต้องเลือกเครื่องเอง · ไม่มี QR ก็เลือก อาคาร › โซน › จุด ได้</span></div></div><div class="c a-up" data-lv="0:4-5" style="--d:0.70s"><i>2</i><div><b>อาการ · รูป · เสียง</b><span>แตะอาการ พิมพ์หรือพูดเพิ่ม · รูปมีเวลาและจุดให้เอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>ผลกระทบ แล้วส่ง</b><span>ระบบเสนอความด่วนให้หัวหน้า ผู้แจ้งไม่ต้องเลือกเอง</span></div></div></div><div class="lv-cap a-up" style="left:700px;top:846px;width:1100px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s1d"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">1/8</span>แจ้งซ่อม</div><div class="n7-h a-up" style="--d:.15s">บนคอมก็ขั้นตอนเดียวกัน</div><div class="n7-sub a-up" style="--d:.25s">สำนักงาน หัวหน้ากะ แจ้งจากโต๊ะได้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="on" title="แจ้งซ่อม">1</i><i class="" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-request.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ทีละขั้น ไม่หลง</b><span>ที่ไหน › อะไรเสีย · เหลือเฉพาะเครื่องในไลน์นั้น</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>อาการ รูป ผลกระทบ</b><span>ระบบเสนอความเร่งด่วนเอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>ตรวจแล้วส่ง</b><span>ได้เลข RQ-2026-0217 ถึงทีมซ่อมทันที</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">1/7</span>แจ้งซ่อม</div><div class="n7-h a-up" style="--d:.15s">บนคอมก็ขั้นตอนเดียวกัน</div><div class="n7-sub a-up" style="--d:.25s">สำนักงาน หัวหน้ากะ แจ้งจากโต๊ะได้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="on" title="แจ้งซ่อม">1</i><i class="" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-request.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ทีละขั้น ไม่หลง</b><span>ที่ไหน › อะไรเสีย · เหลือเฉพาะเครื่องในไลน์นั้น</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>อาการ รูป ผลกระทบ</b><span>ระบบเสนอความเร่งด่วนเอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>ตรวจแล้วส่ง</b><span>ได้เลข RQ-2026-0217 ถึงทีมซ่อมทันที</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s2a"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">2/8</span>คัดกรอง</div><div class="n7-h a-up" style="--d:.15s">เรื่องที่ต้องตัดสินใจ อยู่ในคิวเดียว</div><div class="n7-sub a-up" style="--d:.25s">ตัดสินใจจากข้อมูลครบ แล้วจ่ายงานในจอเดียว</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="on" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-triage.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-1" style="--d:0.50s"><i>1</i><div><b>ทุกเรื่องที่ยังไม่มีคนรับ</b><span>เรียงตามความด่วนและเวลารอ</span></div></div><div class="c a-up" data-lv="0:2-4" style="--d:0.70s"><i>2</i><div><b>ข้อมูลครบก่อนตัดสิน</b><span>รูป เครื่อง ตำแหน่ง ทีม ความด่วนปรับได้</span></div></div><div class="c a-up" data-lv="0:5-6" style="--d:0.90s"><i>3</i><div><b>เลือกช่างจากภาระงาน</b><span>อนุมัติแล้วเป็นใบงาน ส่งถึงมือถือช่าง</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">2/7</span>คัดกรอง</div><div class="n7-h a-up" style="--d:.15s">เรื่องที่ต้องตัดสินใจ อยู่ในคิวเดียว</div><div class="n7-sub a-up" style="--d:.25s">ตัดสินใจจากข้อมูลครบ แล้วจ่ายงานในจอเดียว</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="on" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-triage.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-1" style="--d:0.50s"><i>1</i><div><b>ทุกเรื่องที่ยังไม่มีคนรับ</b><span>เรียงตามความด่วนและเวลารอ</span></div></div><div class="c a-up" data-lv="0:2-4" style="--d:0.70s"><i>2</i><div><b>ข้อมูลครบก่อนตัดสิน</b><span>รูป เครื่อง ตำแหน่ง ทีม ความด่วนปรับได้</span></div></div><div class="c a-up" data-lv="0:5-6" style="--d:0.90s"><i>3</i><div><b>เลือกช่างจากภาระงาน</b><span>อนุมัติแล้วเป็นใบงาน ส่งถึงมือถือช่าง</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s2b"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">2/8</span>ติดตามงาน</div><div class="n7-h a-up" style="--d:.15s">หัวหน้าเห็นงานทุกใบ ไม่ต้องโทรตาม</div><div class="n7-sub a-up" style="--d:.25s">สถานะเปลี่ยนเองเมื่อช่างกดบนมือถือ</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="on" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-queue.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-1" style="--d:0.50s"><i>1</i><div><b>งานวันนี้ในจอเดียว</b><span>รอคัดกรอง เครื่องหยุด เกินกำหนด รอตรวจรับ</span></div></div><div class="c a-up" data-lv="0:2-3" style="--d:0.70s"><i>2</i><div><b>สถานะมาจากมือถือช่าง</b><span>ใบงานใหม่เข้าคิว ช่างเริ่มงาน เห็นทันที</span></div></div><div class="c a-up" data-lv="0:4-5" style="--d:0.90s"><i>3</i><div><b>รอตรวจรับ</b><span>ซ่อมเสร็จแล้ว กดเข้าไปตรวจได้เลย</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">2/7</span>ติดตามงาน</div><div class="n7-h a-up" style="--d:.15s">หัวหน้าเห็นงานทุกใบ ไม่ต้องโทรตาม</div><div class="n7-sub a-up" style="--d:.25s">สถานะเปลี่ยนเองเมื่อช่างกดบนมือถือ</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="on" title="คัดกรอง">2</i><i class="" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-queue.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-1" style="--d:0.50s"><i>1</i><div><b>งานวันนี้ในจอเดียว</b><span>รอคัดกรอง เครื่องหยุด เกินกำหนด รอตรวจรับ</span></div></div><div class="c a-up" data-lv="0:2-3" style="--d:0.70s"><i>2</i><div><b>สถานะมาจากมือถือช่าง</b><span>ใบงานใหม่เข้าคิว ช่างเริ่มงาน เห็นทันที</span></div></div><div class="c a-up" data-lv="0:4-5" style="--d:0.90s"><i>3</i><div><b>รอตรวจรับ</b><span>ซ่อมเสร็จแล้ว กดเข้าไปตรวจได้เลย</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s3"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">3/8</span>ช่างทำงาน</div><div class="n7-h a-up" style="--d:.15s">ช่างทำทีละขั้น บนมือถือเครื่องเดียว</div><div class="n7-sub a-up" style="--d:.25s">ไม่มีเน็ตก็ทำงานต่อได้ ระบบส่งเองเมื่อสัญญาณกลับมา</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="on" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-ph a-up" style="left:150px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-tech.html?range=0-7&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-role a-up" style="left:720px;top:236px;--d:.4s">ช่าง · อนุชา</div><div class="lv-calls big" style="left:700px;top:300px;width:1100px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>สแกนเครื่อง เริ่มจับเวลา</b><span>เวลาซ่อมเป็นเวลาจริง ไม่ใช่กรอกย้อนหลัง</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>เช็กลิสต์ กด “ผ่านหมด”</b><span>ค่าวัดเกินเกณฑ์ ระบบเปิดงานซ่อมต่อเนื่องให้เอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>มิเตอร์ และเบิกอะไหล่</b><span>ค่ามิเตอร์ตั้งรอบ PM · อะไหล่มาจาก BOM ของชุดที่ซ่อม</span></div></div></div><div class="lv-cap a-up" style="left:700px;top:846px;width:1100px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">3/7</span>ช่างทำงาน</div><div class="n7-h a-up" style="--d:.15s">ช่างทำทีละขั้น บนมือถือเครื่องเดียว</div><div class="n7-sub a-up" style="--d:.25s">ไม่มีเน็ตก็ทำงานต่อได้ ระบบส่งเองเมื่อสัญญาณกลับมา</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="on" title="ช่างทำงาน">3</i><i class="" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-ph a-up" style="left:150px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-tech.html?range=0-7&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-role a-up" style="left:720px;top:236px;--d:.4s">ช่าง · อนุชา</div><div class="lv-calls big" style="left:700px;top:300px;width:1100px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>สแกนเครื่อง เริ่มจับเวลา</b><span>เวลาซ่อมเป็นเวลาจริง ไม่ใช่กรอกย้อนหลัง</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>เช็กลิสต์ กด “ผ่านหมด”</b><span>ค่าวัดเกินเกณฑ์ ระบบเปิดงานซ่อมต่อเนื่องให้เอง</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>มิเตอร์ และเบิกอะไหล่</b><span>ค่ามิเตอร์ตั้งรอบ PM · อะไหล่มาจาก BOM ของชุดที่ซ่อม</span></div></div></div><div class="lv-cap a-up" style="left:700px;top:846px;width:1100px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s4"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">4/8</span>ปิดงาน · ตรวจรับ</div><div class="n7-h a-up" style="--d:.15s">ปิดงานครบ ก่อนนับว่าเสร็จ</div><div class="n7-sub a-up" style="--d:.25s">ช่างปิดบนมือถือ › หัวหน้าตรวจรับ › ผู้แจ้งให้คะแนน</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="on" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-ph a-up" style="left:64px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-tech.html?range=8-9&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-unit lv-win a-win" style="left:520px;top:244px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>ใบงาน WO-2026-0103 · หน้าจอจำลอง</span></div><iframe data-live src="embed/live/desk-wo-close.html" width="1300" height="731" title="ใบงาน WO-2026-0103 · หน้าจอจำลอง" loading="eager"></iframe></div><div class="lv-cap a-up" style="left:1000px;top:138px;width:820px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">4/7</span>ปิดงาน · ตรวจรับ</div><div class="n7-h a-up" style="--d:.15s">ปิดงานครบ ก่อนนับว่าเสร็จ</div><div class="n7-sub a-up" style="--d:.25s">ช่างปิดบนมือถือ › หัวหน้าตรวจรับ › ผู้แจ้งให้คะแนน</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="on" title="ปิดงาน">4</i><i class="" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-ph a-up" style="left:64px;top:216px;width:422px;height:830px;--d:0.35s"><iframe data-live src="embed/live/phone-tech.html?range=8-9&nocap" width="422" height="830" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-unit lv-win a-win" style="left:520px;top:244px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>ใบงาน WO-2026-0103 · หน้าจอจำลอง</span></div><iframe data-live src="embed/live/desk-wo-close.html" width="1300" height="731" title="ใบงาน WO-2026-0103 · หน้าจอจำลอง" loading="eager"></iframe></div><div class="lv-cap a-up" style="left:1000px;top:138px;width:820px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s5a"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/8</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">ตั้งแผน PM ครั้งเดียว ระบบเดินรอบให้</div><div class="n7-sub a-up" style="--d:.25s">งานหลายระดับ เช็กลิสต์ และอะไหล่ต่อรอบ ในแผนเดียว</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-pm-plan.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>เครื่องและการนับรอบ</b><span>ตามวัน ตามชั่วโมงเครื่อง หรืออย่างไหนถึงก่อน</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>หลายระดับในแผนเดียว</b><span>รายเดือน ราย 3 เดือน รายปี · อะไหล่ทุกกี่รอบ</span></div></div><div class="c a-up" data-lv="0:6-8" style="--d:0.90s"><i>3</i><div><b>พยากรณ์ 12 รอบ</b><span>เทียบอะไหล่กับคลัง ของขาดขึ้นแดง</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/7</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">ตั้งแผน PM ครั้งเดียว ระบบเดินรอบให้</div><div class="n7-sub a-up" style="--d:.25s">งานหลายระดับ เช็กลิสต์ และอะไหล่ต่อรอบ ในแผนเดียว</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-pm-plan.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>เลือกเครื่องตามที่ตั้ง</b><span>อาคาร › โซน แล้วติ๊กได้หลายเครื่องในครั้งเดียว</span></div></div><div class="c a-up" data-lv="0:3-6" style="--d:0.70s"><i>2</i><div><b>นับรอบ และหลายระดับในแผนเดียว</b><span>วันหรือชั่วโมงเครื่อง · รายเดือน ราย 3 เดือน รายปี</span></div></div><div class="c a-up" data-lv="0:7-8" style="--d:0.90s"><i>3</i><div><b>พยากรณ์ 12 รอบ</b><span>เทียบอะไหล่กับคลัง ของขาดขึ้นแดง</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s5b"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/8</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">รู้ล่วงหน้า 12 รอบ ว่าต้องทำอะไรเมื่อไร</div><div class="n7-sub a-up" style="--d:.25s">ใบงาน PM ออกเองก่อนครบรอบ</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="n7-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>โปรแกรมจริง · ข้อมูลตัวอย่าง</span></div><div class="n7sc"><img src="img/n7/desk/pm-page.jpg" alt=""><span class="pin a-pop" style="left:2.4%;top:11%;--d:0.90s">1</span><span class="pin a-pop" style="left:2.4%;top:25%;--d:1.25s">2</span><span class="pin a-pop" style="left:52%;top:64%;--d:1.60s">3</span></div></div><div class="n7-calls " style=""><div class="c a-up" style="--d:0.90s"><i>1</i><div><b>ครบรอบครั้งถัดไป</b><span>วันที่ชัด เครื่องไหน ไม่ต้องเปิด Excel</span></div></div><div class="c a-up" style="--d:1.25s"><i>2</i><div><b>พยากรณ์ 12 รอบ</b><span>วางแผนคนและเครื่องหยุดได้ล่วงหน้า</span></div></div><div class="c a-up" style="--d:1.60s"><i>3</i><div><b>อะไหล่ต่อรอบ เทียบคลัง</b><span>ของไม่พอขึ้นแดง กดขอซื้อส่วนที่ขาดได้เลย</span></div></div></div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/7</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">รู้ล่วงหน้า 12 รอบ ว่าต้องทำอะไรเมื่อไร</div><div class="n7-sub a-up" style="--d:.25s">ใบงาน PM ออกเองก่อนครบรอบ</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="n7-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>โปรแกรมจริง · ข้อมูลตัวอย่าง</span></div><div class="n7sc"><img src="img/n7/desk/pm-page.jpg" alt=""><span class="pin a-pop" style="left:2.4%;top:11%;--d:0.90s">1</span><span class="pin a-pop" style="left:2.4%;top:25%;--d:1.25s">2</span><span class="pin a-pop" style="left:52%;top:64%;--d:1.60s">3</span></div></div><div class="n7-calls " style=""><div class="c a-up" style="--d:0.90s"><i>1</i><div><b>ครบรอบครั้งถัดไป</b><span>วันที่ชัด เครื่องไหน ไม่ต้องเปิด Excel</span></div></div><div class="c a-up" style="--d:1.25s"><i>2</i><div><b>พยากรณ์ 12 รอบ</b><span>วางแผนคนและเครื่องหยุดได้ล่วงหน้า</span></div></div><div class="c a-up" style="--d:1.60s"><i>3</i><div><b>อะไหล่ต่อรอบ เทียบคลัง</b><span>ของไม่พอขึ้นแดง กดขอซื้อส่วนที่ขาดได้เลย</span></div></div></div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s5c"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/8</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">เช็กลิสต์เป็นแม่แบบ ใช้ซ้ำทุกเครื่อง</div><div class="n7-sub a-up" style="--d:.25s">แก้ครั้งเดียว มีผลกับทุกแผนที่ใช้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-checklist.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-3" style="--d:0.50s"><i>1</i><div><b>ตามเครื่อง × ความถี่</b><span>รายเดือน ราย 3 เดือน รายปี คนละชุด</span></div></div><div class="c a-up" data-lv="0:4-6" style="--d:0.70s"><i>2</i><div><b>ชนิดคำตอบ</b><span>ผ่าน/ไม่ผ่าน · ค่าวัดพร้อมเกณฑ์ · บังคับถ่ายรูป</span></div></div><div class="c a-up" data-lv="0:7-7" style="--d:0.90s"><i>3</i><div><b>มีเวอร์ชัน</b><span>ใบงานเก่ายังอ้างฉบับที่ใช้ตอนนั้น</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">5/7</span>PM · แยกโมดูล</div><div class="n7-h a-up" style="--d:.15s">เช็กลิสต์เป็นแม่แบบ ใช้ซ้ำทุกเครื่อง</div><div class="n7-sub a-up" style="--d:.25s">แก้ครั้งเดียว มีผลกับทุกแผนที่ใช้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="on" title="PM">5</i><i class="" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-checklist.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-3" style="--d:0.50s"><i>1</i><div><b>ตามเครื่อง × ความถี่</b><span>รายเดือน ราย 3 เดือน รายปี คนละชุด</span></div></div><div class="c a-up" data-lv="0:4-6" style="--d:0.70s"><i>2</i><div><b>ชนิดคำตอบ</b><span>ผ่าน/ไม่ผ่าน · ค่าวัดพร้อมเกณฑ์ · บังคับถ่ายรูป</span></div></div><div class="c a-up" data-lv="0:7-7" style="--d:0.90s"><i>3</i><div><b>มีเวอร์ชัน</b><span>ใบงานเก่ายังอ้างฉบับที่ใช้ตอนนั้น</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s6"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">6/8</span>MRP อะไหล่</div><div class="n7-h a-up" style="--d:.15s">ระบบบอกว่าต้องสั่งอะไร ภายในวันไหน</div><div class="n7-sub a-up" style="--d:.25s">คิดจากแผน PM และงานซ่อมที่มักเกิด</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="on" title="MRP">6</i><i class="" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-mrp.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ความต้องการจากแผน PM</b><span>สัปดาห์ไหนต้องใช้อะไหล่อะไร กี่ชิ้น</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>ของจะขาดเมื่อไร</b><span>คงเหลือต่ำกว่าขั้นต่ำขึ้นแดง · ระบบบอกสั่งกี่ชิ้น ภายในวันไหน</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>สั่งก่อนของขาด</b><span>กดเดียวเปิดใบขอซื้อ ส่งอนุมัติในระบบเดิม</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
-</div></div></div>
-<div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s7"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">7/8</span>ใบขอซื้อ</div><div class="n7-h a-up" style="--d:.15s">ขอซื้อในระบบจัดซื้อเดิม ไม่ต้องมีอีกระบบ</div><div class="n7-sub a-up" style="--d:.25s">ใบงาน › ขอซื้อ › อนุมัติ › สั่งซื้อ › รับของ</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="done" title="MRP">6</i><i class="on" title="ขอซื้อ">7</i><i class="" title="รายงาน">8</i></div><div class="n7-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>โปรแกรมจริง · ข้อมูลตัวอย่าง</span></div><div class="n7sc"><img src="img/n7/desk/pr.jpg" alt=""><span class="pin a-pop" style="left:40%;top:67%;--d:0.90s">1</span><span class="pin a-pop" style="left:97%;top:66%;--d:1.25s">2</span><span class="pin a-pop" style="left:69%;top:22.5%;--d:1.60s">3</span></div></div><div class="n7-calls " style=""><div class="c a-up" style="--d:0.90s"><i>1</i><div><b>อ้างใบงานซ่อม</b><span>รู้ว่าซื้อของนี้ไปซ่อมเครื่องไหน</span></div></div><div class="c a-up" style="--d:1.25s"><i>2</i><div><b>สถานะเห็นทั้งสองฝ่าย</b><span>ช่างรู้ว่าของถึงไหน ไม่ต้องโทรถามจัดซื้อ</span></div></div><div class="c a-up" style="--d:1.60s"><i>3</i><div><b>ต่อเป็นใบสั่งซื้อ</b><span>อนุมัติแล้วเปิด PO ได้ในจอเดียวกัน</span></div></div></div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">6/7</span>MRP อะไหล่</div><div class="n7-h a-up" style="--d:.15s">ระบบบอกว่าต้องสั่งอะไร ภายในวันไหน</div><div class="n7-sub a-up" style="--d:.25s">คิดจากแผน PM และงานซ่อมที่มักเกิด</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="on" title="MRP">6</i><i class="" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-mrp.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>ความต้องการจากแผน PM</b><span>สัปดาห์ไหนต้องใช้อะไหล่อะไร กี่ชิ้น</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>ของจะขาดเมื่อไร</b><span>คงเหลือต่ำกว่าขั้นต่ำขึ้นแดง · ระบบบอกสั่งกี่ชิ้น ภายในวันไหน</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>สั่งก่อนของขาด</b><span>ออกรายงานสั่งซื้อ ส่งให้จัดซื้อของโรงงานทำต่อในระบบเดิม</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s8a"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">8/8</span>แดชบอร์ด</div><div class="n7-h a-up" style="--d:.15s">ตัวเลขที่ผู้บริหารถาม เปิดดูได้ทุกเช้า</div><div class="n7-sub a-up" style="--d:.25s">คำนวณจากใบงานจริง ไม่ต้องรวม Excel ท้ายเดือน</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="done" title="MRP">6</i><i class="done" title="ขอซื้อ">7</i><i class="on" title="รายงาน">8</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-dashboard.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>สี่ตัวเลขหลัก</b><span>ระยะห่างระหว่างเสีย เวลาซ่อมเฉลี่ย พร้อมใช้ PM ตรงเวลา</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>อาการที่เจอบ่อย</b><span>สี่อาการแรกคือ 79% ของงานซ่อม รู้ว่าควรแก้ที่ไหน</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>เครื่องที่ซ่อมบ่อยสุด</b><span>กดเข้าไปดูประวัติเครื่องได้ทันที</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">7/7</span>แดชบอร์ด</div><div class="n7-h a-up" style="--d:.15s">ตัวเลขที่ผู้บริหารถาม เปิดดูได้ทุกเช้า</div><div class="n7-sub a-up" style="--d:.25s">คำนวณจากใบงานจริง ไม่ต้องรวม Excel ท้ายเดือน</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="done" title="MRP">6</i><i class="on" title="รายงาน">7</i></div><div class="lv-unit lv-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>หน้าจอจำลอง · ข้อมูลตัวอย่าง</span></div><iframe data-live src="embed/live/desk-dashboard.html" width="1300" height="731" title="หน้าจอจำลอง · ข้อมูลตัวอย่าง" loading="eager"></iframe></div><div class="lv-calls" style="left:1400px;top:236px;width:456px"><div class="c a-up" data-lv="0:0-2" style="--d:0.50s"><i>1</i><div><b>สี่ตัวเลขหลัก</b><span>ระยะห่างระหว่างเสีย เวลาซ่อมเฉลี่ย พร้อมใช้ PM ตรงเวลา</span></div></div><div class="c a-up" data-lv="0:3-5" style="--d:0.70s"><i>2</i><div><b>อาการที่เจอบ่อย</b><span>สี่อาการแรกคือ 79% ของงานซ่อม รู้ว่าควรแก้ที่ไหน</span></div></div><div class="c a-up" data-lv="0:6-7" style="--d:0.90s"><i>3</i><div><b>เครื่องที่ซ่อมบ่อยสุด</b><span>กดเข้าไปดูประวัติเครื่องได้ทันที</span></div></div></div><div class="lv-cap a-up" style="left:1400px;top:846px;width:456px;--d:.8s"><span class="n">0</span><span class="t"></span><span class="of"></span></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-s8b"><div class="vs">
-<div class="n7-eb a-up" style="--d:.05s"><span class="no">8/8</span>รายงาน</div><div class="n7-h a-up" style="--d:.15s">ทุกบาทที่จ่ายซ่อม ย้อนดูได้ถึงใบงาน</div><div class="n7-sub a-up" style="--d:.25s">ต้นทุนล็อกเมื่อตรวจรับ แก้ย้อนหลังไม่ได้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="done" title="MRP">6</i><i class="done" title="ขอซื้อ">7</i><i class="on" title="รายงาน">8</i></div><div class="n7-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>โปรแกรมจริง · ข้อมูลตัวอย่าง</span></div><div class="n7sc"><img src="img/n7/desk/cost.jpg" alt=""><span class="pin a-pop" style="left:30%;top:33%;--d:0.90s">1</span><span class="pin a-pop" style="left:2.5%;top:48.5%;--d:1.25s">2</span><span class="pin a-pop" style="left:85%;top:40%;--d:1.60s">3</span></div></div><div class="n7-calls " style=""><div class="c a-up" style="--d:0.90s"><i>1</i><div><b>แยกค่าแรง อะไหล่ จ้างนอก</b><span>รู้ว่าเงินไปทางไหน</span></div></div><div class="c a-up" style="--d:1.25s"><i>2</i><div><b>ดูต่อใบงาน ต่อเครื่อง ต่อโซน</b><span>เทียบได้ว่าเครื่องไหนกินงบ</span></div></div><div class="c a-up" style="--d:1.60s"><i>3</i><div><b>ทุกแถวกดเข้าใบงานได้</b><span>ผู้ตรวจสอบขอดูหลักฐาน เปิดได้ทันที</span></div></div></div>
+<div class="n7-eb a-up" style="--d:.05s"><span class="no">7/7</span>รายงาน</div><div class="n7-h a-up" style="--d:.15s">ทุกบาทที่จ่ายซ่อม ย้อนดูได้ถึงใบงาน</div><div class="n7-sub a-up" style="--d:.25s">ต้นทุนล็อกเมื่อตรวจรับ แก้ย้อนหลังไม่ได้</div><div class="n7-trk a-fade" style="--d:.1s"><i class="done" title="แจ้งซ่อม">1</i><i class="done" title="คัดกรอง">2</i><i class="done" title="ช่างทำงาน">3</i><i class="done" title="ปิดงาน">4</i><i class="done" title="PM">5</i><i class="done" title="MRP">6</i><i class="on" title="รายงาน">7</i></div><div class="n7-win a-win" style="left:64px;top:228px;width:1300px;--d:0.35s"><div class="tb"><i></i><i></i><i></i><span>โปรแกรมจริง · ข้อมูลตัวอย่าง</span></div><div class="n7sc"><img src="img/n7/desk/cost.jpg" alt=""><span class="pin a-pop" style="left:30%;top:33%;--d:0.90s">1</span><span class="pin a-pop" style="left:2.5%;top:48.5%;--d:1.25s">2</span><span class="pin a-pop" style="left:85%;top:40%;--d:1.60s">3</span></div></div><div class="n7-calls " style=""><div class="c a-up" style="--d:0.90s"><i>1</i><div><b>แยกค่าแรง อะไหล่ จ้างนอก</b><span>รู้ว่าเงินไปทางไหน</span></div></div><div class="c a-up" style="--d:1.25s"><i>2</i><div><b>ดูต่อใบงาน ต่อเครื่อง ต่อโซน</b><span>เทียบได้ว่าเครื่องไหนกินงบ</span></div></div><div class="c a-up" style="--d:1.60s"><i>3</i><div><b>ทุกแถวกดเข้าใบงานได้</b><span>ผู้ตรวจสอบขอดูหลักฐาน เปิดได้ทันที</span></div></div></div>
 </div></div></div>
 <div class="slidewrap"><div class="sheet f5 n7" data-key="n7-mob"><div class="vs">
 <div class="n7-eb a-up" style="--d:.05s">ใช้บนโทรศัพท์</div><div class="n7-h a-up" style="--d:.15s">แต่ละคนเห็นเฉพาะงานของตัวเอง</div><div class="n7-sub a-up" style="--d:.25s">ติดตั้งครั้งเดียว ใช้ได้ทุกบทบาท</div><div class="lv-unit lv-ph a-up" style="left:250px;top:262px;width:350px;height:790px;--d:0.35s"><span class="role">หัวหน้าทีม</span><iframe data-live src="embed/live/phone-supervisor.html?range=0-4" width="350" height="790" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-unit lv-ph a-up" style="left:782px;top:262px;width:350px;height:790px;--d:0.5s"><span class="role">คลังอะไหล่</span><iframe data-live src="embed/live/phone-store.html" width="350" height="790" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-unit lv-ph a-up" style="left:1314px;top:262px;width:350px;height:790px;--d:0.65s"><span class="role">ผู้แจ้ง</span><iframe data-live src="embed/live/phone-requester.html?range=8-9" width="350" height="790" title="หน้าจอโทรศัพท์จำลอง" loading="eager"></iframe></div><div class="lv-foot a-fade" style="--d:.6s">หน้าจอจำลอง · ข้อมูลตัวอย่าง</div>
@@ -1908,9 +1902,690 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
 
 
 <script>
-const EN = {};
+const EN = {
+ "[ชื่อระบบ]": "[System name]",
+ "รู้ทุกชั่วโมงที่เครื่องหยุด": "Know every hour a machine stops",
+ "และทุกบาทที่จ่ายซ่อม": "and every baht spent fixing it",
+ "ตั้งแต่สแกนแจ้งซ่อม จนถึง PM รอบหน้า": "From the first QR scan to the next PM",
+ "แจ้งซ่อม": "Report",
+ "สแกน QR": "Scan QR",
+ "คัดกรอง": "Triage",
+ "อนุมัติเป็นใบงาน": "Approve → WO",
+ "วางแผน": "Plan",
+ "มอบหมายช่าง": "Assign tech",
+ "Permit/LOTO": "Permit/LOTO",
+ "ตัดพลังงาน": "Isolate energy",
+ "ซ่อม": "Repair",
+ "Checklist มือถือ": "Mobile checklist",
+ "เบิกอะไหล่": "Parts",
+ "PR · PO · รับของ": "PR · PO · receive",
+ "ปิดงาน": "Close",
+ "ตรวจรับ": "Sign-off",
+ "KPI": "KPI",
+ "รายงาน": "Reports",
+ "PM รอบถัดไป": "Next PM",
+ "ออกใบงานเอง": "Auto WO",
+ "ต้นแบบสำหรับนำเสนอ · ข้อมูลในหน้าจอเป็นข้อมูลสมมุติ": "Presentation prototype · all screen data is fictional",
+ "หน้าปก": "Cover",
+ "เปิดเรื่อง": "Opening",
+ "เดือนที่แล้ว เครื่องหยุด": "Last month's downtime:",
+ "กี่ชั่วโมง?": "how many hours?",
+ "แล้วตัวเลขนี้ มาจากไหน": "And where does that number come from?",
+ "คำถามเปิด": "Opening question",
+ "เครื่องหยุดกี่ชั่วโมง": "How many hours down",
+ "ปัญหาที่พบบ่อย": "Common problems",
+ "ซ่อมทุกวัน แต่ไม่มีตัวเลข": "Repairs every day, but no numbers",
+ "วันนี้": "Today",
+ "เมื่อใช้ระบบ": "With the system",
+ "ประวัติซ่อมกระจายหลายที่": "Repair history is scattered",
+ "กระดาษ · LINE · โทร · Excel": "Paper · LINE · calls · Excel",
+ "ประวัติอยู่ที่ทะเบียนเครื่อง": "History lives on the asset record",
+ "ค้นได้ในหน้าเดียว": "One page to search",
+ "ตัวเลขทำมือท้ายเดือน": "Numbers built by hand at month-end",
+ "MTTR MTBF ค่าซ่อม ไม่มีใครแน่ใจ": "MTTR, MTBF, cost — nobody is sure",
+ "ตัวเลขคำนวณจากใบงาน": "Numbers come from work orders",
+ "ดูได้ทุกเช้า": "Ready every morning",
+ "PM เลื่อนแล้วไม่มีใครรู้": "PM slips and nobody notices",
+ "ตารางไม่เตือน เครื่องเสียซ้ำ": "Spreadsheets don't remind · repeat failures",
+ "ใบงาน PM ออกเองตามรอบ": "PM work orders issue on schedule",
+ "วัด % ตามรอบได้": "PM compliance is measured",
+ "รื้อเครื่องแล้วไม่มีอะไหล่": "Machine opened, no spare part",
+ "เครื่องหยุดรอของ · ซื้อซ้ำ": "Waiting for parts · duplicate buys",
+ "จองอะไหล่ตามใบงาน": "Parts reserved per work order",
+ "ต่ำกว่าจุดสั่งซื้อ ขอซื้อให้": "Below reorder point → purchase request",
+ "4 เรื่องที่เสียเวลาและเงิน": "4 things that cost time and money",
+ "ปัญหา": "Problem",
+ "ตั้งแต่แจ้งซ่อมจนถึง PM รอบหน้า": "From the first report to the next PM",
+ "เครื่องเสีย 1 ครั้ง · 9 ขั้น": "One breakdown · 9 steps",
+ "ฝ่ายผลิต": "Production",
+ "ทีมซ่อม": "Maintenance",
+ "คลัง · จัดซื้อ": "Stores · Purchasing",
+ "ระบบอัตโนมัติ": "System (automatic)",
+ "ผู้แจ้ง · เจ้าของพื้นที่ · จป.": "Requesters · safety",
+ "หัวหน้าซ่อม · ช่าง": "Supervisor · technicians",
+ "คลังอะไหล่ · จัดซื้อ": "Spare-parts store · purchasing",
+ "คำนวณ · ออกใบงานเอง": "Calculates · issues WOs",
+ "อนุมัติ PTW · จป.": "Approve PTW · safety",
+ "ตรวจรับเครื่อง": "Accept machine",
+ "ถึงรอบ PM → ใบงานใหม่": "PM due → new work order",
+ "ทุกขั้นบันทึกเวลาเอง": "Every step is time-stamped",
+ "→ MTTR · MTBF · ค่าซ่อม": "→ MTTR · MTBF · repair cost",
+ "Flow การทำงานจริง": "The real workflow",
+ "เครื่องเสีย 1 ครั้ง 9 ขั้น": "One breakdown, 9 steps",
+ "Flow การทำงาน": "Workflow",
+ "หน้าจอโปรแกรมจริง": "Live program screen",
+ "[ชื่อระบบ] · ระบบงานซ่อมบำรุง": "[System name] · Maintenance",
+ "โปรแกรมจริง · กดได้": "Real program · clickable",
+ "RQ · ใบแจ้งซ่อม": "RQ · Work request",
+ "สแกน QR · ไม่ต้องมีบัญชี": "Scan the QR · no account",
+ "ขั้นที่ 1": "Step 1",
+ "RQ → WO · อนุมัติเป็นใบงาน": "RQ → WO · approve into a work order",
+ "เรื่องซ้ำ ระบบเตือนก่อนอนุมัติ": "Duplicates flagged before approval",
+ "คัดกรอง / อนุมัติ": "Triage / approve",
+ "ขั้นที่ 2": "Step 2",
+ "WO · มอบหมายช่าง": "WO · assign a technician",
+ "เห็นชั่วโมงว่าง จ่ายงานตรงทักษะ": "See free hours, match skills",
+ "วางแผน / มอบหมาย": "Plan / assign",
+ "ขั้นที่ 3": "Step 3",
+ "PTW · ใบอนุญาตทำงาน": "PTW · Permit to work",
+ "ยังไม่ VERIFIED เริ่มงานไม่ได้": "Not VERIFIED, no start",
+ "Permit / LOTO": "Permit / LOTO",
+ "ขั้นที่ 4": "Step 4",
+ "WO · ซ่อมบนมือถือ": "WO · repair on mobile",
+ "Checklist บนมือถือ ไม่ต้องคีย์ซ้ำ": "Checklist on the phone, no re-keying",
+ "ใบงานซ่อม": "Work order",
+ "กำลังซ่อม": "In progress",
+ "Checklist ทีละข้อ": "Step-by-step checklist",
+ "ซ่อม + Checklist": "Repair + checklist",
+ "ขั้นที่ 5": "Step 5",
+ "PART · เบิกที่เคาน์เตอร์": "PART · issue at the counter",
+ "สแกนจ่าย ต้นทุนเข้าใบงานเอง": "Scan to issue, cost posts itself",
+ "ขั้นที่ 6": "Step 6",
+ "PR → PO → GRN": "PR → PO → GRN",
+ "PR → PO → รับของ ครบเส้นทาง": "PR → PO → receipt, full trail",
+ "จัดซื้อ PR → PO": "Purchasing PR → PO",
+ "WO · ปิดงานและตรวจรับ": "WO · close and sign off",
+ "ข้อมูลไม่ครบ ปิดงานไม่ได้": "Incomplete data cannot close",
+ "ปิดงาน / ตรวจรับ": "Close / sign-off",
+ "ขั้นที่ 7": "Step 7",
+ "KPI · ตัวเลขขยับเอง": "KPI · numbers update themselves",
+ "KPI จากใบงาน ไม่ต้องรวม Excel": "KPIs from WOs, no Excel",
+ "KPI / รายงาน": "KPI / reports",
+ "ขั้นที่ 8": "Step 8",
+ "PM · ใบงานรอบถัดไป": "PM · the next-cycle work order",
+ "ถึงรอบ ใบงาน PM ออกเอง": "When due, the PM WO issues itself",
+ "ขั้นที่ 9": "Step 9",
+ "Pareto · แก้เรื่องไหนก่อน": "Pareto · what to fix first",
+ "รู้ว่าแก้ 2–3 เรื่องไหนก่อน": "Know which 2–3 to fix first",
+ "วิเคราะห์ downtime": "Downtime analysis",
+ "Pareto → เครื่อง → ใบงาน": "Pareto → machine → WO",
+ "วิเคราะห์": "Analysis",
+ "ลองใช้เอง · โปรแกรมจริง": "Try it · the real program",
+ "บันทึกในเครื่องนี้ · กดได้ทุกปุ่ม · เดินนาฬิกาได้ · สลับบทบาทได้": "Saved on this device · every button works · advance the clock · switch roles",
+ "เปิดเต็มจอ": "Open full screen",
+ "โปรแกรมจริง ลองใช้ได้": "The real program, try it",
+ "ลองใช้เอง": "Try it yourself",
+ "โปรแกรมจริงเต็มจอ": "The real program, full screen",
+ "ลองใช้": "Try it",
+ "เดือนที่": "Month",
+ "เดือนที่ 1: 15,350 บาท": "Month 1: 15,350 THB",
+ "เดือนที่ 2: 30,700 บาท": "Month 2: 30,700 THB",
+ "เดือนที่ 3: 46,050 บาท": "Month 3: 46,050 THB",
+ "เดือนที่ 4: 61,400 บาท": "Month 4: 61,400 THB",
+ "เดือนที่ 5: 76,750 บาท": "Month 5: 76,750 THB",
+ "เดือนที่ 6: 92,100 บาท": "Month 6: 92,100 THB",
+ "เดือนที่ 7: 107,450 บาท": "Month 7: 107,450 THB",
+ "เดือนที่ 8: 122,800 บาท": "Month 8: 122,800 THB",
+ "เดือนที่ 9: 138,150 บาท": "Month 9: 138,150 THB",
+ "เดือนที่ 10: 153,500 บาท": "Month 10: 153,500 THB",
+ "เดือนที่ 11: 168,850 บาท": "Month 11: 168,850 THB",
+ "เดือนที่ 12: 184,200 บาท": "Month 12: 184,200 THB",
+ "เงินประหยัดสะสมแตะค่าระบบปีแรกที่เดือน 7.4": "Cumulative savings reach the first-year cost at month 7.4",
+ "ค่าระบบปีแรก 114,000 บาท": "First-year cost 114,000 THB",
+ "คืนทุนเดือนที่ 7.4": "Payback at month 7.4",
+ "เดือนที่ใช้ระบบ · เงินประหยัดสะสม (บาท)": "Months in use · cumulative savings (THB)",
+ "ตัวอย่างการคำนวณ · ชุดสมมติฐานระมัดระวัง": "Worked example · conservative assumptions",
+ "คืนทุนใน 7.4 เดือน": "Payback in 7.4 months",
+ "ตัวอย่าง": "Example",
+ "แท่งสีเขียวคือเดือนที่เงินประหยัดสะสมเกินค่าระบบปีแรก": "Green bars: months where cumulative savings exceed the first-year cost",
+ "ประหยัดต่อเดือน": "Saving per month",
+ "บาท": "THB",
+ "เครื่องหยุดลด 10%": "Downtime −10%",
+ "เวลาช่างลด 5%": "Technician time −5%",
+ "สต็อกอะไหล่ลด 5%": "Spare stock −5%",
+ "สมมติฐาน (ให้ลูกค้าแก้เป็นตัวเลขของโรงงาน)": "Assumptions (replace with the plant's own numbers)",
+ "เครื่องหยุด 12 ชม./เดือน × 8,000 บาท/ชม.": "Downtime 12 h/month × 8,000 THB/h",
+ "ช่าง 5 คน × 18,000 บาท/เดือน": "5 technicians × 18,000 THB/month",
+ "สต็อก 1.5 ล้านบาท · ต้นทุนถือครอง 20%/ปี": "Stock 1.5 M THB · holding cost 20%/yr",
+ "Professional 89,000/ปี + ติดตั้ง 25,000": "Professional 89,000/yr + setup 25,000",
+ "ตัวเลขประมาณจากสมมติฐาน ไม่ใช่คำรับประกันผล · ร้อยละที่ลดได้ต้องพิสูจน์ในช่วงนำร่อง": "Estimates from assumptions, not a guarantee · the reductions must be proven in the pilot",
+ "ตัวอย่าง ROI": "ROI example",
+ "ชุดระมัดระวัง คืนทุน 7.4 เดือน": "Conservative: payback 7.4 months",
+ "ข้อเสนอ": "Offer",
+ "ข้อเสนอนำร่อง": "Pilot proposal",
+ "นำร่อง 1 สาย · 60–90 วัน": "Pilot one line · 60–90 days",
+ "สัปดาห์ 0–2": "Weeks 0–2",
+ "วัดตัวเลขตั้งต้น": "Measure the baseline",
+ "นำเข้าทะเบียนเครื่องและแผน PM": "Import assets and PM plans",
+ "ตั้งระบบ": "Set up",
+ "ติด QR + อบรม": "QR tags + training",
+ "ช่างและหัวหน้า 2 รอบ": "Techs and supervisors, 2 rounds",
+ "ใช้งานจริง": "Live use",
+ "ทบทวนทุก 2 สัปดาห์": "Review every 2 weeks",
+ "ปรับ checklist และรอบ PM": "Tune checklists and PM cycles",
+ "วันตัดสิน": "Decision day",
+ "เทียบกับตัวเลขตั้งต้น": "Compare with the baseline",
+ "ใช้ต่อหรือเลิก จากผลที่วัดได้": "Continue or stop, on results",
+ "เราทำให้": "We provide",
+ "นำเข้าข้อมูลจาก Excel": "Import data from Excel",
+ "พิมพ์ป้าย QR หน้าเครื่อง": "Print machine QR tags",
+ "อบรม + รายงานประจำเดือน": "Training + monthly report",
+ "โรงงานให้": "The plant provides",
+ "ผู้ประสานงาน 1 คน ~2 ชม./สัปดาห์": "1 coordinator, ~2 h/week",
+ "รายการเครื่องของสายนั้น": "The line's machine list",
+ "มือถือที่ช่างมีอยู่": "Technicians' own phones",
+ "เกณฑ์สำเร็จ (ตัวอย่าง)": "Success criteria (example)",
+ "ใบงานครบทุกครั้งที่เครื่องหยุด": "A WO for every stoppage",
+ "PM ตามรอบเพิ่มขึ้น": "PM compliance goes up",
+ "รายงานเดือนออกจากระบบ": "Monthly report from the system",
+ "1 สาย 30–80 เครื่อง · ผู้แจ้งไม่จำกัด · ลงนาม DPA ก่อนเริ่ม · เลิกได้ไม่มีค่าปรับ และได้ข้อมูลคืน": "1 line, 30–80 machines · unlimited requesters · DPA signed first · exit with no penalty, data returned",
+ "นำร่อง": "Pilot",
+ "1 สายการผลิต 60–90 วัน": "One line, 60–90 days",
+ "ร่างราคา · ยังไม่รวม VAT": "Draft pricing · excl. VAT",
+ "เหมาต่อไซต์ ไม่นับหัวคนแจ้ง": "Per site, requesters are free",
+ "บาท / ไซต์ / ปี": "THB / site / year",
+ "หรือ 3,500 บาท / เดือน": "or 3,500 THB / month",
+ "ผู้ใช้ ≤ 15 · เครื่อง ≤ 500": "Users ≤ 15 · machines ≤ 500",
+ "แจ้งซ่อม ใบงาน PM มือถือช่าง": "Requests, WOs, PM, mobile",
+ "อะไหล่ · KPI มาตรฐาน": "Parts · standard KPIs",
+ "แนะนำนำร่อง": "Pilot pick",
+ "หรือ 8,900 บาท / เดือน": "or 8,900 THB / month",
+ "ผู้ใช้ ≤ 50 · เครื่อง ≤ 3,000": "Users ≤ 50 · machines ≤ 3,000",
+ "+ PR/PO/รับของ ภาษีไทย": "+ PR/PO/receiving, Thai tax",
+ "+ Permit/LOTO สอบเทียบ API": "+ Permit/LOTO, calibration, API",
+ "บาท / ไซต์ / เดือน": "THB / site / month",
+ "รายปี · ลดตั้งแต่ไซต์ที่ 3": "Annual · discount from site 3",
+ "ผู้ใช้และเครื่องไม่จำกัด": "Unlimited users and machines",
+ "หลายไซต์ · SSO · เชื่อม ERP": "Multi-site · SSO · ERP link",
+ "on-prem · SLA 99.5%": "On-prem · SLA 99.5%",
+ "ทดลองฟรี 30 วัน · ติดตั้งออนไลน์ฟรี · onsite พร้อมติด QR 25,000–80,000 บาท/ไซต์": "30-day free trial · free online setup · onsite with QR tagging 25,000–80,000 THB/site",
+ "ราคาเป็นร่าง ต้องทดสอบกับลูกค้านำร่อง": "Draft prices, to be tested with pilot customers",
+ "ร่างราคา": "Draft pricing",
+ "เหมาต่อไซต์": "Per site",
+ "ขั้นต่อไป": "Next step",
+ "ขอรายการเครื่อง": "Send us the machine list",
+ "หนึ่งสาย": "for one line",
+ "แล้วดูโรงงานของคุณบนจอนี้ ภายในหนึ่งสัปดาห์": "and see your own plant on this screen within a week",
+ "รายการเครื่อง 1 สาย": "Machine list, one line",
+ "Excel หรือกระดาษก็ได้": "Excel or paper is fine",
+ "นัดผู้ตัดสินใจ 45 นาที": "45 min with decision makers",
+ "ตกลงเกณฑ์สำเร็จร่วมกัน": "Agree the success criteria",
+ "LOI นำร่อง 60–90 วัน": "Pilot LOI, 60–90 days",
+ "เริ่มวัดตัวเลขตั้งต้นทันที": "Start measuring the baseline",
+ "ขอให้ช่วย 1 เรื่อง": "One ask",
+ "ขอบคุณครับ": "Thank you",
+ "นัดดูข้อมูลเครื่องจักรของโรงงานคุณ บนโปรแกรมจริง": "Let's look at your plant's machines in the real program",
+ "โทร": "Phone",
+ "[เบอร์โทร]": "[Phone number]",
+ "อีเมล": "Email",
+ "[อีเมล]": "[Email]",
+ "เว็บไซต์": "Website",
+ "[เว็บไซต์]": "[Website]",
+ "บริษัท": "Company",
+ "[ชื่อบริษัท] · [ที่อยู่บริษัท]": "[Company name] · [Company address]",
+ "ติดต่อเรา": "Contact us",
+ "ช่องทางติดต่อ": "Contact details",
+ "ปิดท้าย": "Closing",
+ "ผลจากโรงงานนำร่อง": "Pilot results",
+ "ตัวเลขจริง จากโรงงานจริง": "Real numbers from a real plant",
+ "รอผลนำร่อง": "Awaiting pilot results",
+ "ชั่วโมงเครื่องหยุด": "Downtime hours",
+ "เทียบตัวเลขตั้งต้น สัปดาห์ 0–2": "vs. the week 0–2 baseline",
+ "PM ทำตามรอบ": "PM compliance",
+ "จาก [A%] ก่อนเริ่มนำร่อง": "up from [A%] before the pilot",
+ "[Z ชม.]": "[Z h]",
+ "เวลาทำรายงานประจำเดือน": "Time to build the monthly report",
+ "จาก [B ชม.] ด้วย Excel": "down from [B h] in Excel",
+ "“[คำพูดของผู้จัดการโรงงาน หลังใช้ระบบ 60 วัน]”": "“[A quote from the plant manager after 60 days]”",
+ "[ชื่อ · ตำแหน่ง · บริษัท] — ได้รับอนุญาตให้อ้างอิง": "[Name · title · company] — quoted with permission",
+ "หน้าตัวอย่าง · เติมเมื่อมีผลนำร่องและลูกค้าอนุญาตให้อ้างอิง": "Placeholder · fill in once pilot results exist and the customer agrees to be quoted",
+ "ผลนำร่อง": "Pilot results",
+ "ตัวเลขจริงจากโรงงานจริง": "Real numbers, real plant",
+ "เริ่มใช้งาน · 30 วันแรก": "Getting started · the first 30 days",
+ "เริ่มใช้ได้ใน 30 วัน": "Up and running in 30 days",
+ "สัปดาห์ 1": "Week 1",
+ "นำเข้าจาก Excel": "Import from Excel",
+ "ทะเบียนเครื่อง แผน PM อะไหล่": "Assets, PM plans, parts",
+ "ตรวจก่อนนำเข้า ย้อนกลับได้": "Checked first, reversible",
+ "สัปดาห์ 2": "Week 2",
+ "ติดป้าย QR": "Tag machines with QR",
+ "พิมพ์เป็นชุดทั้งสาย": "Printed as a set per line",
+ "ติดหน้าเครื่องทุกตัว": "On every machine",
+ "สัปดาห์ 3": "Week 3",
+ "อบรม 1 วัน": "One day of training",
+ "ช่างและหัวหน้าซ่อม": "Technicians and supervisors",
+ "ฝึกกับเครื่องของโรงงานเอง": "On the plant's own machines",
+ "สัปดาห์ 4": "Week 4",
+ "แจ้งซ่อมผ่าน QR ทั้งสาย": "QR requests across the line",
+ "รายงานแรกออกจากระบบ": "First report from the system",
+ "ผู้แจ้งซ่อม": "Requesters",
+ "ไม่ต้องติดตั้งแอป ไม่ต้องมีบัญชี": "No app, no account",
+ "ช่าง": "Technicians",
+ "ใช้มือถือที่มีอยู่": "Use the phones they already have",
+ "ข้อมูลเดิม": "Existing records",
+ "แผนตัวอย่าง · ระยะเวลาจริงขึ้นกับจำนวนเครื่องและความพร้อมของข้อมูล · 30 วันนี้อยู่ในช่วงนำร่อง": "Sample plan · actual timing depends on machine count and data readiness · these 30 days sit inside the pilot",
+ "เริ่มใช้ใน 30 วัน": "Live in 30 days",
+ "Excel → QR → อบรม → ใช้งานจริง": "Excel → QR → training → live",
+ "ความปลอดภัยข้อมูล · PDPA": "Data security · PDPA",
+ "ข้อมูลเป็นของโรงงานคุณ": "Your data belongs to your plant",
+ "เก็บข้อมูลในประเทศไทย": "Data stays in Thailand",
+ "โรงงานเป็นผู้ควบคุมข้อมูล ตาม PDPA": "The plant is the data controller, per PDPA",
+ "แยกข้อมูลแต่ละโรงงาน": "Each plant's data is isolated",
+ "ฐานข้อมูลกันข้ามโรงงานซ้ำอีกชั้น": "The database enforces it a second time",
+ "เข้ารหัสทั้งตอนส่งและตอนเก็บ": "Encrypted in transit and at rest",
+ "ผู้ดูแลระบบยืนยันตัวตน 2 ชั้น": "Admins sign in with two-factor",
+ "ประวัติแก้ย้อนหลังไม่ได้": "History cannot be rewritten",
+ "บันทึกว่าใครทำอะไร เมื่อไร": "Who did what, and when, is logged",
+ "สำรองข้อมูลอัตโนมัติ": "Automatic backups",
+ "รอบสำรองและการกู้คืนระบุใน DPA": "Backup and restore terms set in the DPA",
+ "ส่งออกได้ทุกเมื่อ": "Export any time",
+ "เลิกใช้ ได้ข้อมูลคืนครบ": "Leave, and take all your data",
+ "ลงนาม DPA ก่อนเริ่มนำร่อง · เราเป็นผู้ประมวลผลข้อมูลตามที่โรงงานกำหนด": "DPA signed before the pilot · we process data only as the plant instructs",
+ "เป็นแบบระบบที่วางไว้ · รายละเอียดยืนยันใน DPA ก่อนเริ่มนำร่อง": "As designed · details confirmed in the DPA before the pilot starts",
+ "ความปลอดภัยข้อมูล": "Data security",
+ "PDPA · แยกข้อมูล · สำรอง · ส่งออก": "PDPA · isolation · backups · export",
+ "รายการ": "Lines",
+ "คำถาม": "Question",
+ "คำตอบ": "Answer",
+ "เปิด/ปิดเมนู (M)": "Menu (M)",
+ "เต็มความกว้าง (1)": "Fit width (1)",
+ "กว้าง": "Wide",
+ "เห็นทั้งหน้าในจอเดียว (2)": "Fit whole page (2)",
+ "ทั้งหน้า": "Fit page",
+ "ขนาดที่แสดงอยู่": "Current zoom",
+ "เต็มจอ (F)": "Full screen (F)",
+ "ก่อนหน้า (←)": "Previous (←)",
+ "ถัดไป (→)": "Next (→)",
+ "เลื่อนเมาส์มาที่ขอบเพื่อเปิดเมนู": "Move the mouse here to open the menu",
+ "ตรึงเมนูไว้ (P)": "Pin menu (P)",
+ "ซ่อนหน้านี้": "Hide this slide",
+ "เอากลับมาแสดง": "Show again",
+ "จัดการหน้าที่ซ่อน": "Manage hidden slides",
+ "ออกจากโหมดจัดการหน้า": "Exit manage mode",
+ "ออก": "Exit",
+ "เครื่อง": "Machine",
+ "ปิด · คลิกที่ใดก็ได้ หรือกด Esc": "Close · click anywhere or press Esc",
+ "← → เปลี่ยนสไลด์ · F เต็มจอ · 1 กว้าง · 2 ทั้งหน้า · M เมนู · P ตรึงเมนู · คลิกภาพเพื่อขยาย": "← → slides · F full screen · 1 wide · 2 fit page · M menu · P pin menu · click an image to zoom",
+ "เลิกตรึงเมนู (P)": "Unpin menu (P)",
+ "ออกจากเต็มจอ (F)": "Exit full screen (F)",
+ "ดาวน์โหลด PDF หน้าตาเหมือนในจอ": "Download PDF, as seen on screen",
+ "ดาวน์โหลด PowerPoint": "Download PowerPoint",
+ "<span>เปิดเต็มจอ</span><span aria-hidden=\"true\">↗</span>": "<span>Open full screen</span><span aria-hidden=\"true\">↗</span>",
+ "ภาพรวมโมดูล · กดเพื่อดู flow": "Module overview · click to see each flow",
+ "ทุกโมดูล ส่งงานเข้าใบงานเดียว": "Every module feeds one work order",
+ "PM ตามรอบ": "Planned PM",
+ "เวลา · มิเตอร์ · สภาพ": "Time · meter · condition",
+ "ประเมินเครื่อง": "Asset criticality",
+ "คะแนน → เกรด A B C": "Score → grade A B C",
+ "ปฏิทินงาน": "Job calendar",
+ "ลากวาง · เห็นงานชน": "Drag & drop · see clashes",
+ "ล็อกครบจึงเริ่มงาน": "All locks on, then start",
+ "สอบเทียบ · OEE": "Calibration · OEE",
+ "เตือนก่อนหมดอายุ": "Warns before expiry",
+ "งานของฉัน": "My work",
+ "คิว · จับเวลา · ลงเวลา": "Queue · timer · timesheet",
+ "อะไหล่ · จัดซื้อ": "Parts · purchasing",
+ "จอง → PR → PO → รับ": "Reserve → PR → PO → receive",
+ "แจ้งเตือน": "Alerts",
+ "กฎ · ช่องทาง · ไล่ขั้น": "Rules · channels · escalation",
+ "การติดตาม": "Tracking",
+ "สถานะแบบพัสดุ": "Parcel-style status",
+ "ประเมินผลงาน": "Job & vendor review",
+ "ตรวจรับ · ผู้ขาย": "Sign-off · vendors",
+ "ใบสั่งงาน · Work Order": "Work Order",
+ "ทุกโมดูลส่งงานเข้าใบเดียว": "Every module feeds one WO",
+ "กดการ์ดเพื่อเปิด flow ของโมดูลนั้น": "Click a card to open that module's flow",
+ "ตัวอย่างข้อมูลสมมุติ": "Sample data, fictional",
+ "PM · บำรุงรักษาตามแผน": "PM · planned maintenance",
+ "รอบถัดไป ระบบคำนวณให้เอง": "The next cycle calculates itself",
+ "พยากรณ์วันครบ": "Forecast",
+ "ล่วงหน้า 12 เดือน": "12 months ahead",
+ "ไม่ซ้ำ ไม่ตกหล่น": "No gaps, no repeats",
+ "ช่างลงมือทำ": "Tech does it",
+ "เช็กลิสต์ 10 ข้อ": "10-item checklist",
+ "บันทึกค่าอ่าน": "Log the reading",
+ "มิเตอร์ 41,900 ชม.": "Meter 41,900 h",
+ "คำนวณรอบใหม่": "Recalculate",
+ "ครบ 24/11/2026": "Due 24/11/2026",
+ "ก่อนครบ 7 วัน": "7 days before due",
+ "รอบใหม่": "New cycle",
+ "ไส้กรองเครื่องอัดลม": "Air-compressor filter",
+ "เวลา": "Time",
+ "มิเตอร์": "Meter",
+ "อะไรถึงก่อน": "Whichever first",
+ "สภาพเครื่อง": "Condition",
+ "นับรอบแบบไหน": "How the cycle counts",
+ "ยึดวันกำหนดเดิม": "Keep the original due date",
+ "กำหนด": "Due",
+ "ทำช้า 10 วัน": "Done 10 days late",
+ "กำหนด + 30": "Due + 30",
+ "นับจากวันทำเสร็จ": "Count from completion",
+ "วันทำ + 30": "Done + 30",
+ "ข้าม · เลื่อน": "Skip · shift",
+ "ข้ามได้ ต้องมีเหตุผล": "Skip only with a reason",
+ "ค้างหลายรอบ ออกใบเดียว": "Several overdue, one WO",
+ "ตรงวันหยุด เลื่อนมาก่อน": "Holiday? Moved earlier",
+ "งานกฎหมาย ห้ามข้าม": "Statutory: never skip",
+ "Work Order · วงจรใบงาน": "Work Order · lifecycle",
+ "แปดสถานะ รู้ทุกครั้งว่าใครขยับ": "Eight states, every move has a name",
+ "สีเส้น = ใครขยับสถานะ": "Line colour = who moves the status",
+ "<i></i>ผู้วางแผน": "<i></i>Planner",
+ "<i></i>ช่าง": "<i></i>Technician",
+ "<i></i>หัวหน้าช่าง": "<i></i>Supervisor",
+ "ร่าง": "Draft",
+ "รอทำ · จากคำขอ/PM": "To do · from request/PM",
+ "ช่างปิดงาน": "Tech completes",
+ "ตรวจรับแล้ว": "Signed off",
+ "<i style=\"background:#C9B8FF\"></i>ปล่อยงาน": "<i style=\"background:#C9B8FF\"></i>Release",
+ "<i style=\"background:#7FE3C4\"></i>สแกนเริ่ม": "<i style=\"background:#7FE3C4\"></i>Scan to start",
+ "<i style=\"background:#7FE3C4\"></i>ผ่าน G1–G10": "<i style=\"background:#7FE3C4\"></i>Pass G1–G10",
+ "<i style=\"background:#8FBCFF\"></i>ตรวจรับ": "<i style=\"background:#8FBCFF\"></i>Sign off",
+ "<i style=\"background:#8FBCFF\"></i>REOPEN · ต้องมีเหตุผล": "<i style=\"background:#8FBCFF\"></i>REOPEN · reason required",
+ "SLA นับตั้งแต่ OPEN ถึง DONE": "SLA runs from OPEN to DONE",
+ "พักงาน · หยุดจับเวลา": "On hold · timer stops",
+ "<i style=\"background:#7FE3C4\"></i>พักงาน": "<i style=\"background:#7FE3C4\"></i>Hold",
+ "<i style=\"background:#7FE3C4\"></i>ทำต่อ": "<i style=\"background:#7FE3C4\"></i>Resume",
+ "เหตุที่พัก · บังคับเลือก": "Hold reason · required",
+ "รออะไหล่": "Waiting for parts",
+ "รอใบอนุญาต": "Waiting for permit",
+ "รอฝ่ายผลิต": "Production busy",
+ "ยกเลิก + เหตุผล": "Cancel + reason",
+ "ข้ามรอบ PM": "Skip PM cycle",
+ "<i style=\"background:#C9B8FF\"></i>เฉพาะ PM": "<i style=\"background:#C9B8FF\"></i>PM only",
+ "ทุกการขยับ<br>ถูกบันทึก": "Every move<br>is logged",
+ "ใคร เมื่อไร<br>เพราะอะไร": "Who, when<br>and why",
+ "การประเมิน ① · ความสำคัญของเครื่อง": "Assessment ① · asset criticality",
+ "คะแนนบอกว่า เครื่องไหนต้องดูแลก่อน": "Scores show which machines come first",
+ "เครื่องฉีดพลาสติก": "Injection-moulding machine",
+ "<small>ประเมิน 18/11/2026</small><small>ทีม 4 คน</small>": "<small>Assessed 18/11/2026</small><small>Team of 4</small>",
+ "เกณฑ์": "Criterion",
+ "น้ำหนัก": "Weight",
+ "คะแนน 1–5": "Score 1–5",
+ "ความปลอดภัย": "Safety",
+ "สิ่งแวดล้อม": "Environment",
+ "กำลังผลิต": "Output",
+ "คุณภาพสินค้า": "Product quality",
+ "ค่าซ่อม": "Repair cost",
+ "ไม่มีเครื่องสำรอง": "No standby unit",
+ "ความถี่ที่เสีย": "Failure frequency",
+ "Σ น้ำหนัก × คะแนน ÷ 5 =": "Σ weight × score ÷ 5 =",
+ "คะแนนรวม": "Total score",
+ "สำคัญมาก": "Critical",
+ "ปานกลาง": "Medium",
+ "ทั่วไป": "General",
+ "ผลต่อการดูแล<br>ตามเกรด": "What each grade<br>changes",
+ "ความถี่ PM": "PM frequency",
+ "ถี่ที่สุด": "Most frequent",
+ "ตามคู่มือ": "Per manual",
+ "ตามสภาพ": "By condition",
+ "ลำดับงาน": "Job priority",
+ "ขึ้นก่อน": "First",
+ "ปกติ": "Normal",
+ "รอได้": "Can wait",
+ "รหัสสาเหตุ": "Cause code",
+ "บังคับ": "Required",
+ "ไม่บังคับ": "Optional",
+ "อะไหล่สำรอง": "Spare parts",
+ "ต้องมี": "Must stock",
+ "ตามรอบใช้": "By usage",
+ "สั่งเมื่อใช้": "Order on use",
+ "การประเมิน ② · หลังงาน และผู้ขาย": "Assessment ② · jobs and vendors",
+ "ทุกงานถูกประเมิน ทุกผู้ขายมีเกรด": "Every job reviewed, every vendor graded",
+ "หลังปิดงาน · สองคนรับรอง": "After closing · two people confirm",
+ "ผู้ขาย · ผู้รับเหมา · ได้เกรดจากข้อมูลจริง": "Vendors · contractors · graded on real data",
+ "ตรวจรับงาน": "Job sign-off",
+ "รูปก่อน/หลัง": "Before/after photos",
+ "เวลาซ่อม": "Repair time",
+ "อะไหล่ที่เบิก": "Parts issued",
+ "<i></i>ผู้แจ้ง": "<i></i>Requester",
+ "ให้คะแนนงานซ่อม": "Rates the repair",
+ "“ใช้งานได้แล้ว” ผ่านลิงก์ติดตาม": "“Working again” via the tracking link",
+ "ต้นทุนล็อก": "Cost locked",
+ "คะแนนเข้า KPI ช่าง · ทีม": "Score feeds tech · team KPIs",
+ "ไม่หายใน 7 วัน": "Not back within 7 days",
+ "ส่งของตรงเวลา": "On-time delivery",
+ "ของผ่าน QC": "Passed QC",
+ "งานผ่านตรวจรับ": "Jobs signed off",
+ "ทำตามใบอนุญาต": "Permit compliance",
+ "ผู้ขายที่อนุมัติ": "Approved vendors",
+ "อนุมัติต่อ": "Keep approved",
+ "เฝ้าระวัง": "Watch list",
+ "ระงับสั่งซื้อ": "Orders suspended",
+ "อะไหล่ · เบิก ขอซื้อ รับของ": "Parts · issue, request, receive",
+ "อะไหล่ไม่พอ ระบบเปิดใบขอซื้อให้": "Short on parts? The PR opens itself",
+ "<i></i>คลังอะไหล่": "<i></i>Spare-parts store",
+ "<i></i>จัดซื้อ · ระบบ": "<i></i>Purchasing",
+ "<i></i>ผู้อนุมัติ": "<i></i>Approver",
+ "จองอะไหล่": "Reserve parts",
+ "เช็กสต็อก": "Stock",
+ "พอไหม?": "Enough?",
+ "มีของ · จ่ายเลย": "In stock · issue now",
+ "จ่ายเข้า WO": "Issue to WO",
+ "<b style=\"font-size:24px\">ต้นทุนเข้า</b><b style=\"font-size:24px\">ใบงานเอง</b>": "<b style=\"font-size:24px\">Cost posts</b><b style=\"font-size:24px\">to the WO</b>",
+ "ไม่พอ": "Short",
+ "ต่ำกว่า min": "Below min",
+ "สั่ง = max − คงเหลือ": "Order = max − on hand",
+ "ใบขอซื้อ": "Requisition",
+ "อนุมัติตามวงเงิน": "Approval by amount",
+ "≤ 50,000 ผู้จัดการซ่อม": "≤ 50,000 maintenance mgr",
+ "&gt; 50,000 ผู้จัดการโรงงาน": "&gt; 50,000 plant manager",
+ "สั่งผู้ขาย": "To vendor",
+ "รับของ · QC": "Receive · QC",
+ "เข้าชั้นเก็บ": "Put away",
+ "การแจ้งเตือน · เหตุการณ์ → กฎ → ผู้รับ": "Alerts · event → rule → recipient",
+ "เรื่องด่วน ไม่ค้างอยู่ที่คนเดียว": "Urgent jobs never stall with one person",
+ "แจ้งซ่อมใหม่": "New request",
+ "มอบหมายงาน": "Job assigned",
+ "PM เลยกำหนด": "PM overdue",
+ "SLA ใกล้หลุด": "SLA at risk",
+ "อะไหล่ต่ำกว่า min": "Part below min",
+ "Permit ใกล้หมดอายุ": "Permit expiring",
+ "ตรวจตามกฎหมายใกล้ครบ": "Statutory check due",
+ "กฎแจ้งเตือน": "Alert rules",
+ "<b style=\"font-size:21px\">เหตุการณ์ + เงื่อนไข</b><small>เช่น P1 · เครื่องเกรด A</small>": "<b style=\"font-size:21px\">Event + condition</b><small>e.g. P1 · grade-A machine</small>",
+ "<b style=\"font-size:21px\">ส่งถึงตามบทบาท</b><small>ผู้รับมอบ · หัวหน้า · คลัง</small>": "<b style=\"font-size:21px\">Sent by role</b><small>Assignee · lead · store</small>",
+ "<b style=\"font-size:21px\">ด่วน หรือ สรุปรวม</b><small>สรุปเช้า 08:00</small>": "<b style=\"font-size:21px\">Instant or digest</b><small>Morning digest 08:00</small>",
+ "ในแอป": "In-app",
+ "แอปแชท": "Chat app",
+ "0 นาที": "0 min",
+ "<i></i>ช่างที่รับมอบ": "<i></i>Assigned tech",
+ "push ทันที": "push at once",
+ "+15 นาที": "+15 min",
+ "push + แชท": "push + chat",
+ "+30 นาที": "+30 min",
+ "<i></i>ผู้จัดการซ่อม": "<i></i>Maintenance mgr",
+ "ทุกช่องทาง": "All channels",
+ "ยังไม่รับ": "No reply",
+ "มีคนรับงานเมื่อไร หยุดไล่ทันที": "Someone accepts, escalation stops",
+ "ปฏิทินงาน · วางแผนรายสัปดาห์": "Job calendar · weekly planning",
+ "ลากงานลงปฏิทิน เห็นงานชนก่อนเกิด": "Drag jobs in, see clashes early",
+ "PM ครบรอบ": "PM due",
+ "งานค้าง": "Backlog",
+ "อัดลม": "Compressor",
+ "ไฮดรอลิก": "Hydraulic",
+ "สายพาน": "Conveyor",
+ "ซีลรั่ว": "Seal leak",
+ "ลูกปืนดัง": "Noisy bearing",
+ "ปั๊มรั่ว": "Pump leak",
+ "<b style=\"font:800 22px/1.2 Sarabun\">จ. 23</b>": "<b style=\"font:800 22px/1.2 Sarabun\">Mon 23</b>",
+ "<b style=\"font:800 22px/1.2 Sarabun\">อ. 24</b>": "<b style=\"font:800 22px/1.2 Sarabun\">Tue 24</b>",
+ "พ. 25": "Wed 25",
+ "ผลิตเต็ม": "Full production",
+ "<b style=\"font:800 22px/1.2 Sarabun\">พฤ. 26</b>": "<b style=\"font:800 22px/1.2 Sarabun\">Thu 26</b>",
+ "<b style=\"font:800 22px/1.2 Sarabun\">ศ. 27</b>": "<b style=\"font:800 22px/1.2 Sarabun\">Fri 27</b>",
+ "ส. 28": "Sat 28",
+ "หยุดโรงงาน": "Plant closed",
+ "ช่างกล A": "Mech. A",
+ "ช่างกล B": "Mech. B",
+ "ช่างไฟฟ้า": "Electrician",
+ "ผู้รับเหมา": "Contractor",
+ "ชม./คน": "h/person",
+ "PM อัดลม": "PM comp.",
+ "PM สายพาน": "PM conveyor",
+ "ไฟเตือน": "Alarm lamp",
+ "PM ไฮดรอลิก": "PM hydraulic",
+ "ชนช่วงผลิต": "Clashes with production",
+ "วันหยุด": "Holiday",
+ "PM ตู้ไฟ": "PM panel",
+ "ยังไม่มี PTW": "No PTW yet",
+ "ตรวจปั้นจั่น": "Crane check",
+ "PM แอร์": "PM A/C",
+ "เผยแพร่<br>ตาราง": "Publish<br>schedule",
+ "ตารางใหม่ 3 งาน": "3 jobs rescheduled",
+ "จ. 23": "Mon 23",
+ "อ. 24": "Tue 24",
+ "พฤ. 26": "Thu 26",
+ "วันหยุดโรงงาน": "Plant holiday",
+ "PM จากแผน": "PM from plan",
+ "งานส่วนตัว · หน้าของฉัน": "Personal work · my page",
+ "เปิดแอป เห็นงานของตัวเองก่อน": "Open the app, see your own jobs first",
+ "<i></i>ช่างกล A · วันนี้": "<i></i>Mech. tech A · today",
+ "คิวงานวันนี้": "Today's queue",
+ "สแกนเริ่มงาน": "Scan to start",
+ "MC-INJ-07 ตรงเครื่อง": "MC-INJ-07 confirmed",
+ "จับเวลาเอง": "Timer runs itself",
+ "หยุดเองเมื่อพักงาน": "Stops when on hold",
+ "ทำเช็กลิสต์": "Work the checklist",
+ "<b style=\"font-size:22px\">7 / 10 ข้อ</b>": "<b style=\"font-size:22px\">7 / 10 items</b>",
+ "แรงดันปั๊ม": "Pump pressure",
+ "เสียงลูกปืน": "Bearing noise",
+ "รอยรั่วซึม": "Leaks",
+ "ปิดงาน · เซ็น": "Complete · sign",
+ "ส่งหัวหน้าตรวจรับ": "Sent for sign-off",
+ "สิ่งที่ต้องทำของฉัน": "My to-dos",
+ "ถามคลังเรื่องซีลปั๊ม": "Ask store about pump seal",
+ "ถ่ายป้ายมอเตอร์ MC-07": "Photo motor plate MC-07",
+ "นัดผู้รับเหมา พฤ. นี้": "Book contractor this Thu",
+ "เห็นคนเดียว · ผูกกับเครื่องได้": "Private · can link to a machine",
+ "ลงเวลาสัปดาห์นี้": "This week's timesheet",
+ "38.5 ชม.": "38.5 h",
+ "จ.": "Mon",
+ "อ.": "Tue",
+ "พ.": "Wed",
+ "พฤ.": "Thu",
+ "ศ.": "Fri",
+ "ซ่อม WRENCH": "Repair WRENCH",
+ "หาสาเหตุ": "Diagnosis",
+ "เดินทาง": "Travel",
+ "6 รายการ": "6 entries",
+ "รออนุมัติจากฉัน": "Waiting for my approval",
+ "ตรวจรับปิดงาน": "Sign off a job",
+ "อนุมัติ": "Approve",
+ "อนุมัติใบขอซื้อ": "Approve a PR",
+ "ยืนยันลงเวลา": "Confirm timesheet",
+ "การติดตาม · ทุกคนเห็นสถานะเดียวกัน": "Tracking · everyone sees one status",
+ "ติดตามงานซ่อม เหมือนติดตามพัสดุ": "Track a repair like a parcel",
+ "ปั๊มไฮดรอลิกเสียงดัง": "Hydraulic pump noise",
+ "แจ้งซ่อมแล้ว": "Reported",
+ "อนุมัติ · เปิดใบงาน": "Approved · WO opened",
+ "ช่างรับงาน": "Tech accepted",
+ "ซ่อมเสร็จ": "Repaired",
+ "ยืนยันว่าใช้ได้": "Confirm it works",
+ "รอคุณ": "Your turn",
+ "ใช้งานได้แล้ว": "Working again",
+ "SLA ใบงานที่เปิดอยู่": "SLA of open work orders",
+ "ใกล้หลุด": "At risk",
+ "เฝ้าดู": "Watch",
+ "ทัน": "On track",
+ "ปิดในเวลา": "Closed on time",
+ "แถบ = เวลาที่ใช้ไปเทียบกำหนดซ่อมเสร็จ": "Bar = time used vs. repair due time",
+ "บันทึกทุกการเปลี่ยน": "Every change logged",
+ "พัก · WAITING_PARTS": "Hold · WAITING_PARTS",
+ "เพิ่มต่ออย่างเดียว แก้ย้อนหลังไม่ได้": "Append-only, no edits after the fact",
+ "ตัวเลขกลับไปปรับงาน": "Numbers feed back into the work",
+ "เวลาทุกจุด": "Timestamps",
+ "ปรับแผน PM": "Tune PM",
+ "ดีขึ้นทุกเดือน": "Better every month",
+ "ความปลอดภัย · Permit และ LOTO": "Safety · Permit and LOTO",
+ "ล็อกครบทุกจุด ปุ่มเริ่มงานจึงเปิด": "Every point locked, then Start unlocks",
+ "ร่างใบ": "Draft",
+ "รอลงนาม": "Awaiting signature",
+ "อนุมัติแล้ว": "Approved",
+ "มีผล · ทำงานได้": "Active · work allowed",
+ "งานเสร็จ": "Work done",
+ "คืนพื้นที่ · ปิดใบ": "Area handed back · closed",
+ "<i></i>เจ้าของพื้นที่": "<i></i>Area owner",
+ "<i></i>จป.": "<i></i>Safety officer",
+ "ลงนามคนละคนกับผู้ขอ": "Signer must differ from requester",
+ "LOTO · ทีละคน ทีละจุด": "LOTO · per person, per point",
+ "ไฟฟ้า MCC-3": "Electrical MCC-3",
+ "ลมอัด": "Compressed air",
+ "<i></i>ช่าง A": "<i></i>Tech A",
+ "<i></i>ผู้รับเหมา B": "<i></i>Contractor B",
+ "ครบ 6 จุด": "All 6 points",
+ "ประตูก่อนเริ่มงาน": "Gate before work starts",
+ "สแกน QR ตรงเครื่อง": "QR scan matches machine",
+ "ออนไลน์ขณะกดเริ่ม": "Online when starting",
+ "เริ่มงานได้": "Work may start",
+ "ล็อกอยู่": "Locked",
+ "หลังจบงาน": "After the job",
+ "ช่างปลดกุญแจของตัวเอง": "Each tech removes own lock",
+ "คืนพื้นที่": "Hand back area",
+ "กุญแจค้าง → จป. + ผู้จัดการ ลงนามสองคน": "Lock left on → safety + manager both sign",
+ "สอบเทียบ · กฎหมาย · OEE": "Calibration · compliance · OEE",
+ "ครบกำหนดไม่เงียบ หยุดเครื่องไม่หายเปล่า": "No silent due dates, no lost downtime",
+ "สอบเทียบ · ตรวจตามกฎหมาย": "Calibration · statutory checks",
+ "เวลาหยุดเครื่อง → OEE": "Downtime → OEE",
+ "−90 วัน": "−90 days",
+ "แจ้งเจ้าของ + จป.": "Owner + safety notified",
+ "−60 วัน": "−60 days",
+ "−30 วัน": "−30 days",
+ "−7 วัน": "−7 days",
+ "ครบ": "Due",
+ "เลย = P1": "Overdue = P1",
+ "ออกใบงาน": "WO issued",
+ "ล็อกรอบแบบ FIXED": "Cycle locked as FIXED",
+ "ตรวจ · สอบเทียบ": "Inspect · calibrate",
+ "as-found · as-left · ค่าเผื่อ": "as-found · as-left · tolerance",
+ "แนบใบรับรอง": "Attach certificate",
+ "ไม่แนบ ปิดงานไม่ได้": "No certificate, no close",
+ "รอบถัดไป": "Next cycle",
+ "นับใหม่จากวันกำหนด": "Counted from the due date",
+ "วนรอบ": "Repeat",
+ "P1 + ล็อกเครื่อง": "P1 + machine locked",
+ "แจ้งฝ่ายผลิตห้ามใช้": "Production told: do not use",
+ "กะเช้า 08:00–16:00 · MC-INJ-07": "Day shift 08:00–16:00 · MC-INJ-07",
+ "เครื่องเสีย 35 นาที": "Breakdown 35 min",
+ "เปลี่ยนแม่พิมพ์ 25 นาที": "Mould change 25 min",
+ "เดินจริง 420/480 นาที": "Ran 420/480 min",
+ "ความเร็วเทียบมาตรฐาน": "Speed vs. standard",
+ "ชิ้นงานดี": "Good parts",
+ "A × P × Q · คิดที่เครื่องคอขวดของสาย": "A × P × Q · measured at the line's bottleneck",
+ "แผนที่โมดูล": "Module map",
+ "ทุกโมดูลเข้าใบงานเดียว": "Every module feeds one WO",
+ "Flow แต่ละโมดูล": "Module flows",
+ "PM · วงรอบอัตโนมัติ": "PM · automatic cycles",
+ "ตั้งแผนครั้งเดียว ระบบเดินรอบให้": "Set the plan once, cycles run themselves",
+ "8 สถานะ ใครทำอะไรได้": "8 states, who can do what",
+ "ประเมิน ① ความสำคัญเครื่อง": "Assessment ① criticality",
+ "คะแนน → เกรด A/B/C → วิธีดูแล": "Score → grade A/B/C → care level",
+ "ประเมิน ② หลังงาน · ผู้ขาย": "Assessment ② jobs · vendors",
+ "ตรวจรับ + ให้คะแนน + เกรดผู้ขาย": "Sign-off + rating + vendor grade",
+ "จอง → เช็กสต็อก → PR → PO → GRN → จ่าย": "Reserve → stock check → PR → PO → GRN → issue",
+ "การแจ้งเตือน · ไล่ขั้นตามเวลา": "Alerts · timed escalation",
+ "เหตุการณ์ → กฎ → ผู้รับ → ช่องทาง": "Event → rule → recipient → channel",
+ "ปฏิทินงาน · ลากวาง": "Job calendar · drag & drop",
+ "PM + งานค้าง → ตารางช่าง → เผยแพร่": "PM + backlog → crew schedule → publish",
+ "วันของช่าง · ลงเวลา · กล่องอนุมัติ": "A tech's day · timesheet · approvals",
+ "การติดตาม · แบบพัสดุ": "Tracking · parcel style",
+ "ผู้แจ้งเห็นสถานะ · SLA · audit · KPI": "Requester sees status · SLA · audit · KPI",
+ "Permit · LOTO": "Permit · LOTO",
+ "ลงนาม → ล็อกครบ → ปุ่มเริ่มงานเปิด": "Sign → all locked → Start unlocks",
+ "เตือนก่อนครบ · ใบรับรอง · downtime → OEE": "Early warnings · certificates · downtime → OEE",
+ "[ชื่อระบบ] Maintenance — รู้ทุกชั่วโมงที่เครื่องหยุด และทุกบาทที่จ่ายซ่อม": "[System name] Maintenance — know every hour a machine stops and every baht spent fixing it"
+};
 
-const DL_PATTERN = "";
+const DL_PATTERN = "export/cmms-pitch-{lang}.{ext}";
 const I18N = (() => {
   const TH = /[฀-๿]/;
   const INLINE = new Set(['B','STRONG','I','EM','U','SMALL','BR','SUP','SUB','CODE','MARK','ABBR']);
