@@ -1754,7 +1754,7 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
   /* โหมดนำเสนอ (ค่าเริ่มต้น 19 พ.ย.): เข้าสไลด์แล้วจอเล่นทุกขั้นเอง · กด next ครั้งเดียว = ไปสไลด์ถัดไป
      ใส่ ?step ท้ายลิงก์ = โหมดเดิม กด next ทีละขั้น */
   const AUTO = !/[?&]step\b/.test(location.search);
-  const HOLD = 1500;   // เวลาให้อ่านคำบรรยายก่อนเล่นขั้นถัดไป (มิลลิวินาที)
+  const HOLD = 3000;   // เวลาให้อ่านคำบรรยายก่อนเล่นขั้นถัดไป (มิลลิวินาที)
   let autoTok = 0;
   function autoplay(sh) {
     if (!AUTO || document.documentElement.classList.contains('cap')) return;
