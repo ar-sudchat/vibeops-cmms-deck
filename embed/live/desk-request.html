@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>แจ้งซ่อม · จอคอม</title>
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#fff}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);font-family:var(--vo-font,"Sarabun",sans-serif)}
+.stage [data-desktop-nav]{position:relative}
+.scr{height:734px;overflow:hidden}
+.cur{position:absolute;z-index:200;pointer-events:none;transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1),opacity .25s;transform:translate(-5px,-3px);filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.rip{position:absolute;z-index:199;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:color-mix(in srgb,var(--vo-primary,#5B2BE0) 45%,transparent);pointer-events:none;animation:rip .65s ease-out forwards}
+@keyframes rip{to{transform:scale(5);opacity:0}}
+.pressed{transform:scale(.97)}
+.fx-in{animation:fxin .42s ease-out both}
+@keyframes fxin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fx-flash{animation:fxflash 1s ease-out}
+@keyframes fxflash{0%{background:color-mix(in srgb,var(--vo-primary,#5B2BE0) 18%,transparent)}100%{background:transparent}}
+.fx-pop{animation:fxpop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes fxpop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.nofx *,.nofx{transition:none!important;animation:none!important}
+.focus{outline:2px solid var(--vo-primary,#5B2BE0);outline-offset:0;border-color:var(--vo-primary,#5B2BE0)!important}
+.toast{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 4px 14px rgba(20,20,40,.12)}
+.toast.ok{background:var(--vo-ok-bg,#e8f6ee);color:var(--vo-ok,#13804a)}
+.toast.info{background:var(--vo-primary-soft,#efe9ff);color:var(--vo-primary,#5B2BE0)}
+[hidden]{display:none!important}
+.lv-cap{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:300;background:rgba(20,20,30,.82);color:#fff;padding:8px 16px;border-radius:10px;font:16px "Sarabun",sans-serif}
+
+.rq-sel{border-color:var(--vo-primary)!important;background:var(--vo-primary-soft)!important}
+.rq-thumb{width:142px;height:106px;object-fit:cover;border-radius:8px;display:block}
+.rq-radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--vo-line-strong,#b9b9c6);flex:none;box-sizing:border-box}
+.rq-sel .rq-radio{border:6px solid var(--vo-primary)}
+</style>
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<div class="stage" data-step="0">
+<div data-desktop-nav="true" class="flex sticky top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ สุภาพร ฝ่ายผลิต" title="สุภาพร ฝ่ายผลิต" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">สุภาพร ฝ่ายผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ส</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<div class="scr">
+<main class="mx-auto w-full flex-1 px-8 pt-6 max-w-[1920px]">
+<div data-testid="page-root" data-screen="rq-new" class="mx-auto flex max-w-none flex-col">
+  <header class="sticky top-0 z-20 border-b border-line bg-surface-2 px-6 py-2"><div class="flex min-h-tap items-center gap-2">
+    <button type="button" class="inline-flex min-h-tap items-center gap-1.5 rounded-md px-2 text-base text-text-2"><i data-ic="back" data-s="18"></i> <span>รายการแจ้งซ่อม</span></button>
+    <h1 class="pl-1 text-lg text-text">แจ้งซ่อม</h1></div></header>
+  <div class="px-6 pt-4"><ol aria-label="ขั้นแจ้งซ่อม" class="flex flex-wrap items-center gap-x-2 gap-y-2" id="pills">
+    <li class="flex items-center gap-2"><span class="pill">1 ที่ไหน</span><span aria-hidden="true" class="h-px w-5 bg-line-strong"></span></li>
+    <li class="flex items-center gap-2"><span class="pill">2 อะไรเสีย</span><span aria-hidden="true" class="h-px w-5 bg-line-strong"></span></li>
+    <li class="flex items-center gap-2"><span class="pill">3 อาการ</span><span aria-hidden="true" class="h-px w-5 bg-line-strong"></span></li>
+    <li class="flex items-center gap-2"><span class="pill">4 รูป/คลิป/เสียง</span><span aria-hidden="true" class="h-px w-5 bg-line-strong"></span></li>
+    <li class="flex items-center gap-2"><span class="pill">5 ผลกระทบ</span><span aria-hidden="true" class="h-px w-5 bg-line-strong"></span></li>
+    <li class="flex items-center gap-2"><span class="pill">6 ตรวจแล้วส่ง</span></li>
+  </ol></div>
+  <div class="grid px-6 py-4 grid-cols-[minmax(0,1fr)_360px] gap-8">
+    <main class="flex min-w-0 flex-col gap-4">
+      <h2 class="text-2xl text-text" id="title">ที่ไหน</h2>
+
+      <!-- 1 ที่ไหน -->
+      <div class="flex flex-col gap-4" id="p1">
+        <div class="flex flex-row gap-3">
+          <button type="button" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap shrink-0 bg-surface text-text border border-line-strong min-h-tap-large px-5 text-lg gap-2.5"><i data-ic="qr"></i>สแกน QR</button>
+          <label class="relative flex-1"><span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-2" style="display:flex"><i data-ic="search" data-s="20"></i></span><input class="w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong h-tap-large px-4 pl-10" placeholder="ค้นหา: รหัสเครื่อง ชื่อเครื่อง หรือชื่อจุด" value=""></label>
+        </div>
+        <section class="flex flex-col gap-2"><h3 class="text-base font-medium text-text-2">ที่ฉันแจ้งบ่อย</h3><div class="flex flex-wrap gap-2">
+          <button type="button" class="min-h-11 rounded-pill border border-line bg-surface px-4 text-base text-text">IMM-05 เครื่องฉีดพลาสติก 650 ตัน</button>
+          <button type="button" class="min-h-11 rounded-pill border border-line bg-surface px-4 text-base text-text">IMM-07 เครื่องฉีดพลาสติก 650 ตัน</button>
+          <button type="button" class="min-h-11 rounded-pill border border-line bg-surface px-4 text-base text-text">ไลน์ 2 (พื้นที่)</button>
+          <button type="button" class="min-h-11 rounded-pill border border-line bg-surface px-4 text-base text-text">IMM-09 เครื่องฉีดพลาสติก 350 ตัน</button></div></section>
+        <nav class="flex flex-wrap items-center gap-1 border-t border-line pt-4 text-base" id="crumb"><span class="mr-1 text-text-2" style="display:flex"><i data-ic="pin" data-s="18"></i></span><span class="font-medium text-text">โรงงานอมตะนคร</span></nav>
+        <section class="flex flex-col gap-2"><h3 class="text-base font-medium text-text-2" id="where-h">เลือกอาคาร</h3>
+          <div class="grid grid-cols-3 gap-3" id="where-list"></div></section>
+      </div>
+
+      <!-- 2 อะไรเสีย -->
+      <div class="flex flex-col gap-4" id="p2" hidden>
+        <div class="rounded-card border border-line bg-surface-2 divide-y divide-line ctx"></div>
+        <section class="flex flex-col gap-2"><h3 class="text-base font-medium text-text-2">ลงทะเบียนไว้ในไลน์ 2 (4)</h3>
+          <div class="grid grid-cols-2 gap-3" id="what-list"></div></section>
+        <section class="flex flex-col gap-2"><h3 class="text-base font-medium text-text-2">ของทั่วไปที่ไม่มีรหัส — เลือกชนิด</h3>
+          <div class="grid grid-cols-3 gap-3" id="what-gen"></div></section>
+      </div>
+
+      <!-- 3 อาการ -->
+      <div class="flex flex-col gap-4" id="p3" hidden>
+        <div class="rounded-card border border-line bg-surface-2 divide-y divide-line ctx"></div>
+        <div class="grid grid-cols-3 gap-3" id="sym-list"></div>
+        <label class="flex flex-col gap-1.5"><span class="text-sm text-text-2">เล่าเพิ่ม (ถ้ามี)</span>
+          <textarea id="sym-note" class="w-full bg-surface rounded-control border outline-none text-base text-text border-line-strong px-3 py-2 resize-none" style="height:72px"></textarea></label>
+      </div>
+
+      <!-- 4 รูป -->
+      <div class="flex flex-col gap-4" id="p4" hidden>
+        <div class="rounded-card border border-line bg-surface-2 divide-y divide-line ctx"></div>
+        <p class="text-base text-text-2">แนะนำอย่างน้อย 1 รูป — ให้เห็นจุดที่เสียและป้ายเครื่อง · รูปถูกย่อและใส่ "เวลา · จุด" ให้เอง · ข้ามได้</p>
+        <div class="grid grid-cols-4 gap-3">
+          <button type="button" id="m-photo" class="flex flex-col items-center justify-center gap-2 rounded-card border border-line bg-surface py-4 text-base text-text"><i data-ic="camera" data-s="24"></i>ถ่ายรูป</button>
+          <button type="button" class="flex flex-col items-center justify-center gap-2 rounded-card border border-line bg-surface py-4 text-base text-text"><i data-ic="image" data-s="24"></i>คลิปสั้น</button>
+          <button type="button" class="flex flex-col items-center justify-center gap-2 rounded-card border border-line bg-surface py-4 text-base text-text"><i data-ic="mic" data-s="24"></i>อัดเสียงอธิบาย</button>
+          <button type="button" class="flex flex-col items-center justify-center gap-2 rounded-card border border-line bg-surface py-4 text-base text-text"><i data-ic="file" data-s="24"></i>แนบไฟล์</button>
+        </div>
+        <div class="flex items-end gap-4" id="m-shots"><div id="m-one" class="relative" hidden><img class="rq-thumb" src="img/oil-leak.jpg" alt="น้ำมันรั่วที่ข้อต่อท่อ IMM-06"><span style="position:absolute;right:-12px;top:-12px" class="flex size-8 items-center justify-center rounded-full border border-line bg-surface text-text-2"><i data-ic="x" data-s="16"></i></span></div>
+          <span id="m-cap" class="text-sm text-text-2" hidden>19/11/2026 08:42 · ไลน์ 2 · IMM-06</span></div>
+      </div>
+
+      <!-- 5 ผลกระทบ -->
+      <div class="flex flex-col gap-3" id="p5" hidden>
+        <div class="rounded-card border border-line bg-surface-2 divide-y divide-line ctx"></div>
+        <button type="button" id="imp-stop" class="flex w-full items-center gap-4 rounded-card border border-line bg-surface px-4 py-3 text-left"><span class="rq-radio"></span><span><span class="block text-lg text-text">เครื่องหยุด</span><span class="block text-base text-text-2">เครื่องเดินไม่ได้ / หยุดผลิต</span></span></button>
+        <button type="button" class="flex w-full items-center gap-4 rounded-card border border-line bg-surface px-4 py-3 text-left"><span class="rq-radio"></span><span><span class="block text-lg text-text">เดินได้แต่ผิดปกติ</span><span class="block text-base text-text-2">ยังเดินได้ แต่ช้า เสียงดัง หรือของเสียเพิ่ม</span></span></button>
+        <button type="button" class="flex w-full items-center gap-4 rounded-card border border-line bg-surface px-4 py-3 text-left"><span class="rq-radio"></span><span><span class="block text-lg text-text">ยังเดินปกติ</span><span class="block text-base text-text-2">ยังเดินปกติ แจ้งไว้ก่อนเสีย</span></span></button>
+      </div>
+
+      <!-- 6 ตรวจแล้วส่ง -->
+      <div class="flex flex-col gap-4" id="p6" hidden>
+        <div class="vo-card divide-y divide-line rounded-card border border-line" id="rv"></div>
+        <div class="flex items-center justify-between gap-4">
+          <span id="sent-slot"></span>
+          <button type="button" id="send" data-variant="primary" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap shrink-0 bg-primary-bg text-on-primary min-h-tap-large px-8 text-lg gap-2.5" style="min-width:192px"><i data-ic="send" data-s="20"></i>ส่งแจ้งซ่อม</button>
+        </div>
+      </div>
+    </main>
+
+    <aside class="flex min-w-0 flex-col gap-4 self-start">
+      <div class="vo-card flex flex-col"><section class="px-5 pt-4 pb-1" aria-label="สรุปคำขอ">
+        <h2 class="text-lg font-medium text-text">สรุปคำขอ</h2>
+        <dl class="divide-y divide-line">
+          <div class="flex flex-col gap-0.5 py-3"><dt class="text-sm text-text-2">ที่ไหน</dt><dd class="break-words text-base text-text" id="s-where"><span class="text-text-2">ยังไม่ระบุ</span></dd></div>
+          <div class="flex flex-col gap-0.5 py-3"><dt class="text-sm text-text-2">อะไรเสีย</dt><dd class="break-words text-base text-text" id="s-what"><span class="text-text-2">ยังไม่ระบุ</span></dd></div>
+          <div class="flex flex-col gap-0.5 py-3"><dt class="text-sm text-text-2">อาการ</dt><dd class="break-words text-base text-text" id="s-sym"><span class="text-text-2">ยังไม่ระบุ</span></dd></div>
+          <div class="flex flex-col gap-0.5 py-3"><dt class="text-sm text-text-2">รูป/คลิป/เสียง</dt><dd class="break-words text-base text-text" id="s-media"><span class="text-text-2">ยังไม่ระบุ</span></dd></div>
+          <div class="flex flex-col gap-0.5 py-3"><dt class="text-sm text-text-2">ผลกระทบ</dt><dd class="break-words text-base text-text" id="s-imp"><span class="text-text-2">ยังไม่ระบุ</span></dd></div>
+        </dl></section>
+        <section class="bg-primary-soft px-5 py-3" id="s-urg" hidden><div class="text-sm text-text-2">ความเร่งด่วนที่ระบบเสนอ</div>
+          <span class="mt-1 inline-flex items-center gap-1.5 rounded-pill bg-bad-bg px-2.5 py-0.5 text-sm font-medium text-bad"><span class="size-2 rounded-full bg-bad"></span>ฉุกเฉิน</span>
+          <div class="mt-1 text-sm text-text-2">เพราะ เครื่องหยุด · เครื่องสำคัญระดับ A<br>หัวหน้าปรับได้ตอนคัดกรอง</div></section>
+      </div>
+    </aside>
+  </div>
+</div>
+</main>
+</div>
+</div>
+<script src="live.js"></script>
+<script>
+/* ผู้แจ้ง สุภาพร ฝ่ายผลิต แจ้งซ่อม IMM-06 บนคอม → RQ-2026-0217 (ข้อมูลตัวอย่าง) */
+const I = (n, s) => LIVE.ic(n, s);
+const PILL = 'inline-flex min-h-9 items-center gap-1.5 rounded-pill border px-3.5 text-sm font-medium ';
+const P_ON = PILL + 'border-transparent bg-primary-bg text-on-primary', P_DONE = PILL + 'border-transparent bg-primary-soft text-primary', P_OFF = PILL + 'border-line bg-surface text-muted';
+const LBL = ['1 ที่ไหน', '2 อะไรเสีย', '3 อาการ', '4 รูป/คลิป/เสียง', '5 ผลกระทบ', '6 ตรวจแล้วส่ง'];
+const TITLE = ['ที่ไหน', 'อะไรเสีย', 'อาการเป็นอย่างไร', 'ถ่ายรูป / คลิป / เสียง', 'กระทบแค่ไหน', 'ตรวจแล้วส่ง'];
+const CARD = 'flex min-h-16 w-full items-center gap-3 rounded-card border px-4 py-3 text-left transition-colors border-line bg-surface';
+const card = (id, ic, t, sub) => `<button type="button" id="${id}" class="${CARD}"><span class="shrink-0 text-text-2" style="display:flex">${I(ic, 22)}</span><span class="min-w-0 flex-1"><span class="block text-lg leading-snug text-text">${t}</span>${sub ? `<span class="mt-0.5 block text-base leading-snug text-text-2">${sub}</span>` : ''}</span><span class="shrink-0 text-text-2 chev" style="display:flex">${I('right', 20)}</span></button>`;
+const tile = (id, ic, t) => `<button type="button" ${id ? `id="${id}"` : ''} class="flex min-h-14 w-full items-center gap-3 rounded-card border border-line bg-surface px-4 text-left text-lg text-text"><span class="text-text-2" style="display:flex">${I(ic, 22)}</span><span class="flex-1">${t}</span><span class="chk text-primary" style="display:flex"></span></button>`;
+const WHERE = 'อาคาร A ฉีดพลาสติก › โซนฉีด 1 › ไลน์ 2', WHAT = 'IMM-06 · เครื่องฉีดพลาสติก 650 ตัน', NOTE = 'น้ำมันซึมที่ข้อต่อท่อด้านล่าง';
+const ctxRow = (k, v, l) => `<div class="flex items-center gap-4 px-4 py-2.5 text-base"><span class="w-20 text-text-2">${k}</span><span class="flex-1 text-text">${v}</span><span class="text-primary">${l}</span></div>`;
+
+/* ขั้น 0: สร้างรายการเริ่มต้น */
+document.getElementById('where-list').innerHTML = [
+  ['loc-A', 'อาคาร A ฉีดพลาสติก', 'อาคาร · 19 รายการ'], ['loc-B', 'อาคาร B เป่าและบรรจุ', 'อาคาร · 12 รายการ'], ['loc-C', 'อาคาร C คลัง', 'อาคาร · 3 รายการ'],
+  ['loc-U', 'อาคารสาธารณูปโภค', 'อาคาร · 10 รายการ'], ['loc-O', 'อาคารสำนักงาน', 'อาคาร · 5 รายการ']].map(r => card(r[0], 'building', r[1], r[2])).join('');
+document.getElementById('what-list').innerHTML = [
+  ['w5', 'IMM-05 · เครื่องฉีดพลาสติก 650 ตัน', 'เครื่องจักรผลิต · สำคัญมาก (A)'], ['w6', WHAT, 'เครื่องจักรผลิต · สำคัญมาก (A)'],
+  ['w7', 'IMM-07 · เครื่องฉีดพลาสติก 650 ตัน', 'เครื่องจักรผลิต · สำคัญมาก (A)'], ['w8', 'IMM-08 · เครื่องฉีดพลาสติก 220 ตัน', 'เครื่องจักรผลิต · ทั่วไป (C)']].map(r => card(r[0], 'factory', r[1], r[2])).join('');
+document.getElementById('what-gen').innerHTML = [['zap', 'หลอดไฟ / โคมไฟ'], ['power', 'ปลั๊ก / สวิตช์ไฟ'], ['drop', 'ห้องน้ำ / ก๊อก / ท่อ']].map(r => tile('', r[0], r[1])).join('');
+document.getElementById('sym-list').innerHTML = [['volume', 'เสียงดังผิดปกติ'], ['drop', 'รั่ว (น้ำมัน น้ำ ลม)', 'sym-leak'], ['thermo', 'ร้อนผิดปกติ'], ['vibrate', 'สั่นผิดปกติ'], ['power', 'ไม่ทำงาน / สตาร์ทไม่ติด'], ['x', 'งานออกมาเสีย'],
+  ['zap', 'ไฟฟ้า / ไฟช็อต'], ['alert', 'ขึ้นแจ้งเตือน / รหัสผิดพลาด'], ['info', 'อื่นๆ']].map(r => tile(r[2], r[0], r[1])).join('');
+document.querySelectorAll('#pills .pill').forEach((p, i) => p.className = 'pill ' + (i ? P_OFF : P_ON));
+
+function go(a, n) {
+  document.querySelectorAll('#pills .pill').forEach((p, i) => { p.className = 'pill ' + (i < n - 1 ? P_DONE : i === n - 1 ? P_ON : P_OFF); p.innerHTML = (i < n - 1 ? I('check', 16) : '') + LBL[i]; });
+  for (let k = 1; k <= 6; k++) a.hide('#p' + k);
+  a.show('#p' + n);
+  a.$('#title').textContent = TITLE[n - 1];
+}
+function sum(a, id, html) { a.set(id, html); if (!a.fast) { const e = a.$(id); e.classList.remove('fx-flash'); void e.offsetWidth; e.classList.add('fx-flash'); } }
+function pick(a, sel) { const e = a.$(sel); e.classList.add('rq-sel'); const c = e.querySelector('.chev'); if (c) { c.innerHTML = I('check', 20); c.style.color = 'var(--vo-primary)'; } }
+
+LIVE.run({ steps: [
+  { cap: 'ผู้แจ้งเปิดหน้าแจ้งซ่อมบนคอม — ขั้นแรกบอกว่าเกิดที่ไหน', run: async a => {} },
+  { cap: 'เลือกที่เกิดเหตุ อาคาร A › โซนฉีด 1 › ไลน์ 2', run: async a => {
+      await a.click('#loc-A', () => {
+        a.set('#crumb', `<span class="mr-1 text-text-2" style="display:flex">${I('pin', 18)}</span><span class="text-text-2">โรงงานอมตะนคร</span><span class="text-muted">›</span><span class="font-medium text-text">อาคาร A ฉีดพลาสติก</span>`);
+        a.$('#where-h').textContent = 'เลือกโซน';
+        a.set('#where-list', [['z1', 'โซนฉีด 1', 'โซน · 8 เครื่อง'], ['z2', 'โซนฉีด 2', 'โซน · 6 เครื่อง'], ['z3', 'โซนอบเม็ด', 'โซน · 3 เครื่อง'], ['z4', 'ห้องแม่พิมพ์', 'โซน · 1 เครื่อง'], ['z5', 'ส่วนกลางอาคาร A', 'โซน · 1 เครื่อง']].map(r => card(r[0], 'grid', r[1], r[2])).join(''));
+        a.show('#where-list');
+      });
+      await a.click('#z1', () => {
+        a.set('#crumb', `<span class="mr-1 text-text-2" style="display:flex">${I('pin', 18)}</span><span class="text-text-2">โรงงานอมตะนคร</span><span class="text-muted">›</span><span class="text-text-2">อาคาร A ฉีดพลาสติก</span><span class="text-muted">›</span><span class="font-medium text-text">โซนฉีด 1</span>`);
+        a.$('#where-h').textContent = 'เลือกไลน์';
+        a.set('#where-list', [['l1', 'ไลน์ 1', 'ไลน์ · 4 เครื่อง'], ['l2', 'ไลน์ 2', 'ไลน์ · 4 เครื่อง']].map(r => card(r[0], 'pin', r[1], r[2])).join(''));
+        a.show('#where-list');
+      });
+      await a.click('#l2', () => { pick(a, '#l2'); sum(a, '#s-where', WHERE); });
+      await a.w(300);
+    } },
+  { cap: 'ระบบโชว์เครื่องที่ลงทะเบียนในไลน์ 2 — แตะ IMM-06', run: async a => {
+      go(a, 2); a.set('#p2 .ctx', ctxRow('ที่ไหน', WHERE, 'เปลี่ยนที่'));
+      await a.w(500);
+      await a.click('#w6', () => { pick(a, '#w6'); sum(a, '#s-what', WHAT); });
+    } },
+  { cap: 'เลือกอาการ "รั่ว" แล้วเล่าเพิ่มสั้นๆ', run: async a => {
+      go(a, 3); a.set('#p3 .ctx', ctxRow('ที่ไหน', WHERE, 'เปลี่ยนที่') + ctxRow('อะไรเสีย', WHAT, 'เปลี่ยน'));
+      await a.w(400);
+      await a.click('#sym-leak', () => { a.cls('#sym-leak', 'rq-sel'); a.set('#sym-leak .chk', I('check', 20)); sum(a, '#s-sym', 'รั่ว (น้ำมัน น้ำ ลม)'); });
+      await a.move('#sym-note');
+      await a.type('#sym-note', NOTE, 45);
+      sum(a, '#s-sym', `รั่ว (น้ำมัน น้ำ ลม)<br>“${NOTE}”`);
+    } },
+  { cap: 'ถ่ายรูปจุดที่รั่วแนบไว้ ระบบใส่เวลาและจุดให้เอง', run: async a => {
+      go(a, 4); a.set('#p4 .ctx', ctxRow('ที่ไหน', WHERE, 'เปลี่ยนที่') + ctxRow('อะไรเสีย', WHAT, 'เปลี่ยน'));
+      await a.w(400);
+      await a.click('#m-photo', () => { a.cls('#m-photo', 'rq-sel'); });
+      await a.w(250);
+      a.show('#m-one'); a.show('#m-cap');
+      sum(a, '#s-media', '1 ไฟล์');
+      await a.w(400);
+    } },
+  { cap: 'บอกผลกระทบ "เครื่องหยุด" — ระบบเสนอความเร่งด่วนฉุกเฉิน', run: async a => {
+      go(a, 5); a.set('#p5 .ctx', ctxRow('ที่ไหน', WHERE, 'เปลี่ยนที่') + ctxRow('อะไรเสีย', WHAT, 'เปลี่ยน'));
+      await a.w(400);
+      await a.click('#imp-stop', () => { a.cls('#imp-stop', 'rq-sel'); sum(a, '#s-imp', 'เครื่องหยุด'); });
+      await a.w(200);
+      a.show('#s-urg');
+      await a.w(400);
+    } },
+  { cap: 'ตรวจทุกอย่างในหน้าเดียวก่อนส่ง', run: async a => {
+      go(a, 6);
+      const row = (ic, k, v) => `<div class="flex items-start gap-4 px-5 py-3"><span class="flex w-44 items-center gap-2 text-base text-text-2">${I(ic, 20)}${k}</span><span class="flex-1 text-lg text-text">${v}</span><span class="text-base text-text-2">แก้</span></div>`;
+      a.set('#rv', row('pin', 'ที่ไหน', WHERE) + row('pkg', 'อะไรเสีย', WHAT + '<span class="block text-base text-text-2">เครื่องจักรผลิต · สำคัญมาก (A)</span>') +
+        row('drop', 'อาการ', `รั่ว (น้ำมัน น้ำ ลม)<span class="block text-base text-text-2">“${NOTE}”</span>`) +
+        row('camera', 'รูป/คลิป/เสียง', '<img src="img/oil-leak.jpg" alt="" style="width:96px;height:64px;object-fit:cover;border-radius:6px">') + row('alert', 'ผลกระทบ', '<span class="text-bad font-medium">เครื่องหยุด</span>'));
+      await a.w(300);
+      await a.move('#send');
+    } },
+  { cap: 'กดส่ง — ได้เลขที่ RQ-2026-0217 ส่งถึงทีมซ่อมอาคาร A ทันที', run: async a => {
+      await a.click('#send', () => {
+        a.set('#send', I('check', 20) + 'ส่งแล้ว RQ-2026-0217');
+        a.cls('#send', 'bg-ok-bg text-ok', 'bg-primary-bg text-on-primary');
+        const last = [...a.$('#pills').querySelectorAll('.pill')].pop(); last.className = 'pill ' + P_DONE; last.innerHTML = I('check', 16) + LBL[5];
+      });
+      a.toast('#sent-slot', 'บันทึกแล้ว · ส่งถึงทีมซ่อมอาคาร A · หัวหน้า วรวุฒิ เจริญผล ได้รับแจ้ง');
+      a.off();
+    } },
+] });
+</script>
+</body>
+</html>

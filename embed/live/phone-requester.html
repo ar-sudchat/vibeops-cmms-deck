@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ผู้แจ้งซ่อม · มือถือ</title>
+<link rel="stylesheet" href="phone-kit.css">
+<link rel="stylesheet" href="phone-run.css">
+</head>
+<body>
+<script src="phone-kit.js"></script>
+<script src="phone-run.js"></script>
+<script>
+/* ผู้แจ้ง (คุณสุภาพร ฝ่ายผลิต) — แจ้งซ่อม IMM-06 → RQ-2026-0217 → ติดตาม → ให้ดาว
+   สถานะ 0–7 = แจ้งซ่อม (สไลด์ s1p) · 8–9 = ติดตามและให้ดาว (สไลด์ s4 / mob) */
+const selRow = (el, on) => {
+  el.classList.toggle('sel', on);
+  const c = el.querySelector('.chev');
+  if (c) { c.style.color = on ? 'var(--primary)' : ''; c.innerHTML = PK.I(on ? 'check' : 'chev'); }
+};
+const next = a => a.tap('.act .btn.pri', { after: 120 });
+PR.run({
+  role: 'ผู้แจ้ง',
+  steps: [
+    { cap: '<b>ผู้แจ้งเปิดแอป</b><small>ปุ่มแจ้งซ่อมใหญ่ อยู่ในระยะนิ้วโป้ง</small>',
+      run: async a => { await a.go('r1'); } },
+    { cap: '<b>แตะแจ้งซ่อม</b><small>สแกน QR ที่เครื่อง หรือเลือกที่ตั้งทีละชั้น</small>',
+      run: async a => {
+        const r2 = a.find('@ไลน์ 2', PRs('r2')); selRow(r2, false);
+        await a.tap('.hero-btn'); await a.go('r2');
+      } },
+    { cap: '<b>ที่ไหน</b><small>อาคาร A › โซนฉีด 1 › ไลน์ 2</small>',
+      run: async a => {
+        const r3 = PRs('r3');
+        r3.querySelectorAll('.tile').forEach(t => t.setAttribute('aria-pressed', 'false'));
+        const lbl = r3.querySelectorAll('.lbl')[0], list = r3.querySelectorAll('.list')[0];
+        lbl.id = 'r3lbl'; list.id = 'r3list'; lbl.classList.add('pr-hide'); list.classList.add('pr-hide');
+        selRow(a.find('@IMM-06', r3), false);
+        const el = await a.tap('@ไลน์ 2'); selRow(el, true);
+      } },
+    { cap: '<b>อะไรเสีย</b><small>เลือกประเภท แล้วเหลือเฉพาะของในจุดนั้น</small>',
+      run: async a => {
+        await next(a); await a.go('r3');
+        await a.tap('@เครื่องจักรผลิต');
+        await a.pop('#r3lbl'); await a.pop('#r3list');
+        const el = await a.tap('@IMM-06'); selRow(el, true);
+      } },
+    { cap: '<b>เกิดอะไรขึ้น</b><small>แตะอาการ แล้วพิมพ์หรือพูดเพิ่ม</small>',
+      run: async a => {
+        const r4 = PRs('r4');
+        r4.querySelectorAll('.pk').forEach(p => p.setAttribute('aria-pressed', 'false'));
+        r4.querySelector('.inp.ta').id = 'r4ta'; r4.querySelector('.inp.ta').textContent = '';
+        r4.querySelectorAll('.media .ph').forEach((p, k) => { p.id = 'r4ph' + k; if (k < 2) p.classList.add('pr-hide'); });
+        r4.querySelector('.voice').id = 'r4v'; r4.querySelector('.voice').classList.add('pr-hide');
+        await next(a); await a.go('r4');
+        await a.tap('@เสียงดังผิดปกติ'); await a.tap('@รั่ว ซึม');
+        await a.type('#r4ta', 'ได้ยินเสียงหอนจากชุดปั๊มไฮดรอลิกตั้งแต่ต้นกะ มีน้ำมันซึมใต้ปั๊ม', { ms: 22 });
+      } },
+    { cap: '<b>ถ่ายรูป อัดเสียง</b><small>รูปมีเวลาและจุดติดให้เอง ไม่ต้องพิมพ์ยาว</small>',
+      run: async a => {
+        await a.tap('@ถ่ายรูป', { press: false }); await a.pop('#r4ph0');
+        await a.tap('@ถ่ายรูป', { press: false }); await a.pop('#r4ph1');
+        await a.tap('@อัดเสียง', { press: false }); await a.pop('#r4v');
+      } },
+    { cap: '<b>ผลกระทบ</b><small>ระบบเสนอความด่วนให้หัวหน้า ผู้แจ้งไม่ต้องเลือกเอง</small>',
+      run: async a => {
+        const r5 = PRs('r5');
+        r5.querySelectorAll('.opts')[0].querySelectorAll('.opt').forEach(o => o.setAttribute('aria-pressed', 'false'));
+        const n = r5.querySelector('.note.pend'); n.id = 'r5n'; n.classList.add('pr-hide');
+        await next(a); await a.go('r5');
+        await a.tap('@เดินได้ แต่ผิดปกติ');
+        await a.pop('#r5n');
+      } },
+    { cap: '<b>ตรวจในจอเดียว แล้วส่ง</b><small>ได้เลขคำขอ RQ-2026-0217 ทันที</small>',
+      run: async a => {
+        await next(a); await a.go('r6');
+        await a.scrollTo(400);
+        await a.tap('.act .btn.pri');
+        await a.toast('ส่งแจ้งซ่อมแล้ว · RQ-2026-0217', 'ถึงหัวหน้าทีมซ่อมอาคาร A แล้ว');
+      } },
+    { cap: '<b>ติดตามเอง ไม่ต้องโทรถาม</b><small>เห็นว่าเรื่องอยู่ที่ใคร ตั้งแต่เมื่อไร</small>',
+      run: async a => {
+        const r7 = PRs('r7'), li = [...r7.querySelectorAll('.tl li')], q = r7.querySelector('.quote');
+        const orig = li.map(l => l.className);
+        li.forEach((l, k) => { if (k > 0) l.className = 'later'; l.id = 'r7l' + k; });
+        q.id = 'r7q'; q.classList.add('pr-hide');
+        a.clearToast();
+        await a.go('r7');
+        for (let k = 1; k < li.length; k++) { if (orig[k] === 'later') continue; await a.wait(420); a.set('#r7l' + k, l => l.className = orig[k]); }
+        await a.pop('#r7q');
+      } },
+    { cap: '<b>ซ่อมเสร็จ ผู้แจ้งยืนยันและให้ดาว</b><small>วัดคุณภาพงานซ่อมได้จริง</small>',
+      run: async a => {
+        const r8 = PRs('r8');
+        r8.querySelectorAll('.opt').forEach(o => o.setAttribute('aria-pressed', 'false'));
+        r8.querySelectorAll('.stars button').forEach(s => s.classList.remove('on'));
+        await a.go('r8');
+        await a.tap('@เรียบร้อย ใช้งานได้');
+        await a.tap('[aria-label="5 ดาว"]');
+        await a.tap('.act .btn.pri');
+        await a.toast('ขอบคุณที่ประเมิน', 'ปิดงาน RQ-2026-0217 เรียบร้อย · 5 ดาว');
+      } },
+  ]
+});
+function PRs(id) { return document.querySelector('.screen[data-sid="' + id + '"]'); }
+</script>
+</body>
+</html>

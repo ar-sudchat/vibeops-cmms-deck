@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คลังอะไหล่ · มือถือ</title>
+<link rel="stylesheet" href="phone-kit.css">
+<link rel="stylesheet" href="phone-run.css">
+</head>
+<body>
+<script src="phone-kit.js"></script>
+<script src="phone-run.js"></script>
+<script>
+/* คลังอะไหล่ (มาลี ศรีสุข) — จ่ายของตามใบเบิก WO-2026-0103 ด้วยการสแกน */
+const S = id => document.querySelector('.screen[data-sid="' + id + '"]');
+const ITEMS = [['HYD-SEAL-80', 'ซีลกระบอกสูบ 80 มม.', 'ครบ 2/2'], ['FLT-H10', 'ไส้กรองน้ำมันไฮดรอลิก', 'ครบ 1/1'], ['HYD-OIL-46', 'น้ำมันไฮดรอลิก ISO VG46', 'ครบ 20/20']];
+const done = (a, k) => a.set('#kr' + k, r => {
+  r.querySelector('.chips').innerHTML = PK.chip(ITEMS[k][2], 'ok');
+  r.classList.remove('sel');
+  const c = r.querySelector('.chev'); if (c) c.style.visibility = '';
+});
+const scanOk = (a, k) => a.set('#kok', e => { e.classList.remove('pr-hide'); e.querySelector('span').innerHTML = 'สแกนแล้ว <b>' + ITEMS[k][0] + '</b> ' + ITEMS[k][1]; });
+PR.run({
+  role: 'คลังอะไหล่',
+  steps: [
+    { cap: '<b>คิวจ่ายอะไหล่</b><small>เรียงตามความด่วนของใบงาน · บอกตรงๆ ใบไหนรอของเข้า</small>',
+      run: async a => { await a.go('k1'); a.find('@WO-2026-0103').classList.remove('sel'); } },
+    { cap: '<b>เปิดใบเบิกของ WO-2026-0103</b><small>รู้ว่าของอยู่ชั้นไหน ต้องจ่ายกี่ชิ้น</small>',
+      run: async a => {
+        const k2 = S('k2');
+        k2.querySelectorAll('.list .row').forEach((r, k) => {
+          r.id = 'kr' + k; r.classList.toggle('sel', k === 0);
+          r.querySelector('.chips').innerHTML = PK.chip('ยังไม่สแกน', 'warn');
+          const c = r.querySelector('.chev'); if (c) c.style.visibility = 'hidden';
+        });
+        const ok = k2.querySelector('.scanok'); ok.id = 'kok'; ok.classList.add('pr-hide');
+        const why = k2.querySelector('.act .why'); why.id = 'kwhy'; why.innerHTML = PK.I('alert', 's') + 'ยังไม่สแกน 3 รายการ';
+        await a.tap('@WO-2026-0103', { after: 80 }); await a.go('k2');
+      } },
+    { cap: '<b>สแกนบาร์โค้ดอะไหล่</b><small>สแกนแล้วติ๊กให้เอง ไม่ต้องพิมพ์รหัส</small>',
+      run: async a => {
+        await a.tap('@สแกนบาร์โค้ดอะไหล่', { after: 60 });
+        await a.scan('สแกนบาร์โค้ดที่ชั้น B-03', ITEMS[0][0] + ' · ตรงใบเบิก', 'bc');
+        scanOk(a, 0); done(a, 0);
+        a.set('#kr1', r => r.classList.add('sel'));
+        a.set('#kwhy', w => w.innerHTML = PK.I('alert', 's') + 'ยังไม่สแกน 2 รายการ');
+      } },
+    { cap: '<b>สแกนครบทุกรายการ</b><small>ปุ่มยืนยันกดได้เมื่อครบเท่านั้น</small>',
+      run: async a => {
+        for (const k of [1, 2]) {
+          await a.tap('@สแกนต่อ', { after: 60 });
+          await a.scan('สแกนบาร์โค้ด', ITEMS[k][0] + ' · ตรงใบเบิก', 'bc');
+          scanOk(a, k); done(a, k);
+        }
+        a.set('.act .btn.pri', b => b.removeAttribute('aria-disabled'));
+        a.set('#kwhy', w => w.classList.add('pr-hide'));
+      } },
+    { cap: '<b>ยืนยันจ่าย ตัดสต็อกทันที</b><small>ค่าอะไหล่เข้าใบงาน ช่างได้รับแจ้งให้มารับ</small>',
+      run: async a => {
+        await a.tap('.act .btn.pri');
+        await a.toast('จ่ายแล้ว 3 รายการ', 'ตัดสต็อก · ค่าอะไหล่ 2,940 บาท เข้า WO-2026-0103');
+      } },
+  ]
+});
+</script>
+</body>
+</html>

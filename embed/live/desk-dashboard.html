@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<title>แดชบอร์ดซ่อมบำรุง</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+/* แถบบนของโปรแกรมจริง (ยกจาก @media min-width:1024px ของ vibeops-app.css ให้แสดงทุกขนาด iframe) */
+
+  [data-desktop-nav] {
+    background: var(--vo-brand-gradient, linear-gradient(100deg,#00bec4 0%,#278ed2 36%,#505bdb 66%,#8125e9 100%));
+    box-shadow: 0 3px 12px #24345b12;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+  }
+  [data-desktop-nav] .floor-brand-tier, [data-desktop-nav] .floor-header-inner, [data-desktop-nav] .floor-nav-tier, [data-desktop-nav] .floor-nav-inner {
+    display: contents;
+  }
+  [data-desktop-nav] .floor-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child svg {
+    width: 23px;
+    height: 23px;
+  }
+  [data-desktop-nav] .floor-brand a span:first-child {
+    font-size: 21px;
+  }
+  [data-desktop-nav] .floor-brand a span + span, [data-desktop-nav] .floor-company-divider {
+    display: none;
+  }
+  [data-desktop-nav] .floor-company {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  [data-desktop-nav] .floor-account {
+    grid-column: 3;
+    grid-row: 1;
+    gap: 8px;
+  }
+  [data-desktop-nav] .floor-account > .w-px {
+    display: none;
+  }
+  [data-desktop-nav] .floor-profile > span {
+    max-width: 110px;
+    font-size: 14px;
+  }
+  [data-desktop-nav] .floor-profile > div {
+    width: 32px;
+    height: 32px;
+  }
+  [data-desktop-nav] .floor-header-inner a span {
+    font-weight: 500;
+  }
+  [data-desktop-nav] nav > a,[data-desktop-nav] nav > div > button {
+    position: relative;
+    background: transparent;
+  }
+  [data-desktop-nav] nav [aria-current="page"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] nav [aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    right: 30%;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: #fff;
+  }
+  [data-desktop-nav] nav > a:hover,[data-desktop-nav] nav > div > button:hover,[data-desktop-nav] nav button[aria-expanded="true"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] .floor-nav-tier {
+    height: auto;
+    padding: 0 0 10px;
+    margin: 0;
+  }
+  [data-desktop-nav] nav {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+    gap: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div > button {
+    width: 100%;
+    height: 52px;
+    padding: 0 14px;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+  }
+  [data-desktop-nav] nav > a:focus-visible,[data-desktop-nav] nav > div > button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  [data-desktop-nav] nav > a > svg, [data-desktop-nav] nav > div > button > svg:first-child {
+    color: #fff;
+    width: 21px;
+    height: 21px;
+  }
+  [data-desktop-nav] nav > div > button > svg:last-child {
+    width: 12px;
+    color: #ffffffb3;
+  }
+  [data-desktop-nav] nav > div:nth-last-child(-n+2) > .absolute {
+    left: auto;
+    right: 0;
+  }
+
+
+html,body{margin:0;height:100%;overflow:hidden;background:#fff}
+body{font-family:var(--vo-font,"Sarabun",Tahoma,sans-serif);color:var(--vo-text)}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);display:flex;flex-direction:column}
+.stage [data-desktop-nav]{flex:none}
+.pg{flex:1;min-height:0;overflow:hidden;padding:20px 32px 0}
+.cur{position:absolute;z-index:99;width:28px;height:28px;margin:-3px 0 0 -5px;pointer-events:none;transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1),opacity .25s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.rip{position:absolute;z-index:98;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(124,58,237,.32);animation:lvRip .6s ease-out forwards;pointer-events:none}
+@keyframes lvRip{from{transform:scale(.2);opacity:1}to{transform:scale(1.7);opacity:0}}
+.pressed{transform:scale(.97)}
+.focus{border-color:var(--vo-focus,var(--vo-primary))!important;box-shadow:0 0 0 3px var(--vo-primary-soft)}
+.fx-in{animation:lvIn .45s ease-out both}
+@keyframes lvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fx-pop{animation:lvPop .4s ease-out}
+@keyframes lvPop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.fx-flash{animation:lvFlash 1s ease-out}
+@keyframes lvFlash{0%{background:var(--vo-primary-soft)}100%{background:transparent}}
+.nofx,.nofx *{transition:none!important;animation:none!important}
+[hidden]{display:none!important}
+.toast{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:15px;font-weight:600;background:var(--vo-ok-bg);color:var(--vo-ok)}
+.row-hl>td{background:var(--vo-primary-soft)!important;transition:background .3s}
+.cell-bad{background:var(--vo-bad-bg)!important;color:var(--vo-bad)!important;font-weight:700;transition:background .4s,color .4s}
+.cell-plan{background:var(--vo-ok-bg)!important;color:var(--vo-ok)!important;font-weight:700}
+.vo-tabs-pill{display:inline-flex;gap:4px;padding:4px;border-radius:10px;background:var(--vo-surface-2);align-self:flex-start}
+.vo-tabs-pill button{padding:6px 14px;border-radius:8px;font-size:15px;color:var(--vo-text-2)}
+.vo-tabs-pill button[aria-selected=true]{background:var(--vo-surface);color:var(--vo-text);font-weight:600;box-shadow:0 1px 2px #0001}
+</style>
+<script>
+/* ชิ้นส่วนหน้าตา VibeOps (คลาสคัดจาก dom/*.html ของโปรแกรมจริง) */
+window.VO = {
+  TH: 'px-3 py-3 text-sm font-semibold text-on-primary select-none border-b border-primary bg-primary-bg relative group after:absolute after:right-0 after:top-3 after:bottom-3 after:w-px after:bg-line last:after:hidden',
+  TD: 'px-3 text-sm text-text transition-colors whitespace-nowrap border-b border-line py-2.5',
+  TR: 'group transition-all duration-200 outline-none bg-surface hover:bg-surface-2',
+  BTN: 'vo-button inline-flex items-center justify-center rounded-control font-medium select-none whitespace-nowrap shrink-0 transition-colors duration-150 min-h-tap px-4 text-base gap-2',
+  INPUT: 'w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong transition-colors h-tap px-3',
+  th(t, o = {}) { return `<th class="${this.TH}${o.r ? ' text-right' : ''}" style="${o.w ? 'width:' + o.w + 'px' : ''}"><div class="flex items-center justify-between space-x-2 w-full group"><div class="flex items-center gap-1 flex-1 min-w-0 select-none${o.r ? ' justify-end' : ''}"><span class="font-semibold text-inherit leading-tight whitespace-nowrap">${t}</span></div></div></th>`; },
+  td(h, o = {}) { return `<td class="${this.TD}${o.r ? ' text-right' : ''}${o.c ? ' ' + o.c : ''}"${o.a || ''}>${h}</td>`; },
+  table(ths, rows, tb = '') { return `<div class="bg-surface flex flex-col"><div class="overflow-x-auto flex-1 min-h-0 min-w-0 max-w-full"><table class="vo-super-table w-full text-left border-collapse table-fixed"><thead class="sticky top-0 z-10"><tr>${ths}</tr></thead><tbody class="divide-y divide-line"${tb}>${rows}</tbody></table></div></div>`; },
+  badge(kind, t) {
+    const m = { ok: ['bg-ok-bg text-ok', 'bg-ok'], bad: ['bg-bad-bg text-bad', 'bg-bad'], warn: ['bg-warn-bg text-warn', 'bg-warn'], info: ['bg-info-bg text-info', 'bg-info'], mute: ['bg-surface-2 text-text-2', 'bg-text-2'] }[kind];
+    return `<span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-semibold whitespace-nowrap ${m[0]}"><span aria-hidden="true" class="size-2 shrink-0 rounded-full ${m[1]}"></span>${t}</span>`;
+  },
+  btn(t, ic, kind = 'p', attr = '') {
+    const c = kind === 'p' ? 'bg-primary-bg text-on-primary hover:bg-primary-hover' : 'bg-surface text-text border border-line-strong hover:bg-surface-2';
+    return `<button type="button" class="${this.BTN} ${c}" ${attr}>${ic ? `<i data-ic="${ic}" data-s="18"></i>` : ''}${t}</button>`;
+  },
+  card(title, body, o = {}) { return `<section class="vo-card ${o.p === false ? '' : 'p-4'}" ${o.a || ''}><div class="mb-3 flex items-center justify-between gap-3 ${o.p === false ? 'px-4 pt-4' : ''}"><h2 class="text-base font-medium text-text">${title}</h2>${o.right || ''}</div>${body}</section>`; },
+  pagehead(back, h1, o = {}) {
+    return `<header class="border-b border-line bg-surface-2 px-6 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex min-w-0 items-center gap-2">${back ? `<button type="button" class="inline-flex min-h-tap items-center gap-1.5 rounded-md px-2 text-base text-text-2"><i data-ic="back" data-s="18"></i> <span>${back}</span></button>` : ''}<div class="min-w-0 pl-1">${o.code ? `<div class="text-sm text-text-2">${o.code}</div>` : ''}<h1 class="text-lg leading-snug text-text"${o.h1a || ''}>${h1}</h1></div>${o.badge ? `<div class="ml-2 shrink-0">${o.badge}</div>` : ''}</div><div class="flex shrink-0 items-center gap-3">${o.right || ''}</div></div></header>`;
+  }
+};
+</script>
+
+<style>
+:root{--c-bar:#8438ED;--c-cum:#00A09A}
+.kpi .v{font-size:36px;line-height:1.2;font-weight:500;font-variant-numeric:tabular-nums}
+.bar{transform:scaleY(0);transform-box:fill-box;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.bar.on{transform:none}
+.cum{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s ease-out}
+.cum.on{stroke-dashoffset:0}
+.dot,.cl{opacity:0;transition:opacity .3s}.dot.on,.cl.on{opacity:1}
+.ref{opacity:.35;transition:opacity .4s}.ref.on{opacity:1}
+.hit{fill:transparent;cursor:pointer}
+.bar.dim{opacity:.35}
+.tip{position:absolute;pointer-events:none;background:var(--vo-surface);border:1px solid var(--vo-line);border-radius:8px;box-shadow:0 6px 20px #0f172a1f;padding:8px 12px;font-size:14px;line-height:1.45;white-space:nowrap;z-index:5}
+.tip b{font-size:15px}
+.lg{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--vo-text-2)}
+.lg i{display:inline-block}
+.bars-cell{position:relative;height:10px;border-radius:3px;background:var(--vo-surface-2);overflow:hidden;min-width:90px}
+.bars-cell span{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--c-bar);width:0;transition:width .6s ease-out}
+</style>
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<div class="stage">
+<div data-desktop-nav="true" class="flex top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ วรวุฒิ เจริญผล" title="วรวุฒิ เจริญผล" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">วรวุฒิ เจริญผล</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ว</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<div class="flex min-h-0 flex-1 flex-col" style="padding:20px 32px 0">
+  <header class="flex min-h-tap items-center justify-between gap-3 border-b border-line bg-surface-2 px-6 py-2">
+    <h1 class="pl-2 text-lg text-text">แดชบอร์ดซ่อมบำรุง</h1>
+    <div class="vo-tabs-pill"><button type="button">30 วัน</button><button type="button" aria-selected="true">3 เดือน</button><button type="button">12 เดือน</button><button type="button">เดือนนี้</button></div>
+  </header>
+  <div class="flex flex-col gap-4 px-6 py-4" id="body"></div>
+</div>
+</div>
+<script src="live.js"></script>
+<script>
+const V = VO;
+const KPI = [['ระยะห่างระหว่างเสีย', 'k0', 412, 0, 'ชม.', 'MTBF · เสีย 58 ครั้ง'], ['เวลาซ่อมเฉลี่ย', 'k1', 2.8, 1, 'ชม.', 'MTTR · 58 ใบ · หยุดเฉลี่ย 3.4 ชม.'],
+             ['เครื่องพร้อมใช้', 'k2', 98.6, 1, '%', 'Availability · เป้า 98%'], ['PM ตรงเวลา', 'k3', 92.3, 1, '%', 'PM compliance · 52 รอบ · ข้าม 1']];
+const P = [['น้ำมันรั่ว', 18], ['สายพานขาด', 12], ['ไฟดับ', 9], ['เสียงดังผิดปกติ', 7], ['ร้อนเกิน', 5], ['ประกายไฟ', 3], ['อื่นๆ', 4]];
+const TOT = P.reduce((s, p) => s + p[1], 0);
+let acc = 0; const CUM = P.map(p => (acc += p[1], acc / TOT * 100));
+const M = [['IMM-06', 'เครื่องฉีดพลาสติก 650 ตัน', 'อาคาร A › โซนฉีด 1 › ไลน์ 2', 7, 21.5, '186', '48,200'],
+           ['CV-03', 'สายพานลำเลียง ไลน์ 2', 'อาคาร A › โซนฉีด 1', 5, 9.0, '262', '12,750'],
+           ['CMP-01', 'คอมเพรสเซอร์ GA37', 'ห้องคอมเพรสเซอร์ อาคาร A', 3, 6.5, '437', '9,400'],
+           ['IMM-03', 'เครื่องฉีดพลาสติก 450 ตัน', 'อาคาร A › โซนฉีด 1 › ไลน์ 1', 3, 5.0, '437', '15,300'],
+           ['LT-A1', 'ไฟส่องสว่าง โซนฉีด 1', 'อาคาร A › โซนฉีด 1', 3, 1.5, '437', '2,150']];
+// พาเรโต: แกนเดียว 0–100% · แท่ง = สัดส่วนของอาการ · เส้น = สะสม
+const W = 690, H = 350, L = 48, R = 14, T = 14, B = 58, PW = W - L - R, PH = H - T - B, n = P.length, bw = PW / n, barW = Math.min(56, bw - 22);
+const y = v => T + PH - v / 100 * PH, xc = i => L + bw * i + bw / 2;
+function barPath(i) {
+  const h = P[i][1] / TOT * 100, x0 = xc(i) - barW / 2, y0 = y(h), yb = y(0), r = 4;
+  return `M${x0},${yb}V${y0 + r}Q${x0},${y0} ${x0 + r},${y0}H${x0 + barW - r}Q${x0 + barW},${y0} ${x0 + barW},${y0 + r}V${yb}Z`;
+}
+function svg() {
+  const grid = [0, 25, 50, 75, 100].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--vo-line)" stroke-width="1"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="var(--vo-text-2)">${v}%</text>`).join('');
+  const bars = P.map((p, i) => `<path class="bar" data-i="${i}" d="${barPath(i)}" fill="var(--c-bar)"/>`).join('');
+  const xl = P.map((p, i) => `<text x="${xc(i)}" y="${H - B + 20}" text-anchor="middle" font-size="12.5" fill="var(--vo-text)">${p[0]}</text><text x="${xc(i)}" y="${H - B + 38}" text-anchor="middle" font-size="12" fill="var(--vo-text-2)">${p[1]} ครั้ง</text>`).join('');
+  const d = CUM.map((c, i) => `${i ? 'L' : 'M'}${xc(i)},${y(c)}`).join('');
+  const dots = CUM.map((c, i) => `<circle class="dot" cx="${xc(i)}" cy="${y(c)}" r="4.5" fill="var(--c-cum)" stroke="var(--vo-surface)" stroke-width="2"/>`).join('');
+  const lab = `<text class="cl" x="${xc(3) + 10}" y="${y(CUM[3]) + 18}" font-size="13" font-weight="600" fill="var(--vo-text)">4 อาการแรก ${CUM[3].toFixed(0)}%</text>`;
+  const ref = `<g class="ref"><line x1="${L}" x2="${W - R}" y1="${y(80)}" y2="${y(80)}" stroke="var(--vo-text-2)" stroke-width="1" stroke-dasharray="4 4"/><text x="${W - R}" y="${y(80) - 6}" text-anchor="end" font-size="12" fill="var(--vo-text-2)">80%</text></g>`;
+  const hits = P.map((p, i) => `<rect class="hit" data-i="${i}" x="${L + bw * i}" y="${T}" width="${bw}" height="${PH}"/>`).join('');
+  return `<svg id="par" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="พาเรโตอาการที่เจอบ่อย">${grid}${ref}${bars}<path class="cum" pathLength="1" d="${d}" fill="none" stroke="var(--c-cum)" stroke-width="2" stroke-linejoin="round"/>${dots}${lab}${xl}${hits}</svg>`;
+}
+function tip(i) {
+  return `<b>${P[i][0]}</b><br>${P[i][1]} ครั้ง · ${(P[i][1] / TOT * 100).toFixed(0)}% ของงานซ่อม<br><span style="color:var(--vo-text-2)">สะสม ${CUM[i].toFixed(0)}%</span>`;
+}
+LIVE.run({
+  build(st) {
+    const kpi = KPI.map(k => `<div class="vo-card kpi block min-w-0 p-4"><div class="text-base text-text-2">${k[0]}</div><div class="mt-1 v text-text"><span id="${k[1]}">0</span><span class="ml-1.5 text-lg text-text-2">${k[4]}</span></div><div class="mt-1 text-base text-text-2">${k[5]}</div></div>`).join('');
+    const mrows = M.map((m, i) => `<tr class="${V.TR} mr" id="m${i}" hidden>${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td(`<span class="block truncate"><span class="tabular-nums">${m[0]}</span> · ${m[1]}</span><span class="block truncate text-xs text-text-2">${m[2]}</span>`)}${V.td(`<span class="tabular-nums">${m[3]}</span>`, { r: 1 })}${V.td(`<div class="bars-cell"><span data-w="${m[3] / 7 * 100}"></span></div>`)}${V.td(`<span class="tabular-nums">${m[4].toFixed(1)}</span>`, { r: 1 })}${V.td(`<span class="tabular-nums">${m[6]}</span>`, { r: 1 })}</tr>`).join('');
+    st.querySelector('#body').innerHTML = `<div class="grid gap-4" style="grid-template-columns:repeat(4,minmax(0,1fr))">${kpi}</div>
+      <div class="grid gap-4" style="grid-template-columns:minmax(0,724px) minmax(0,1fr)">
+        <section class="vo-card p-4" style="position:relative"><div class="mb-1 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">อาการที่เจอบ่อย · 3 เดือนล่าสุด (${TOT} ครั้ง)</h2>
+          <div class="flex items-center gap-4"><span class="lg"><i style="width:12px;height:12px;border-radius:3px;background:var(--c-bar)"></i>สัดส่วนของอาการ</span><span class="lg"><i style="width:18px;height:2px;background:var(--c-cum)"></i>สะสม %</span></div></div>
+          ${svg()}<div class="tip" id="tip" hidden></div></section>
+        <section class="vo-card" style="padding:0"><div class="flex items-center justify-between gap-3 px-4 pt-4 pb-3"><h2 class="text-base font-medium text-text">เครื่องที่ซ่อมบ่อยสุด</h2><span class="text-sm text-text-2">3 เดือนล่าสุด</span></div>
+          ${V.table(V.th('#', { w: 40 }) + V.th('เครื่อง') + V.th('ครั้ง', { w: 58, r: 1 }) + V.th('', { w: 80 }) + V.th('หยุด (ชม.)', { w: 92, r: 1 }) + V.th('ค่าซ่อม', { w: 84, r: 1 }), mrows)}</section>
+      </div>`;
+    // hover จริงสำหรับคนที่เปิดเอง
+    st.addEventListener('mousemove', e => { const h = e.target.closest && e.target.closest('#par .hit'); h ? showTip(st, +h.dataset.i) : (e.target.closest && !e.target.closest('#par') && hideTip()); });
+  },
+  steps: [
+    { cap: 'แดชบอร์ดซ่อมบำรุง ภาพรวม 3 เดือนล่าสุด', run: async a => {} },
+    { cap: 'MTBF และ MTTR คำนวณจากใบงานซ่อมจริงทุกใบ', run: async a => {
+      await Promise.all([a.count('#k0', 412, { dur: 1100 }), a.count('#k1', 2.8, { dec: 1, dur: 1100 })]);
+    } },
+    { cap: 'เครื่องพร้อมใช้ 98.6% และ PM ตรงเวลา 92.3%', run: async a => {
+      await Promise.all([a.count('#k2', 98.6, { dec: 1, dur: 1100 }), a.count('#k3', 92.3, { dec: 1, dur: 1100 })]);
+    } },
+    { cap: 'อาการที่เจอบ่อย เรียงจากมากไปน้อย', run: async a => {
+      for (const b of a.$('#par').querySelectorAll('.bar')) { b.classList.add('on'); await a.w(140); }
+      await a.w(500);
+    } },
+    { cap: 'เส้นสะสม: 4 อาการแรกคือ 79% ของงานซ่อมทั้งหมด', run: async a => {
+      a.cls('#par .cum', 'on'); a.cls('#par .ref', 'on');
+      for (const d of a.$('#par').querySelectorAll('.dot')) { d.classList.add('on'); await a.w(170); }
+      a.cls('#par .cl', 'on'); await a.w(300);
+    } },
+    { cap: 'ชี้ที่แท่งเพื่อดูตัวเลข — น้ำมันรั่ว 18 ครั้ง', run: async a => {
+      await a.move('#par .bar[data-i="0"]', 0, 10); showTip(null, 0);
+      await a.w(400);
+    } },
+    { cap: 'เครื่องที่ซ่อมบ่อยสุด — IMM-06 นำ 7 ครั้ง', run: async a => {
+      hideTip(document); a.off();
+      for (const r of document.querySelectorAll('.mr')) { a.show(r); const s = r.querySelector('.bars-cell span'); s.style.width = s.dataset.w + '%'; await a.w(160); }
+    } },
+    { cap: 'กดที่ IMM-06 เพื่อเปิดประวัติซ่อมต่อ', run: async a => {
+      await a.click('#m0', el => a.cls(el, 'row-hl'));
+    } },
+  ]
+});
+function showTip(root, i) {
+  const t = document.getElementById('tip'), sec = t.parentElement, par = document.getElementById('par');
+  t.innerHTML = tip(i); t.hidden = false;
+  document.querySelectorAll('#par .bar').forEach((b, k) => b.classList.toggle('dim', k !== i));
+  const pr = par.getBoundingClientRect(), sr = sec.getBoundingClientRect(), s = pr.width / W, ox = (pr.left - sr.left) / s, oy = (pr.top - sr.top) / s;
+  t.style.left = (ox + xc(i) + barW / 2 + 10) + 'px'; t.style.top = (oy + y(P[i][1] / TOT * 100) - 96) + 'px';
+}
+function hideTip() { const t = document.getElementById('tip'); if (t) t.hidden = true; document.querySelectorAll('#par .bar').forEach(b => b.classList.remove('dim')); }
+</script>
+</body>
+</html>

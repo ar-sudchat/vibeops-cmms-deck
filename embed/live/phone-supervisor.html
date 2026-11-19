@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>หัวหน้าทีมซ่อม · มือถือ</title>
+<link rel="stylesheet" href="phone-kit.css">
+<link rel="stylesheet" href="phone-run.css">
+</head>
+<body>
+<script src="phone-kit.js"></script>
+<script src="phone-run.js"></script>
+<script>
+/* หัวหน้าทีม (วิชัย ทองดี) — คัดกรอง RQ-2026-0217 → มอบ WO-2026-0103 ให้อนุชา → ตรวจรับ
+   สถานะ 0–4 = คัดกรองและมอบงาน · 5–6 = ตรวจรับ */
+const S = id => document.querySelector('.screen[data-sid="' + id + '"]');
+const selRow = (el, on) => {
+  el.classList.toggle('sel', on);
+  const c = el.querySelector('.chev');
+  if (c) { c.style.color = on ? 'var(--primary)' : ''; c.innerHTML = PK.I(on ? 'check' : 'chev'); }
+};
+PR.run({
+  role: 'หัวหน้าทีม',
+  steps: [
+    { cap: '<b>คิวคัดกรองบนมือถือ</b><small>เครื่องหยุดขึ้นก่อน แล้วเรียงตามเวลารอ</small>',
+      run: async a => { await a.go('s1'); a.find('@IMM-06').classList.remove('sel'); } },
+    { cap: '<b>เปิดเรื่อง IMM-06</b><small>รูป เสียง ผลกระทบ ประวัติเครื่อง อยู่ในจอเดียว</small>',
+      run: async a => {
+        S('s2').querySelectorAll('.opts .opt').forEach(o => o.setAttribute('aria-pressed', 'false'));
+        await a.tap('@IMM-06', { after: 80 }); await a.go('s2');
+      } },
+    { cap: '<b>ความด่วนที่ระบบเสนอ ปรับได้</b><small>แล้วอนุมัติเป็นใบงาน</small>',
+      run: async a => {
+        await a.tap('@ด่วนระบบเสนอ');
+        await a.tap('@อนุมัติ สร้างใบงาน');
+      } },
+    { cap: '<b>เลือกช่างจากภาระงานจริง</b><small>เห็นว่าใครว่าง ถนัดอะไร วันนี้งานเต็มแค่ไหน</small>',
+      run: async a => {
+        const s3 = S('s3');
+        s3.querySelectorAll('.bar i').forEach(b => { b.dataset.w = b.style.width; b.style.width = '0%'; });
+        selRow(a.find('@อนุชา แก้วมณี', s3), false);
+        await a.tap('.act .btn.pri', { after: 80 }); await a.go('s3');
+        await a.wait(150);
+        s3.querySelectorAll('.bar i').forEach(b => b.style.width = b.dataset.w);
+        await a.wait(900);
+      } },
+    { cap: '<b>มอบงานให้อนุชา</b><small>ช่างได้รับบนมือถือทันที ไม่ต้องโทรตาม</small>',
+      run: async a => {
+        const el = await a.tap('@อนุชา แก้วมณี'); selRow(el, true);
+        await a.tap('.act .btn.pri');
+        await a.toast('มอบงาน WO-2026-0103 แล้ว', 'อนุชา แก้วมณี ได้รับแจ้งเตือน · ต้องเสร็จ 15:00');
+      } },
+    { cap: '<b>ช่างส่งปิดงาน หัวหน้าตรวจรับ</b><small>เห็นเวลา อะไหล่ รูปก่อนและหลังซ่อม</small>',
+      run: async a => {
+        const s4 = S('s4');
+        s4.querySelectorAll('.kv .v')[1].innerHTML = 'ผ่าน 5 · <span style="color:var(--bad)">เกินเกณฑ์ 1</span>';
+        const n = s4.querySelector('.note.warn'); n.id = 'fu4'; n.classList.add('pr-hide');
+        a.clearToast();
+        await a.go('s4');
+        await a.pop('#fu4');
+      } },
+    { cap: '<b>ตรวจรับ ปิดงาน</b><small>ต้นทุนงานล็อกตอนนี้ แก้ย้อนหลังไม่ได้</small>',
+      run: async a => {
+        await a.tap('.act .btn.pri');
+        await a.toast('ตรวจรับ WO-2026-0103 แล้ว', 'ต้นทุนล็อก 2,940 บาท + ค่าแรง · แจ้งผู้แจ้งให้ประเมิน');
+      } },
+  ]
+});
+</script>
+</body>
+</html>

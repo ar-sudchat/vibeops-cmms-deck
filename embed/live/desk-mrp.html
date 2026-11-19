@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<title>แผนความต้องการอะไหล่</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+/* แถบบนของโปรแกรมจริง (ยกจาก @media min-width:1024px ของ vibeops-app.css ให้แสดงทุกขนาด iframe) */
+
+  [data-desktop-nav] {
+    background: var(--vo-brand-gradient, linear-gradient(100deg,#00bec4 0%,#278ed2 36%,#505bdb 66%,#8125e9 100%));
+    box-shadow: 0 3px 12px #24345b12;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+  }
+  [data-desktop-nav] .floor-brand-tier, [data-desktop-nav] .floor-header-inner, [data-desktop-nav] .floor-nav-tier, [data-desktop-nav] .floor-nav-inner {
+    display: contents;
+  }
+  [data-desktop-nav] .floor-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child svg {
+    width: 23px;
+    height: 23px;
+  }
+  [data-desktop-nav] .floor-brand a span:first-child {
+    font-size: 21px;
+  }
+  [data-desktop-nav] .floor-brand a span + span, [data-desktop-nav] .floor-company-divider {
+    display: none;
+  }
+  [data-desktop-nav] .floor-company {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  [data-desktop-nav] .floor-account {
+    grid-column: 3;
+    grid-row: 1;
+    gap: 8px;
+  }
+  [data-desktop-nav] .floor-account > .w-px {
+    display: none;
+  }
+  [data-desktop-nav] .floor-profile > span {
+    max-width: 110px;
+    font-size: 14px;
+  }
+  [data-desktop-nav] .floor-profile > div {
+    width: 32px;
+    height: 32px;
+  }
+  [data-desktop-nav] .floor-header-inner a span {
+    font-weight: 500;
+  }
+  [data-desktop-nav] nav > a,[data-desktop-nav] nav > div > button {
+    position: relative;
+    background: transparent;
+  }
+  [data-desktop-nav] nav [aria-current="page"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] nav [aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    right: 30%;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: #fff;
+  }
+  [data-desktop-nav] nav > a:hover,[data-desktop-nav] nav > div > button:hover,[data-desktop-nav] nav button[aria-expanded="true"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] .floor-nav-tier {
+    height: auto;
+    padding: 0 0 10px;
+    margin: 0;
+  }
+  [data-desktop-nav] nav {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+    gap: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div > button {
+    width: 100%;
+    height: 52px;
+    padding: 0 14px;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+  }
+  [data-desktop-nav] nav > a:focus-visible,[data-desktop-nav] nav > div > button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  [data-desktop-nav] nav > a > svg, [data-desktop-nav] nav > div > button > svg:first-child {
+    color: #fff;
+    width: 21px;
+    height: 21px;
+  }
+  [data-desktop-nav] nav > div > button > svg:last-child {
+    width: 12px;
+    color: #ffffffb3;
+  }
+  [data-desktop-nav] nav > div:nth-last-child(-n+2) > .absolute {
+    left: auto;
+    right: 0;
+  }
+
+
+html,body{margin:0;height:100%;overflow:hidden;background:#fff}
+body{font-family:var(--vo-font,"Sarabun",Tahoma,sans-serif);color:var(--vo-text)}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);display:flex;flex-direction:column}
+.stage [data-desktop-nav]{flex:none}
+.pg{flex:1;min-height:0;overflow:hidden;padding:20px 32px 0}
+.cur{position:absolute;z-index:99;width:28px;height:28px;margin:-3px 0 0 -5px;pointer-events:none;transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1),opacity .25s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.rip{position:absolute;z-index:98;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(124,58,237,.32);animation:lvRip .6s ease-out forwards;pointer-events:none}
+@keyframes lvRip{from{transform:scale(.2);opacity:1}to{transform:scale(1.7);opacity:0}}
+.pressed{transform:scale(.97)}
+.focus{border-color:var(--vo-focus,var(--vo-primary))!important;box-shadow:0 0 0 3px var(--vo-primary-soft)}
+.fx-in{animation:lvIn .45s ease-out both}
+@keyframes lvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fx-pop{animation:lvPop .4s ease-out}
+@keyframes lvPop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.fx-flash{animation:lvFlash 1s ease-out}
+@keyframes lvFlash{0%{background:var(--vo-primary-soft)}100%{background:transparent}}
+.nofx,.nofx *{transition:none!important;animation:none!important}
+[hidden]{display:none!important}
+.toast{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:15px;font-weight:600;background:var(--vo-ok-bg);color:var(--vo-ok)}
+.row-hl>td{background:var(--vo-primary-soft)!important;transition:background .3s}
+.cell-bad{background:var(--vo-bad-bg)!important;color:var(--vo-bad)!important;font-weight:700;transition:background .4s,color .4s}
+.cell-plan{background:var(--vo-ok-bg)!important;color:var(--vo-ok)!important;font-weight:700}
+.vo-tabs-pill{display:inline-flex;gap:4px;padding:4px;border-radius:10px;background:var(--vo-surface-2);align-self:flex-start}
+.vo-tabs-pill button{padding:6px 14px;border-radius:8px;font-size:15px;color:var(--vo-text-2)}
+.vo-tabs-pill button[aria-selected=true]{background:var(--vo-surface);color:var(--vo-text);font-weight:600;box-shadow:0 1px 2px #0001}
+</style>
+<script>
+/* ชิ้นส่วนหน้าตา VibeOps (คลาสคัดจาก dom/*.html ของโปรแกรมจริง) */
+window.VO = {
+  TH: 'px-3 py-3 text-sm font-semibold text-on-primary select-none border-b border-primary bg-primary-bg relative group after:absolute after:right-0 after:top-3 after:bottom-3 after:w-px after:bg-line last:after:hidden',
+  TD: 'px-3 text-sm text-text transition-colors whitespace-nowrap border-b border-line py-2.5',
+  TR: 'group transition-all duration-200 outline-none bg-surface hover:bg-surface-2',
+  BTN: 'vo-button inline-flex items-center justify-center rounded-control font-medium select-none whitespace-nowrap shrink-0 transition-colors duration-150 min-h-tap px-4 text-base gap-2',
+  INPUT: 'w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong transition-colors h-tap px-3',
+  th(t, o = {}) { return `<th class="${this.TH}${o.r ? ' text-right' : ''}" style="${o.w ? 'width:' + o.w + 'px' : ''}"><div class="flex items-center justify-between space-x-2 w-full group"><div class="flex items-center gap-1 flex-1 min-w-0 select-none${o.r ? ' justify-end' : ''}"><span class="font-semibold text-inherit leading-tight whitespace-nowrap">${t}</span></div></div></th>`; },
+  td(h, o = {}) { return `<td class="${this.TD}${o.r ? ' text-right' : ''}${o.c ? ' ' + o.c : ''}"${o.a || ''}>${h}</td>`; },
+  table(ths, rows, tb = '') { return `<div class="bg-surface flex flex-col"><div class="overflow-x-auto flex-1 min-h-0 min-w-0 max-w-full"><table class="vo-super-table w-full text-left border-collapse table-fixed"><thead class="sticky top-0 z-10"><tr>${ths}</tr></thead><tbody class="divide-y divide-line"${tb}>${rows}</tbody></table></div></div>`; },
+  badge(kind, t) {
+    const m = { ok: ['bg-ok-bg text-ok', 'bg-ok'], bad: ['bg-bad-bg text-bad', 'bg-bad'], warn: ['bg-warn-bg text-warn', 'bg-warn'], info: ['bg-info-bg text-info', 'bg-info'], mute: ['bg-surface-2 text-text-2', 'bg-text-2'] }[kind];
+    return `<span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-semibold whitespace-nowrap ${m[0]}"><span aria-hidden="true" class="size-2 shrink-0 rounded-full ${m[1]}"></span>${t}</span>`;
+  },
+  btn(t, ic, kind = 'p', attr = '') {
+    const c = kind === 'p' ? 'bg-primary-bg text-on-primary hover:bg-primary-hover' : 'bg-surface text-text border border-line-strong hover:bg-surface-2';
+    return `<button type="button" class="${this.BTN} ${c}" ${attr}>${ic ? `<i data-ic="${ic}" data-s="18"></i>` : ''}${t}</button>`;
+  },
+  card(title, body, o = {}) { return `<section class="vo-card ${o.p === false ? '' : 'p-4'}" ${o.a || ''}><div class="mb-3 flex items-center justify-between gap-3 ${o.p === false ? 'px-4 pt-4' : ''}"><h2 class="text-base font-medium text-text">${title}</h2>${o.right || ''}</div>${body}</section>`; },
+  pagehead(back, h1, o = {}) {
+    return `<header class="border-b border-line bg-surface-2 px-6 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex min-w-0 items-center gap-2">${back ? `<button type="button" class="inline-flex min-h-tap items-center gap-1.5 rounded-md px-2 text-base text-text-2"><i data-ic="back" data-s="18"></i> <span>${back}</span></button>` : ''}<div class="min-w-0 pl-1">${o.code ? `<div class="text-sm text-text-2">${o.code}</div>` : ''}<h1 class="text-lg leading-snug text-text"${o.h1a || ''}>${h1}</h1></div>${o.badge ? `<div class="ml-2 shrink-0">${o.badge}</div>` : ''}</div><div class="flex shrink-0 items-center gap-3">${o.right || ''}</div></div></header>`;
+  }
+};
+</script>
+
+<style>
+.cmp td{padding-top:6px;padding-bottom:6px}
+.grid12 th{padding:6px 4px!important;text-align:center}
+.grid12 th .wk{display:block;font-size:13px;font-weight:600}.grid12 th .dt{display:block;font-size:11.5px;font-weight:500;opacity:.85}
+.grid12 td{padding:5px 4px!important;text-align:center;font-variant-numeric:tabular-nums;font-size:15px}
+.grid12 td:first-child{text-align:left;padding-left:12px!important;color:var(--vo-text-2);font-size:14px}
+.grid12 tr.sum td{font-weight:600;color:var(--vo-text)}
+.grid12 tr.sum td:first-child{color:var(--vo-text)}
+.cell-by{background:var(--vo-warn-bg)!important;color:var(--vo-warn)!important;font-weight:700;font-size:13px!important}
+.fld{display:flex;flex-direction:column}.fld label{font-size:14px;font-weight:500;color:var(--vo-text-2);margin-bottom:5px}
+.fake{display:flex;align-items:center;height:40px;border:1px solid var(--vo-line-strong);border-radius:var(--vo-radius-control,8px);padding:0 12px;background:var(--vo-surface);font-size:16px;color:var(--vo-text);white-space:nowrap;overflow:hidden}
+#body>*{flex:none}
+.sm-btn{min-height:34px!important;padding:0 12px!important;font-size:14px!important}
+</style>
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<div class="stage">
+<div data-desktop-nav="true" class="flex top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ วรวุฒิ เจริญผล" title="วรวุฒิ เจริญผล" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">วรวุฒิ เจริญผล</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ว</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<div class="flex min-h-0 flex-1 flex-col" style="padding:20px 32px 0">
+  <div id="hd"></div>
+  <div class="flex flex-col gap-3 pt-3" id="body"></div>
+</div>
+</div>
+<script src="live.js"></script>
+<script>
+const V = VO;
+const WK = ['23–29 พ.ย.', '30 พ.ย.–6 ธ.ค.', '7–13 ธ.ค.', '14–20 ธ.ค.', '21–27 ธ.ค.', '28 ธ.ค.–3 ม.ค.', '4–10 ม.ค.', '11–17 ม.ค.', '18–24 ม.ค.', '25–31 ม.ค.', '1–7 ก.พ.', '8–14 ก.พ.'];
+const PM = [0, 1, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0], CM = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0];
+const G = PM.map((v, i) => v + CM[i]), PO = [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], PL = [0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0];
+const SAFE = 2;
+const proj = add => { let b = 3; return G.map((g, i) => (b = b + PO[i] + (add ? PL[i] : 0) - g)); };
+const BEFORE = proj(0), AFTER = proj(1);
+const PARTS = [
+  ['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 4, 1, 2, 2, 21],
+  ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 0, 0, 0, 1, 14, 'สัปดาห์ 2', '2 ชิ้น', '23 พ.ย. 69', '2,300.00'],
+  ['P-HYD-FILTER-IMM', 'ไส้กรองน้ำมันไฮดรอลิก IMM-06', 3, 1, 0, 2, 18, 'สัปดาห์ 9', '2 ชิ้น', '28 ธ.ค. 69', '3,960.00'],
+  ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject (ถัง 20 ลิตร)', 2, 0, 0, 1, 10],
+];
+const ROWS = [['pm', 'PM ตามแผน (5 เครื่อง)'], ['cm', 'งานซ่อม CM พยากรณ์'], ['g', 'ความต้องการรวม', 'sum'], ['po', 'รับเข้าตาม PO ค้างรับ'], ['b', 'คงเหลือ (ก่อนสั่ง)', 'sum'], ['pl', 'สั่งตามแผน (ของเข้า)'], ['by', 'วันต้องสั่ง'], ['af', 'คงเหลือหลังสั่ง', 'sum']];
+const cellsOf = id => `#g-${id} td.c`;
+
+LIVE.run({
+  build(st) {
+    st.querySelector('#hd').innerHTML = V.pagehead('', 'แผนความต้องการอะไหล่', { code: 'ซ่อมบำรุง · ล่วงหน้า 12 สัปดาห์ · ข้อมูล ณ 19 พ.ย. 69', right: `<span id="tst"></span>` + V.btn('ตั้งค่าการคำนวณ', 'list', 's') + V.btn('คำนวณใหม่', 'clock', 'p') });
+    const ths = V.th('#', { w: 44 }) + V.th('อะไหล่/วัสดุ') + V.th('คงเหลือ', { w: 82, r: 1 }) + V.th('จองแล้ว', { w: 82, r: 1 }) + V.th('ค้างรับ', { w: 76, r: 1 }) + V.th('ขั้นต่ำ', { w: 70, r: 1 }) + V.th('รอของ (วัน)', { w: 100, r: 1 }) + V.th('ต่ำกว่าขั้นต่ำ', { w: 118 }) + V.th('แนะนำสั่ง', { w: 96, r: 1 }) + V.th('สั่งภายใน', { w: 118 }) + V.th('มูลค่า (บาท)', { w: 120, r: 1 }) + V.th('', { w: 150 });
+    const rows = PARTS.map((p, i) => {
+      const need = !!p[7] || i === 0;
+      const act = i === 0 ? `<span id="act0"></span>` : need ? V.btn('ขอซื้อ', '', 's', 'style="min-height:32px;padding:0 12px;font-size:14px"') : V.badge('ok', 'พอ');
+      return `<tr class="${V.TR}" id="p${i}">${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td(`<span class="block truncate">${p[1]}</span>`)}${[2, 3, 4, 5, 6].map(k => V.td(`<span class="tabular-nums">${p[k]}</span>`, { r: 1 })).join('')}
+        ${V.td(`<span class="lo">${p[7] || '—'}</span>`)}${V.td(`<span class="tabular-nums q">${p[8] || '—'}</span>`, { r: 1 })}${V.td(`<span class="tabular-nums by${p[9] ? ' font-semibold text-warn' : ''}">${p[9] || '—'}</span>`)}${V.td(`<span class="tabular-nums val">${p[10] || '—'}</span>`, { r: 1 })}${V.td(act)}</tr>`;
+    }).join('');
+    const gth = `<th class="${V.TH}" style="width:200px;text-align:left!important"><span class="wk">สัปดาห์</span><span class="dt">23 พ.ย. 69 – 14 ก.พ. 70</span></th>` + WK.map((w, i) => `<th class="${V.TH}"><span class="wk">${i + 1}</span><span class="dt">${w}</span></th>`).join('');
+    const grows = ROWS.map(r => `<tr class="bg-surface ${r[2] || ''}" id="g-${r[0]}"><td class="border-b border-line">${r[1]}</td>${WK.map(() => `<td class="c border-b border-line"></td>`).join('')}</tr>`).join('');
+    st.querySelector('#body').innerHTML = `
+      <div class="vo-card cmp" style="padding:0"><div class="flex items-center justify-between px-3 py-1.5 border-b border-line"><span class="text-xs text-muted">4 แถว · ต้องสั่ง 3 รายการ</span><span class="text-xs text-muted">ขั้นต่ำ = safety stock · รอของ = ผู้ขาย + ภายใน</span></div>${V.table(ths, rows)}</div>
+      <section class="vo-card" id="gridCard" style="padding:0"><div class="flex items-center justify-between gap-3 px-4 py-2.5"><h2 class="text-base font-medium text-text" id="gTitle">เลือกอะไหล่เพื่อดูรายสัปดาห์</h2><span class="text-sm text-text-2" id="gMeta"></span></div>
+        <div class="grid12">${V.table(gth, grows)}</div></section>
+      <section class="vo-card" id="pr" hidden style="padding:0">
+        <header class="border-b border-line bg-surface-2 px-5 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex items-center gap-3"><h1 class="text-lg leading-snug text-text">ใบขอซื้อ</h1><span class="tabular-nums text-base text-text-2">PR-2026-0006</span><span id="prSt">${V.badge('warn', 'ร่าง')}</span></div><div class="flex items-center gap-3"><span id="tst2"></span>${V.btn('บันทึกร่าง', '', 's')}${V.btn('ส่งอนุมัติ', 'send', 'p', 'id="bSend"')}</div></div></header>
+        <div class="grid gap-4 px-5 pt-3 pb-3" style="grid-template-columns:2fr 1fr 1fr 1.4fr 1.4fr">
+          <div class="fld"><label>ผู้ขาย</label><span class="fake" data-f="หจก. ไทยแอร์คอมพ์ ซัพพลาย"></span></div>
+          <div class="fld"><label>วันที่</label><span class="fake" data-f="19-11-2026"></span></div>
+          <div class="fld"><label>วันที่ต้องการ</label><span class="fake" data-f="28-12-2026"></span></div>
+          <div class="fld"><label>เลขอ้างอิง</label><span class="fake" data-f="MRP · PM-CMP-GA37"></span></div>
+          <div class="fld"><label>ผู้บันทึก</label><span class="fake" data-f="วรวุฒิ เจริญผล"></span></div></div>
+        ${V.table(V.th('#', { w: 48 }) + V.th('รหัส', { w: 200 }) + V.th('รายการ') + V.th('จำนวน', { w: 90, r: 1 }) + V.th('หน่วย', { w: 80 }) + V.th('ราคา/หน่วย', { w: 120, r: 1 }) + V.th('วันที่ต้องการ', { w: 140 }) + V.th('จำนวนเงิน', { w: 140, r: 1 }) + V.th('ที่มา', { w: 190 }),
+          [['28-12-2026', 'สัปดาห์ 6 · สั่งภายใน 7 ธ.ค.'], ['11-01-2027', 'สัปดาห์ 8 · สั่งภายใน 21 ธ.ค.']].map((l, i) => `<tr class="${V.TR} pl" hidden>${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td('<span class="tabular-nums">P-AIR-FILTER-GA37</span>')}${V.td('ไส้กรองอากาศคอมเพรสเซอร์ GA37')}${V.td('<span class="tabular-nums">2</span>', { r: 1 })}${V.td('ชิ้น')}${V.td('<span class="tabular-nums">1,850.00</span>', { r: 1 })}${V.td(`<span class="tabular-nums">${l[0]}</span>`)}${V.td('<span class="tabular-nums">3,700.00</span>', { r: 1 })}${V.td(`<span class="text-text-2">${l[1]}</span>`)}</tr>`).join(''))}
+        <div class="flex items-center justify-end gap-4 px-5 py-3"><span class="text-base text-text-2">ยอดรวม (บาท)</span><span class="text-2xl font-medium tabular-nums text-text" id="prTot">0.00</span></div>
+      </section>`;
+  },
+  steps: [
+    { cap: 'แผนความต้องการอะไหล่ ดูล่วงหน้า 12 สัปดาห์ทุกรายการ', run: async a => {} },
+    { cap: 'เลือกไส้กรองอากาศ GA37 — รวมรอบ PM ของคอมเพรสเซอร์ 5 เครื่อง กับงานซ่อมที่คาดว่าจะเกิด', run: async a => {
+      await a.click('#p0', el => a.cls(el, 'row-hl'));
+      a.text('#gTitle', 'P-AIR-FILTER-GA37 · ไส้กรองอากาศคอมเพรสเซอร์ GA37'); a.set('#gMeta', 'คงเหลือ 4 − จอง 1 = <b class="text-text">3</b> · ขั้นต่ำ 2 · รอของ 21 วัน · สั่งทีละ 2 · 1,850 บาท/ชิ้น');
+      a.off();
+      const pm = a.$(cellsOf('pm')).parentElement.querySelectorAll('td.c'), cm = a.$(cellsOf('cm')).parentElement.querySelectorAll('td.c');
+      for (let i = 0; i < 12; i++) { pm[i].textContent = PM[i] || '·'; cm[i].textContent = CM[i] || '·'; a.show([pm[i], cm[i]]); await a.w(60); }
+    } },
+    { cap: 'รวมเป็นความต้องการต่อสัปดาห์ และนับของที่สั่งไว้แล้วซึ่งจะเข้าสัปดาห์ 3', run: async a => {
+      const g = a.$('#g-g').querySelectorAll('td.c'), po = a.$('#g-po').querySelectorAll('td.c');
+      for (let i = 0; i < 12; i++) { g[i].textContent = G[i] || '·'; po[i].textContent = PO[i] ? '+' + PO[i] : ''; a.show([g[i], po[i]]); await a.w(60); }
+      a.cls(po[2], 'cell-plan');
+    } },
+    { cap: 'คงเหลือรายสัปดาห์ — ช่องแดงคือต่ำกว่าขั้นต่ำ 2 ชิ้น ของหมดจริงในสัปดาห์ 8', run: async a => {
+      const b = a.$('#g-b').querySelectorAll('td.c');
+      for (let i = 0; i < 12; i++) { b[i].textContent = BEFORE[i]; a.show(b[i], 'fx-pop'); if (BEFORE[i] < SAFE) a.cls(b[i], 'cell-bad'); await a.w(150); }
+    } },
+    { cap: 'ระบบแนะนำสั่ง 2 + 2 ชิ้น ต้องสั่งภายใน 7 ธ.ค. และ 21 ธ.ค. (รอของ 21 วัน)', run: async a => {
+      const pl = a.$('#g-pl').querySelectorAll('td.c'), by = a.$('#g-by').querySelectorAll('td.c'), af = a.$('#g-af').querySelectorAll('td.c');
+      for (const [i, d] of [[5, '7 ธ.ค.'], [7, '21 ธ.ค.']]) { pl[i].textContent = '+2'; a.cls(pl[i], 'cell-plan'); a.show(pl[i], 'fx-pop'); await a.w(250); by[i].textContent = 'สั่ง ' + d; a.cls(by[i], 'cell-by'); a.show(by[i], 'fx-pop'); await a.w(350); }
+      for (let i = 0; i < 12; i++) { af[i].textContent = AFTER[i]; a.show(af[i]); await a.w(60); }
+    } },
+    { cap: 'สรุปในรายการ: สั่ง 4 ชิ้น ภายใน 7 ธ.ค. มูลค่า 7,400 บาท', run: async a => {
+      a.text('#p0 .lo', 'สัปดาห์ 6'); await a.w(150); a.text('#p0 .q', '4 ชิ้น'); await a.w(150);
+      a.text('#p0 .by', '7 ธ.ค. 69'); a.cls('#p0 .by', 'font-semibold text-warn'); await a.w(150);
+      await a.count('#p0 .val', 7400, { dec: 2, dur: 800 });
+      a.set('#act0', V.btn('ขอซื้อ', 'cart', 'p', 'id="bPr" style="min-height:32px;padding:0 12px;font-size:14px"').replace('<i data-ic="cart" data-s="18"></i>', a.ic('cart', 16))); a.show('#bPr', 'fx-pop');
+    } },
+    { cap: 'กด ขอซื้อ — เปิดใบขอซื้อ VibeOps ที่กรอกจากแผนให้ครบ', run: async a => {
+      await a.click('#bPr'); a.hide('#gridCard'); a.show('#pr');
+      for (const f of a.$('#pr').querySelectorAll('[data-f]')) { await a.type(f, f.dataset.f, 14); }
+      await a.stagger('#pr tr.pl', 220);
+      await a.count('#prTot', 7400, { dec: 2, dur: 800 });
+    } },
+    { cap: 'ส่งอนุมัติ — ฝ่ายจัดซื้อเห็นในรายการใบขอซื้อทันที', run: async a => {
+      await a.click('#bSend'); a.set('#prSt', V.badge('info', 'รออนุมัติ'));
+      a.toast('#tst2', 'บันทึกแล้ว'); a.set('#act0', V.badge('info', 'PR-2026-0006'));
+    } },
+  ]
+});
+</script>
+</body>
+</html>

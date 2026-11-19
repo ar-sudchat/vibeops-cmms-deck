@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ปิดงานซ่อม WO-2026-0103</title>
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#15151b}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);font-family:var(--vo-font,Sarabun,sans-serif);color:var(--vo-text)}
+.stage [data-desktop-nav]{position:relative!important}
+.cur{position:absolute;z-index:200;pointer-events:none;margin:-3px 0 0 -4px;transition:left .6s cubic-bezier(.4,0,.2,1),top .6s cubic-bezier(.4,0,.2,1),opacity .3s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.rip{position:absolute;z-index:199;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:color-mix(in srgb,var(--vo-primary) 40%,transparent);animation:lv-rip .6s ease-out forwards;pointer-events:none}
+@keyframes lv-rip{to{transform:scale(4);opacity:0}}
+.pressed{transform:scale(.97)}
+.fx-in{animation:lv-in .45s ease-out both}@keyframes lv-in{from{opacity:0;transform:translateY(8px)}}
+.fx-pop{animation:lv-pop .45s}@keyframes lv-pop{40%{transform:scale(1.18)}}
+.fx-flash{animation:lv-flash 1s}@keyframes lv-flash{from{background:var(--vo-primary-soft)}}
+.nofx,.nofx *{transition:none!important;animation:none!important}
+.focus{border-color:var(--vo-focus)!important;box-shadow:var(--vo-focus-glow)}
+.lv-hl{background:var(--vo-primary-soft)!important}
+.lv-hl td:first-child{box-shadow:inset 4px 0 0 var(--vo-primary)}
+[hidden]{display:none!important}
+.lv-cap{position:fixed;left:16px;bottom:16px;z-index:300;background:rgba(0,0,0,.75);color:#fff;padding:8px 14px;border-radius:8px;font:16px Sarabun,sans-serif}
+</style>
+
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<!-- หน้าจอจำลอง ข้อมูลตัวอย่าง · มาร์กอัปจาก dom/wo-detail.html (VibeOps CMMS จริง) -->
+<div class="stage" data-vo-theme="erp">
+<div class="flex flex-col bg-[var(--vo-shell-bg,#fff)]" style="height:810px">
+<div data-desktop-nav="true" class="hidden lg:flex sticky top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ วรวุฒิ เจริญผล" title="วรวุฒิ เจริญผล" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">วรวุฒิ เจริญผล</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ว</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<main class="mx-auto w-full flex-1 px-8 pt-6" style="max-width:1920px">
+<div data-screen="wo-detail" class="cmms-detail mx-auto max-w-none flex flex-col">
+<header class="border-b border-line bg-surface-2 px-6 py-2">
+  <div class="flex min-h-tap items-center justify-between gap-3">
+    <div class="flex min-w-0 items-center gap-2">
+      <button type="button" class="inline-flex min-h-tap items-center gap-1.5 rounded-md px-2 text-base text-text-2"><span data-ic="back" data-s="18"></span> <span>ใบงานซ่อม</span></button>
+      <div class="min-w-0 pl-1"><div class="text-sm text-text-2">WO-2026-0103 · ซ่อมฉุกเฉิน/แจ้งซ่อม</div><h1 class="text-lg leading-snug text-text">น้ำมันไฮดรอลิกรั่วที่กระบอกปิดแม่พิมพ์ · IMM-06</h1></div>
+      <div class="ml-2 shrink-0" id="st"></div>
+    </div>
+    <div class="flex shrink-0 items-center gap-2">
+      <button type="button" id="bk" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap bg-surface text-text border border-line-strong min-h-tap px-4 text-base gap-2">ส่งกลับให้ช่างแก้</button>
+      <button type="button" id="cl" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap bg-primary-bg text-on-primary min-h-tap px-4 text-base gap-2">ปิดงาน</button>
+    </div>
+  </div>
+</header>
+<div class="grid gap-4 px-6 py-4" style="grid-template-columns:minmax(0,1fr) 400px">
+<main class="flex min-w-0 flex-col gap-4">
+  <div class="grid gap-4" style="grid-template-columns:1fr 1fr">
+    <section class="vo-card p-4" id="ph">
+      <div class="mb-3 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">รูปก่อน / หลังซ่อม</h2><span class="text-base text-primary">RQ-2026-0217</span></div>
+      <div class="grid grid-cols-2 gap-3">
+        <figure class="m-0"><div class="overflow-hidden rounded-md border border-line bg-surface-2" style="height:150px"><img class="h-full w-full object-cover" src="img/oil-leak.jpg" alt="ก่อนซ่อม"></div><figcaption class="mt-1 text-sm text-text-2">ก่อน · 05:23 · ผู้แจ้งถ่าย</figcaption></figure>
+        <figure class="m-0" id="af">
+          <div class="overflow-hidden rounded-md border border-line bg-surface-2 flex items-center justify-center text-text-2 text-sm" style="height:150px" id="af0"><span class="flex items-center gap-1.5"><span data-ic="camera" data-s="18"></span>รอรูปหลังซ่อม</span></div>
+          <div class="overflow-hidden rounded-md border border-line bg-surface-2" style="height:150px" id="af1" hidden><img class="h-full w-full object-cover" src="img/oil-leak-fixed.jpg" alt="หลังซ่อม"></div>
+          <figcaption class="mt-1 text-sm text-text-2" id="afc">หลัง · —</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="vo-card p-4" id="cd">
+      <div class="mb-3 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">รหัสปิดงาน</h2><span class="text-sm text-text-2">ใช้ทำรายงานเครื่องเสียซ้ำ</span></div>
+      <div class="flex flex-col gap-2.5">
+        <label class="grid items-center gap-3 text-base" style="grid-template-columns:6.5rem 1fr"><span class="text-text-2">อาการ</span><input readonly id="c1" placeholder="เลือกรหัสอาการ" class="w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong h-11 px-3"></label>
+        <label class="grid items-center gap-3 text-base" style="grid-template-columns:6.5rem 1fr"><span class="text-text-2">สาเหตุ</span><input readonly id="c2" placeholder="เลือกสาเหตุ" class="w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong h-11 px-3"></label>
+        <label class="grid items-center gap-3 text-base" style="grid-template-columns:6.5rem 1fr"><span class="text-text-2">วิธีแก้</span><input readonly id="c3" placeholder="เลือกวิธีแก้" class="w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong h-11 px-3"></label>
+      </div>
+    </section>
+  </div>
+  <section class="vo-card p-4" id="pt">
+    <div class="mb-1 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text" id="ptn">อะไหล่ที่ใช้ (0)</h2><span class="text-base text-text-2">ตัดสต็อกตอนจ่าย</span></div>
+    <ul class="divide-y divide-line m-0 p-0 list-none">
+      <li class="flex items-start justify-between gap-3 py-2" id="p1" hidden><span class="min-w-0 flex-1"><span class="block text-base font-medium text-text">ซีลกระบอกไฮดรอลิก 80 มม.</span><span class="num block text-base text-text-2">HYD-SEAL-80 · ช่อง SP-B08 · 2,450 บาท/ชุด</span></span><span class="flex shrink-0 items-center gap-4"><span class="num text-lg text-text">1 ชุด</span><span class="pb"></span></span></li>
+      <li class="flex items-start justify-between gap-3 py-2" id="p2" hidden><span class="min-w-0 flex-1"><span class="block text-base font-medium text-text">น้ำมันไฮดรอลิก ISO VG68</span><span class="num block text-base text-text-2">P-HYD-OIL68 · ช่อง SP-E05 · เติมชดเชยที่รั่ว</span></span><span class="flex shrink-0 items-center gap-4"><span class="num text-lg text-text">20 ลิตร</span><span class="pb"></span></span></li>
+    </ul>
+    <p class="mt-2 mb-0 text-right text-base text-text-2">ค่าอะไหล่ในใบงานนี้ <span class="num text-text font-medium" id="pc">0</span> <span class="text-text">บาท</span></p>
+  </section>
+  <section class="vo-card p-4" id="ac">
+    <div class="mb-2 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">ตรวจรับงาน · หัวหน้า</h2><span id="acs"></span></div>
+    <div class="flex items-center justify-between gap-4">
+      <p class="m-0 text-base text-text-2" id="act">รอ วรวุฒิ เจริญผล ตรวจที่เครื่องว่าเดินได้ ไม่มีรอยรั่ว</p>
+      <button type="button" id="acb" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap bg-primary-bg text-on-primary min-h-11 px-4 text-base gap-2"><span data-ic="check" data-s="18"></span>ตรวจรับ</button>
+    </div>
+  </section>
+</main>
+<aside class="flex min-w-0 flex-col gap-4">
+  <section class="vo-card p-4">
+    <div class="mb-3 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">ความเคลื่อนไหว</h2><span class="text-sm text-text-2">ทีมซ่อมอาคาร A</span></div>
+    <ol class="flex flex-col gap-2 m-0 p-0 list-none" id="tl">
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr"><span class="text-text-2">19 พ.ย. 05:23</span><span class="min-w-0 text-text">แจ้งซ่อม · <span class="text-text-2">สุภาพร ฝ่ายผลิต</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 05:41</span><span class="min-w-0 text-text">อนุมัติ · <span class="text-text-2">วรวุฒิ เจริญผล</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 05:50</span><span class="min-w-0 text-text">มอบหมาย · <span class="text-text-2">อนุชา แก้วมณี (TEC03)</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 06:15</span><span class="min-w-0 text-text">เริ่มซ่อม · <span class="text-text-2">อนุชา แก้วมณี</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 08:40</span><span class="min-w-0 text-text">ซ่อมเสร็จ · <span class="text-text-2">อนุชา แก้วมณี</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 09:05</span><span class="min-w-0 text-text">ตรวจรับ · <span class="text-text-2">วรวุฒิ เจริญผล</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 09:12</span><span class="min-w-0 text-text">ผู้แจ้งให้คะแนน 5 ดาว · <span class="text-text-2">สุภาพร</span></span></li>
+      <li class="grid gap-3 text-base" style="grid-template-columns:7.5rem 1fr" hidden><span class="text-text-2">19 พ.ย. 09:13</span><span class="min-w-0 text-text font-medium">ปิดงาน · <span class="text-text-2 font-normal">วรวุฒิ เจริญผล</span></span></li>
+    </ol>
+  </section>
+  <section class="vo-card p-4" id="rt">
+    <div class="mb-2 flex items-center justify-between gap-3"><h2 class="text-base font-medium text-text">ความเห็นผู้แจ้ง</h2><span class="text-sm text-text-2">สุภาพร ฝ่ายผลิต</span></div>
+    <div class="flex items-center gap-1" id="stars"><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="s">★</span><span class="ml-2 text-base text-text-2" id="rtn">รอให้คะแนน</span></div>
+    <div class="mt-2 w-full bg-surface-2 rounded-control border border-line text-base text-text px-3 py-2" style="min-height:44px" id="rtc"></div>
+  </section>
+  <div id="ts" class="flex justify-end" style="min-height:34px"></div>
+</aside>
+</div>
+</div>
+</main>
+</div>
+</div>
+<style>
+#stars .s{font-size:30px;line-height:1;color:var(--vo-line);transition:color .25s}
+#stars .s.on{color:#F5A524}
+</style>
+<script src="live.js"></script>
+<script>
+const BT = { info: ['bg-info-bg text-info', 'bg-info'], ok: ['bg-ok-bg text-ok', 'bg-ok'], warn: ['bg-warn-bg text-warn', 'bg-warn'] };
+const badge = (t, x) => `<span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-semibold whitespace-nowrap ${BT[t][0]}"><span aria-hidden="true" class="size-2 shrink-0 rounded-full ${BT[t][1]}"></span>${x}</span>`;
+function setB(a, sel, t, x) { a.set(sel, badge(t, x)); if (!a.fast) a.$(sel).firstElementChild.classList.add('fx-pop'); }
+const toast = (a, x) => a.set('#ts', `<span class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-base font-medium bg-ok-bg text-ok${a.fast ? '' : ' fx-in'}">${LIVE.ic('check', 18)}${x}</span>`);
+const tl = i => document.querySelectorAll('#tl li')[i];
+
+LIVE.run({ steps: [
+  { cap: 'ใบงาน WO-2026-0103 ช่างแจ้งว่าซ่อมเสร็จ รอหัวหน้าตรวจรับ',
+    run: async a => { setB(a, '#st', 'warn', 'ซ่อมเสร็จ รอตรวจรับ'); } },
+  { cap: 'ดูเส้นทางของงาน: แจ้ง → อนุมัติ → มอบหมาย → เริ่มซ่อม → ซ่อมเสร็จ',
+    run: async a => { await a.move('#tl', 0, -40); for (const i of [1, 2, 3, 4]) { a.show(tl(i)); await a.w(380); } } },
+  { cap: 'รูปก่อนและหลังซ่อมวางคู่กัน เห็นทันทีว่ารอยรั่วหายแล้ว',
+    run: async a => { await a.move('#af0'); a.hide('#af0'); a.show('#af1'); a.text('#afc', 'หลัง · 08:38 · ช่างอนุชาถ่าย'); await a.w(300); } },
+  { cap: 'ลงรหัสปิดงาน: อาการ สาเหตุ วิธีแก้ — ใช้ทำรายงานเครื่องเสียซ้ำ',
+    run: async a => {
+      await a.click('#c1'); await a.type('#c1', 'รั่ว (น้ำมัน)');
+      await a.click('#c2'); await a.type('#c2', 'ซีลเสื่อม');
+      await a.click('#c3'); await a.type('#c3', 'เปลี่ยนซีล HYD-SEAL-80');
+    } },
+  { cap: 'อะไหล่ที่ใช้จริงผูกกับใบงาน คิดเป็นต้นทุนของเครื่องอัตโนมัติ',
+    run: async a => {
+      await a.move('#ptn');
+      a.text('#ptn', 'อะไหล่ที่ใช้ (2)');
+      for (const p of ['#p1', '#p2']) { a.show(p); setB(a, p + ' .pb', 'ok', 'จ่ายแล้ว'); await a.w(300); }
+      await a.count('#pc', 4300);
+    } },
+  { cap: 'หัวหน้าวรวุฒิตรวจที่เครื่องแล้วกดตรวจรับ',
+    run: async a => {
+      await a.click('#acb', () => {
+        a.hide('#acb'); setB(a, '#acs', 'ok', 'ตรวจรับแล้ว');
+        a.set('#act', '<span class="text-text">วรวุฒิ เจริญผล · 19 พ.ย. 09:05</span> · เครื่องเดินแล้ว ไม่มีรอยรั่ว');
+        a.show(tl(5)); toast(a, 'บันทึกแล้ว');
+      });
+    } },
+  { cap: 'ผู้แจ้งให้คะแนน 5 ดาว พร้อมความเห็น "ใช้ได้แล้ว"',
+    run: async a => {
+      a.set('#ts', '');
+      await a.move('#stars', -60);
+      for (const s of a.$('#stars').querySelectorAll('.s')) { s.classList.add('on'); await a.w(160); }
+      a.text('#rtn', '5 / 5');
+      await a.type('#rtc', 'ใช้ได้แล้ว'); a.show(tl(6));
+    } },
+  { cap: 'กดปิดงาน สถานะเปลี่ยนเป็นปิดงาน ประวัติเครื่อง IMM-06 ครบทุกขั้น',
+    run: async a => {
+      await a.click('#cl', () => {
+        setB(a, '#st', 'ok', 'ปิดงาน'); a.hide('#bk');
+        a.attr('#cl', 'disabled', ''); a.cls('#cl', 'bg-surface-2 text-text-2 border border-line-strong', 'bg-primary-bg text-on-primary'); a.text('#cl', 'ปิดงานแล้ว');
+        a.show(tl(7)); toast(a, 'ปิดงานแล้ว · ส่งผลให้ผู้แจ้ง');
+      });
+      a.off();
+    } },
+] });
+</script>
+</body>
+</html>

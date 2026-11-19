@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ช่างซ่อม · มือถือ</title>
+<link rel="stylesheet" href="phone-kit.css">
+<link rel="stylesheet" href="phone-run.css">
+</head>
+<body>
+<script src="phone-kit.js"></script>
+<script src="phone-run.js"></script>
+<script>
+/* ช่าง (อนุชา แก้วมณี) — WO-2026-0103 IMM-06
+   สถานะ 0–7 = ทำงาน (สไลด์ s3) · 8–9 = ปิดงาน (สไลด์ s4) */
+const CK = [
+  ['ระดับน้ำมันในถัง', 'ผ่าน / ไม่ผ่าน', 'pf'],
+  ['รอยรั่วที่ข้อต่อและท่ออ่อน', 'ผ่าน / ไม่ผ่าน', 'pf'],
+  ['แรงดันระบบขณะฉีด', 'ค่าวัด · เกณฑ์ 140–160 bar', 'm'],
+  ['อุณหภูมิน้ำมัน', 'ค่าวัด · เกณฑ์ 40–55 °C', 'm'],
+  ['เสียงปั๊มขณะเดินเครื่อง', 'ผ่าน / ไม่ผ่าน', 'pf'],
+  ['ตัวบอกไส้กรองอุดตัน', 'ผ่าน / ไม่ผ่าน', 'pf'],
+];
+const EXTRA = [{
+  role: 'tec', id: 'tc', title: 'เช็กลิสต์ระบบไฮดรอลิก', sub: 'WO-2026-0103 · IMM-06 · 6 ข้อ', back: 't3', tab: 0, prog: 0,
+  body: `<p class="sum">ทำแล้ว <b id="ckn">0 จาก 6</b> ข้อ</p>
+  <div class="ckl">${CK.map(([t, s, k], i) => `<div class="it ${k === 'm' ? 'need' : ''}" id="ck${i}" data-t><span class="no">${i + 1}</span><span class="tx"><b>${t}</b><small>${s}</small></span><span class="st">${k === 'm' ? 'กรอกค่า' : 'รอตรวจ'}</span></div>`).join('')}</div>
+  <div class="followup pr-hide" id="fu">${I('alert')}<span><b>เปิดงานซ่อมต่อเนื่อง WO-2026-0104 แล้ว</b><br>แรงดัน 172 bar เกินเกณฑ์ · ส่งให้หัวหน้าคัดกรอง งานนี้ทำต่อได้</span></div>`,
+  act: `<button class="btn sec" id="allpass">${I('check')}ผ่านหมด</button><button class="btn pri">บันทึก ไปมิเตอร์</button>`
+}];
+const S = id => document.querySelector('.screen[data-sid="' + id + '"]');
+const pri = a => a.tap('.act .btn.pri', { after: 120 });
+const ckSet = (a, i, cls, st) => a.set('#ck' + i, el => { el.className = 'it ' + cls; el.querySelector('.st').textContent = st; });
+const ckCount = (a, n) => a.set('#ckn', el => el.textContent = n + ' จาก 6');
+PR.run({
+  role: 'ช่าง', extra: EXTRA,
+  steps: [
+    { cap: '<b>งานของฉันวันนี้</b><small>เรียงตามความด่วน · ไม่มีเน็ตก็ทำต่อได้</small>',
+      run: async a => {
+        await a.go('t1');
+        const r = a.find('@IMM-06 เครื่องฉีด'); r.classList.remove('sel');
+      } },
+    { cap: '<b>เปิดงาน IMM-06</b><small>เห็นรูป เสียง และประวัติ ก่อนออกไปหน้างาน</small>',
+      run: async a => { await a.tap('@IMM-06 เครื่องฉีด', { after: 80 }); await a.go('t2'); } },
+    { cap: '<b>สแกน QR ที่เครื่อง เริ่มจับเวลา</b><small>เวลาซ่อมเป็นเวลาจริง ไม่ใช่กรอกย้อนหลัง</small>',
+      run: async a => {
+        const t3 = S('t3'), r1 = t3.querySelector('.list .row');
+        r1.querySelector('.chips').innerHTML = chip('ยังไม่เริ่ม', 'neu');
+        r1.querySelector('.meta').innerHTML = `<span>${I('clip')}6 ข้อ</span>`;
+        t3.querySelector('.act .btn.pri').textContent = 'เริ่มเช็กลิสต์';
+        await a.tap('.act .btn.pri', { after: 60 });
+        await a.scan('สแกน QR ที่เครื่อง', 'IMM-06 · ตรงเครื่อง');
+        await a.go('t3');
+        a.timer('.timer .t', 0);
+      } },
+    { cap: '<b>เช็กลิสต์ ข้อที่ปกติ กด “ผ่านหมด”</b><small>ทีเดียวจบ เหลือเฉพาะข้อที่ต้องกรอกค่าวัด</small>',
+      run: async a => {
+        await a.tap('@เช็กลิสต์ระบบไฮดรอลิก', { after: 80 }); await a.go('tc');
+        await a.tap('#allpass', { after: 150 });
+        let n = 0;
+        for (const i of [0, 1, 4, 5]) { await a.wait(260); ckSet(a, i, 'ok', 'ผ่าน'); ckCount(a, ++n); }
+      } },
+    { cap: '<b>ค่าวัด 172 bar เกินเกณฑ์</b><small>ขึ้นแดงทันที พร้อมบอกว่าระบบจะทำอะไรต่อ</small>',
+      run: async a => {
+        const t5 = S('t5');
+        const v = t5.querySelector('.measure .val'); v.id = 'mv'; v.firstChild.textContent = ''; v.classList.add('okv');
+        t5.querySelector('.gauge .okz').style.cssText = 'left:70%;width:10%';
+        const pt = t5.querySelector('.gauge .pt'); pt.id = 'gpt'; pt.style.display = 'none';
+        const nb = t5.querySelector('.note.bad'); nb.id = 'mnote'; nb.classList.add('pr-hide');
+        t5.querySelector('.dots').innerHTML = '<i class="d"></i><i class="d"></i><i class="c"></i><i></i><i class="d"></i><i class="d"></i>';
+        t5.querySelector('.abt b').textContent = 'เช็กลิสต์ · ข้อ 3 จาก 6';
+        t5.querySelector('.act .btn.pri').textContent = 'บันทึก';
+        await a.tap('#ck2', { after: 80 }); await a.go('t5');
+        await a.type('#mv', '172', { ms: 260, each: s => { const n = +s; pt.style.display = ''; pt.style.left = Math.min(98, n / 200 * 100 * (s.length < 3 ? 0 : 1) || 2) + '%'; } });
+        a.set('#mv', el => el.classList.remove('okv'));
+        await a.pop('#mnote');
+      } },
+    { cap: '<b>ระบบเปิดงานซ่อมต่อเนื่องให้เอง</b><small>งานนี้ไม่ติด ช่างทำข้อถัดไปต่อได้</small>',
+      run: async a => {
+        await pri(a); await a.go('tc', 'back');
+        ckSet(a, 2, 'bad', '172 bar · เกิน'); ckCount(a, 5);
+        await a.pop('#fu');
+        await a.tap('#ck3', { press: false });
+        ckSet(a, 3, 'ok', '48 °C'); ckCount(a, 6);
+      } },
+    { cap: '<b>บันทึกมิเตอร์</b><small>เห็นส่วนต่างทันที · ค่านี้ใช้ตั้งรอบ PM ถัดไป</small>',
+      run: async a => {
+        const t6 = S('t6');
+        const v = t6.querySelector('.measure .val'); v.id = 'mv6'; v.firstChild.textContent = '';
+        t6.querySelectorAll('.note').forEach((n, k) => { n.id = 'm6n' + k; n.classList.add('pr-hide'); });
+        await pri(a); await a.go('t6');
+        await a.type('#mv6', '18,618', { ms: 140 });
+        await a.pop('#m6n0'); await a.pop('#m6n1');
+      } },
+    { cap: '<b>เบิกอะไหล่จาก BOM</b><small>รายการมาจากชุดปั๊มไฮดรอลิก · คลังเห็นคำขอทันที</small>',
+      run: async a => {
+        const t7 = S('t7'), rows = [...t7.querySelectorAll('.list .row')];
+        rows.forEach((r, k) => { r.id = 'bom' + k; const sp = r.querySelector('.step'); sp.classList.add('zero'); sp.querySelector('span').textContent = '0'; });
+        t7.querySelector('.act .btn.pri').textContent = 'ส่งขอเบิก';
+        await pri(a); await a.go('t7');
+        const plus = async (k, to) => {
+          for (let n = 1; n <= to; n++) {
+            await a.tap('#bom' + k + ' [aria-label="เพิ่ม"]', { after: 90 });
+            a.set('#bom' + k + ' .step', sp => { sp.classList.remove('zero'); sp.querySelector('span').textContent = n; });
+          }
+        };
+        await plus(0, 2); await plus(1, 1);
+        await a.tap('#bom2 .step span', { press: false, after: 60 });
+        a.set('#bom2 .step', sp => sp.classList.remove('zero'));
+        await a.type('#bom2 .step span', '20', { ms: 160 });
+        a.set('.act .btn.pri', b => b.textContent = 'ส่งขอเบิก 3 รายการ');
+        await a.tap('.act .btn.pri');
+        await a.toast('ส่งขอเบิก 3 รายการแล้ว', 'คลังอะไหล่อาคาร A ได้รับคำขอ · โอริงหมด ส่งขอซื้อ');
+      } },
+    { cap: '<b>ปิดงาน · สาเหตุและวิธีแก้</b><small>เลือกจากชุดคำกลาง จึงนับได้ว่าเสียเพราะอะไรบ่อย</small>',
+      run: async a => {
+        const t8 = S('t8');
+        t8.querySelectorAll('.pk').forEach(p => p.setAttribute('aria-pressed', 'false'));
+        const ta = t8.querySelector('.inp.ta'); ta.id = 'fix'; ta.textContent = '';
+        a.clearToast();
+        await a.go('t8');
+        await a.tap('@สึกหรอตามอายุ');
+        await a.type('#fix', 'เปลี่ยนซีลกระบอกสูบ 2 ชิ้น และไส้กรองน้ำมัน เติมน้ำมัน 20 ลิตร ทดลองเดิน 30 รอบ เสียงปกติ ไม่มีซึม', { ms: 18 });
+      } },
+    { cap: '<b>รูปหลังซ่อม + ลายเซ็น แล้วส่ง</b><small>ระบบบอกว่าครบหรือยัง ก่อนให้กดส่ง</small>',
+      run: async a => {
+        const t9 = S('t9');
+        t9.querySelectorAll('.media .ph').forEach((p, k) => { p.id = 'af' + k; if (k < 2) p.classList.add('pr-hide'); });
+        t9.querySelector('.opt').setAttribute('aria-pressed', 'false');
+        const sig = t9.querySelector('.sig'); sig.id = 'sig'; sig.querySelector('svg').style.visibility = 'hidden';
+        await pri(a); await a.go('t9');
+        await a.tap('#af2', { press: false }); await a.pop('#af0');
+        await a.tap('#af2', { press: false }); await a.pop('#af1');
+        await a.tap('@เครื่องพร้อมใช้งาน');
+        await a.scrollTo(600);
+        a.set('#sig svg', s => s.style.visibility = '');
+        a.cls('#sig', 'draw', !a.fast);
+        await a.wait(1400);
+        await a.tap('.act .btn.pri');
+        await a.toast('ส่งปิดงานแล้ว', 'WO-2026-0103 · รอหัวหน้าตรวจรับ');
+      } },
+  ]
+});
+</script>
+</body>
+</html>

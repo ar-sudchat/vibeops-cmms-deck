@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<title>แผน PM คอมเพรสเซอร์</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+/* แถบบนของโปรแกรมจริง (ยกจาก @media min-width:1024px ของ vibeops-app.css ให้แสดงทุกขนาด iframe) */
+
+  [data-desktop-nav] {
+    background: var(--vo-brand-gradient, linear-gradient(100deg,#00bec4 0%,#278ed2 36%,#505bdb 66%,#8125e9 100%));
+    box-shadow: 0 3px 12px #24345b12;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 24px;
+  }
+  [data-desktop-nav] .floor-brand-tier, [data-desktop-nav] .floor-header-inner, [data-desktop-nav] .floor-nav-tier, [data-desktop-nav] .floor-nav-inner {
+    display: contents;
+  }
+  [data-desktop-nav] .floor-brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  [data-desktop-nav] .floor-brand > a > div:first-child svg {
+    width: 23px;
+    height: 23px;
+  }
+  [data-desktop-nav] .floor-brand a span:first-child {
+    font-size: 21px;
+  }
+  [data-desktop-nav] .floor-brand a span + span, [data-desktop-nav] .floor-company-divider {
+    display: none;
+  }
+  [data-desktop-nav] .floor-company {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  [data-desktop-nav] .floor-account {
+    grid-column: 3;
+    grid-row: 1;
+    gap: 8px;
+  }
+  [data-desktop-nav] .floor-account > .w-px {
+    display: none;
+  }
+  [data-desktop-nav] .floor-profile > span {
+    max-width: 110px;
+    font-size: 14px;
+  }
+  [data-desktop-nav] .floor-profile > div {
+    width: 32px;
+    height: 32px;
+  }
+  [data-desktop-nav] .floor-header-inner a span {
+    font-weight: 500;
+  }
+  [data-desktop-nav] nav > a,[data-desktop-nav] nav > div > button {
+    position: relative;
+    background: transparent;
+  }
+  [data-desktop-nav] nav [aria-current="page"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] nav [aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    right: 30%;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: #fff;
+  }
+  [data-desktop-nav] nav > a:hover,[data-desktop-nav] nav > div > button:hover,[data-desktop-nav] nav button[aria-expanded="true"] {
+    background: #ffffff26;
+  }
+  [data-desktop-nav] .floor-nav-tier {
+    height: auto;
+    padding: 0 0 10px;
+    margin: 0;
+  }
+  [data-desktop-nav] nav {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+    gap: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+  [data-desktop-nav] nav > a, [data-desktop-nav] nav > div > button {
+    width: 100%;
+    height: 52px;
+    padding: 0 14px;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border-radius: 7px;
+    color: #fff;
+  }
+  [data-desktop-nav] nav > a:focus-visible,[data-desktop-nav] nav > div > button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  [data-desktop-nav] nav > a > svg, [data-desktop-nav] nav > div > button > svg:first-child {
+    color: #fff;
+    width: 21px;
+    height: 21px;
+  }
+  [data-desktop-nav] nav > div > button > svg:last-child {
+    width: 12px;
+    color: #ffffffb3;
+  }
+  [data-desktop-nav] nav > div:nth-last-child(-n+2) > .absolute {
+    left: auto;
+    right: 0;
+  }
+
+
+html,body{margin:0;height:100%;overflow:hidden;background:#fff}
+body{font-family:var(--vo-font,"Sarabun",Tahoma,sans-serif);color:var(--vo-text)}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);display:flex;flex-direction:column}
+.stage [data-desktop-nav]{flex:none}
+.pg{flex:1;min-height:0;overflow:hidden;padding:20px 32px 0}
+.cur{position:absolute;z-index:99;width:28px;height:28px;margin:-3px 0 0 -5px;pointer-events:none;transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1),opacity .25s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.rip{position:absolute;z-index:98;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:rgba(124,58,237,.32);animation:lvRip .6s ease-out forwards;pointer-events:none}
+@keyframes lvRip{from{transform:scale(.2);opacity:1}to{transform:scale(1.7);opacity:0}}
+.pressed{transform:scale(.97)}
+.focus{border-color:var(--vo-focus,var(--vo-primary))!important;box-shadow:0 0 0 3px var(--vo-primary-soft)}
+.fx-in{animation:lvIn .45s ease-out both}
+@keyframes lvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fx-pop{animation:lvPop .4s ease-out}
+@keyframes lvPop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.fx-flash{animation:lvFlash 1s ease-out}
+@keyframes lvFlash{0%{background:var(--vo-primary-soft)}100%{background:transparent}}
+.nofx,.nofx *{transition:none!important;animation:none!important}
+[hidden]{display:none!important}
+.toast{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 12px;font-size:15px;font-weight:600;background:var(--vo-ok-bg);color:var(--vo-ok)}
+.row-hl>td{background:var(--vo-primary-soft)!important;transition:background .3s}
+.cell-bad{background:var(--vo-bad-bg)!important;color:var(--vo-bad)!important;font-weight:700;transition:background .4s,color .4s}
+.cell-plan{background:var(--vo-ok-bg)!important;color:var(--vo-ok)!important;font-weight:700}
+.vo-tabs-pill{display:inline-flex;gap:4px;padding:4px;border-radius:10px;background:var(--vo-surface-2);align-self:flex-start}
+.vo-tabs-pill button{padding:6px 14px;border-radius:8px;font-size:15px;color:var(--vo-text-2)}
+.vo-tabs-pill button[aria-selected=true]{background:var(--vo-surface);color:var(--vo-text);font-weight:600;box-shadow:0 1px 2px #0001}
+</style>
+<script>
+/* ชิ้นส่วนหน้าตา VibeOps (คลาสคัดจาก dom/*.html ของโปรแกรมจริง) */
+window.VO = {
+  TH: 'px-3 py-3 text-sm font-semibold text-on-primary select-none border-b border-primary bg-primary-bg relative group after:absolute after:right-0 after:top-3 after:bottom-3 after:w-px after:bg-line last:after:hidden',
+  TD: 'px-3 text-sm text-text transition-colors whitespace-nowrap border-b border-line py-2.5',
+  TR: 'group transition-all duration-200 outline-none bg-surface hover:bg-surface-2',
+  BTN: 'vo-button inline-flex items-center justify-center rounded-control font-medium select-none whitespace-nowrap shrink-0 transition-colors duration-150 min-h-tap px-4 text-base gap-2',
+  INPUT: 'w-full bg-surface rounded-control border outline-none text-base text-text placeholder:text-muted border-line-strong transition-colors h-tap px-3',
+  th(t, o = {}) { return `<th class="${this.TH}${o.r ? ' text-right' : ''}" style="${o.w ? 'width:' + o.w + 'px' : ''}"><div class="flex items-center justify-between space-x-2 w-full group"><div class="flex items-center gap-1 flex-1 min-w-0 select-none${o.r ? ' justify-end' : ''}"><span class="font-semibold text-inherit leading-tight whitespace-nowrap">${t}</span></div></div></th>`; },
+  td(h, o = {}) { return `<td class="${this.TD}${o.r ? ' text-right' : ''}${o.c ? ' ' + o.c : ''}"${o.a || ''}>${h}</td>`; },
+  table(ths, rows, tb = '') { return `<div class="bg-surface flex flex-col"><div class="overflow-x-auto flex-1 min-h-0 min-w-0 max-w-full"><table class="vo-super-table w-full text-left border-collapse table-fixed"><thead class="sticky top-0 z-10"><tr>${ths}</tr></thead><tbody class="divide-y divide-line"${tb}>${rows}</tbody></table></div></div>`; },
+  badge(kind, t) {
+    const m = { ok: ['bg-ok-bg text-ok', 'bg-ok'], bad: ['bg-bad-bg text-bad', 'bg-bad'], warn: ['bg-warn-bg text-warn', 'bg-warn'], info: ['bg-info-bg text-info', 'bg-info'], mute: ['bg-surface-2 text-text-2', 'bg-text-2'] }[kind];
+    return `<span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-sm font-semibold whitespace-nowrap ${m[0]}"><span aria-hidden="true" class="size-2 shrink-0 rounded-full ${m[1]}"></span>${t}</span>`;
+  },
+  btn(t, ic, kind = 'p', attr = '') {
+    const c = kind === 'p' ? 'bg-primary-bg text-on-primary hover:bg-primary-hover' : 'bg-surface text-text border border-line-strong hover:bg-surface-2';
+    return `<button type="button" class="${this.BTN} ${c}" ${attr}>${ic ? `<i data-ic="${ic}" data-s="18"></i>` : ''}${t}</button>`;
+  },
+  card(title, body, o = {}) { return `<section class="vo-card ${o.p === false ? '' : 'p-4'}" ${o.a || ''}><div class="mb-3 flex items-center justify-between gap-3 ${o.p === false ? 'px-4 pt-4' : ''}"><h2 class="text-base font-medium text-text">${title}</h2>${o.right || ''}</div>${body}</section>`; },
+  pagehead(back, h1, o = {}) {
+    return `<header class="border-b border-line bg-surface-2 px-6 py-2"><div class="flex min-h-tap items-center justify-between gap-3"><div class="flex min-w-0 items-center gap-2">${back ? `<button type="button" class="inline-flex min-h-tap items-center gap-1.5 rounded-md px-2 text-base text-text-2"><i data-ic="back" data-s="18"></i> <span>${back}</span></button>` : ''}<div class="min-w-0 pl-1">${o.code ? `<div class="text-sm text-text-2">${o.code}</div>` : ''}<h1 class="text-lg leading-snug text-text"${o.h1a || ''}>${h1}</h1></div>${o.badge ? `<div class="ml-2 shrink-0">${o.badge}</div>` : ''}</div><div class="flex shrink-0 items-center gap-3">${o.right || ''}</div></div></header>`;
+  }
+};
+</script>
+
+<style>
+.opt{min-height:56px;border-radius:10px;border:1px solid var(--vo-line);background:var(--vo-surface);padding:10px 16px;text-align:left;font-size:16px;color:var(--vo-text)}
+.opt[aria-pressed=true]{border-color:var(--vo-primary);background:color-mix(in srgb,var(--vo-primary) 10%,transparent)}
+.opt b{display:block;font-weight:500}.opt span{display:block;color:var(--vo-text-2)}
+.fake{display:flex;align-items:center;height:40px;border:1px solid var(--vo-line-strong);border-radius:var(--vo-radius-control,8px);padding:0 12px;background:var(--vo-surface);font-size:16px;color:var(--vo-text)}
+.fake.sel{justify-content:space-between}
+.fake.num{justify-content:flex-end;height:36px;font-variant-numeric:tabular-nums}
+.fake:empty::before{content:attr(data-ph);color:var(--vo-muted)}
+.freq{border-radius:10px;background:var(--vo-surface-2);padding:10px 16px;font-size:18px}
+.tier{border:1px solid var(--vo-line);border-radius:12px;padding:14px 16px}
+#sc{position:relative}
+.fc li{border:1px solid var(--vo-line);border-radius:8px;padding:6px 12px;font-size:15px}
+.fc li.yr{border-color:var(--vo-primary);background:color-mix(in srgb,var(--vo-primary) 10%,transparent)}
+</style>
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<div class="stage">
+<div data-desktop-nav="true" class="flex top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ วรวุฒิ เจริญผล" title="วรวุฒิ เจริญผล" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">วรวุฒิ เจริญผล</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ว</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<!-- ── ฟอร์มสร้างแผน ── -->
+<div id="vForm" class="flex min-h-0 flex-1 flex-col" style="padding:20px 32px 0">
+  <div id="hdForm"></div>
+  <div id="sc" class="min-h-0 flex-1 overflow-hidden"><div class="flex flex-col gap-4 px-6 py-4" id="formBody"></div><div style="height:420px"></div></div>
+</div>
+<!-- ── หน้าแผน ── -->
+<div id="vPlan" class="min-h-0 flex-1 flex-col" style="padding:20px 32px 0;display:none">
+  <div id="hdPlan"></div>
+  <div id="sc2" class="min-h-0 flex-1 overflow-hidden" style="position:relative"><div id="planBody" class="grid gap-5 px-6 py-4" style="grid-template-columns:minmax(0,1fr) 380px"></div><div style="height:300px"></div></div>
+</div>
+</div>
+<script src="live.js"></script>
+<script>
+const V = VO;
+function botTo(a, sc, sel, pad = 16) { const c = a.$(sc), e = a.$(sel), k = c.getBoundingClientRect().height / c.offsetHeight || 1; return Math.max(0, (e.getBoundingClientRect().bottom - c.getBoundingClientRect().top) / k + c.scrollTop - c.clientHeight + pad); }
+function topIn(a, sc, sel) { const c = a.$(sc), e = a.$(sel), k = c.getBoundingClientRect().height / c.offsetHeight || 1; return (e.getBoundingClientRect().top - c.getBoundingClientRect().top) / k + c.scrollTop; }
+const T1 = [['P-GREASE-EP2', 'จาระบี EP2', 'ใช้', '0.2', 'กก.', '1', '4.5']];
+const T2 = [['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 'เปลี่ยน', '1', 'ชิ้น', '1', '3'],
+            ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 'เปลี่ยน', '1', 'ชิ้น', '2', '0'],
+            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ใช้', '1', 'ถัง 20 ลิตร', '2', '2']];
+const T3 = [['P-SEP-GA37', 'ไส้กรองแยกน้ำมัน GA37', 'เปลี่ยน', '1', 'ชิ้น', '1', '1'],
+            ['P-VLV-KIT-GA37', 'ชุดซ่อมวาล์วดูด GA37', 'เปลี่ยน', '1', 'ชุด', '1', '1']];
+function bom(id, rows) {
+  const ths = V.th('#', { w: 48 }) + V.th('อะไหล่/วัสดุ') + V.th('รหัส', { w: 190 }) + V.th('ทำอะไร', { w: 110 }) + V.th('จำนวน/รอบ', { w: 110, r: 1 }) + V.th('หน่วย', { w: 120 }) + V.th('ทุกกี่รอบ', { w: 100, r: 1 }) + V.th('พร้อมจ่าย', { w: 100, r: 1 });
+  const tr = rows.map((r, i) => `<tr class="${V.TR}" data-r="${id}" hidden>${V.td(`<span class="text-text-2">${i + 1}</span>`)}${V.td(`<span class="fake sel" style="height:36px">${r[1]}<i data-ic="updown" data-s="14"></i></span>`)}${V.td(`<span class="tabular-nums text-text-2">${r[0]}</span>`)}${V.td(`<span class="fake sel" style="height:36px">${r[2]}<i data-ic="down" data-s="14"></i></span>`)}${V.td(`<span class="fake num">${r[3]}</span>`)}${V.td(`<span class="text-text-2">${r[4]}</span>`)}${V.td(`<span class="fake num">${r[5]}</span>`)}${V.td(`<span class="tabular-nums text-text-2">${r[6]}</span>`, { r: 1 })}</tr>`).join('');
+  return V.table(ths, tr);
+}
+function tier(id, name, freq, cl, rows) {
+  return `<div class="tier" id="${id}" hidden><div class="grid gap-4 mb-3" style="grid-template-columns:14rem 16rem minmax(0,1fr)">
+    <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">ระดับงาน</label><span class="fake" style="font-weight:600">${name}</span></div>
+    <div class="flex flex-col gap-1.5 text-base"><span class="text-sm font-medium text-text-2">ความถี่ของระดับ</span><span class="flex min-h-tap items-center text-text">${freq}</span></div>
+    <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">เช็กลิสต์ของระดับนี้</label><span class="fake sel">${cl}<i data-ic="updown" data-s="16"></i></span></div></div>
+    <div class="flex items-center justify-between gap-3 mb-2"><span class="text-base font-medium text-text">อะไหล่ของระดับ ${name}</span>${V.btn('เพิ่มอะไหล่', 'plus', 's')}</div>${bom(id, rows)}</div>`;
+}
+const FC = [['7 ธ.ค. 69', 'ราย 3 เดือน'], ['28 ก.พ. 70', 'ราย 3 เดือน'], ['22 พ.ค. 70', 'ราย 3 เดือน'], ['13 ส.ค. 70', 'รายปี · รวม 3 เดือน', 1], ['4 พ.ย. 70', 'ราย 3 เดือน'], ['26 ม.ค. 71', 'ราย 3 เดือน'], ['18 เม.ย. 71', 'ราย 3 เดือน'], ['10 ก.ค. 71', 'รายปี · รวม 3 เดือน', 1], ['1 ต.ค. 71', 'ราย 3 เดือน'], ['23 ธ.ค. 71', 'ราย 3 เดือน'], ['16 มี.ค. 72', 'ราย 3 เดือน'], ['7 มิ.ย. 72', 'รายปี · รวม 3 เดือน', 1]];
+const PB = [['P-AIR-FILTER-GA37', 'ไส้กรองอากาศคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุกรอบ', 1, 3],
+            ['P-OIL-FILTER-GA37', 'ไส้กรองน้ำมันคอมเพรสเซอร์ GA37', 'ราย 3 เดือน', 'เปลี่ยน 1 ชิ้น', 'ทุก 2 รอบ', 1, 0],
+            ['P-OIL-ROTO', 'น้ำมันคอมเพรสเซอร์ Roto-Inject', 'ราย 3 เดือน', 'ใช้ 1 ถัง 20 ลิตร', 'ทุก 2 รอบ', 1, 2],
+            ['P-GREASE-EP2', 'จาระบี EP2 (กก.)', 'รายเดือน', 'ใช้ 0.2 กก.', 'ทุกรอบ', 0.6, 4.5],
+            ['P-SEP-GA37', 'ไส้กรองแยกน้ำมัน GA37', 'รายปี', 'เปลี่ยน 1 ชิ้น', 'ทุกรอบ', 0, 1]];
+
+LIVE.run({
+  build(st) {
+    st.querySelector('#hdForm').innerHTML = V.pagehead('แผน PM', 'สร้างแผน PM', { right: `<span id="tst"></span>` + V.btn('บันทึกแผน', '', 'p', 'id="bSave"') });
+    st.querySelector('#formBody').innerHTML =
+      V.card('1. งานอะไร', `<div class="grid gap-4" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+        <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5 flex items-center">ชื่อแผน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fName" data-ph="เช่น PM เครื่องฉีดรายเดือน"></span></div>
+        <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">เครื่องที่ทำ</label><div class="flex items-center gap-2" style="min-height:40px"><span class="fake" id="fFind" style="flex:1" data-ph="รหัสหรือชื่อเครื่อง เช่น IMM-03"></span><span id="chip" hidden class="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-primary px-3 text-base" style="background:color-mix(in srgb,var(--vo-primary) 10%,transparent)">CMP-01 · คอมเพรสเซอร์ GA37 <i data-ic="x" data-s="16"></i></span></div></div></div>`) +
+      V.card('2. นับรอบอย่างไร', `<div class="flex flex-col gap-3"><div class="grid gap-2" style="grid-template-columns:repeat(3,1fr)">
+        <button class="opt" type="button"><b>ตามวัน</b><span>เช่น ทุก 30 วัน</span></button>
+        <button class="opt" type="button"><b>ตามชั่วโมงเดิน/มิเตอร์</b><span>เช่น ทุก 2,000 ชม.</span></button>
+        <button class="opt" type="button" id="oBoth"><b>อันไหนถึงก่อน</b><span>วันหรือมิเตอร์</span></button></div>
+        <div class="grid gap-4" id="freqIn" hidden style="grid-template-columns:repeat(3,1fr)">
+          <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">ทุกกี่เดือน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fMon"></span></div>
+          <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">ทุกกี่ ชั่วโมงเดิน<span class="text-bad ml-0.5">*</span></label><span class="fake" id="fHr"></span></div>
+          <div class="flex flex-col"><label class="text-sm font-medium text-text-2 mb-1.5">มิเตอร์</label><span class="fake sel">MT-CMP-01 · ชั่วโมงเดินเครื่อง<i data-ic="updown" data-s="16"></i></span></div></div>
+        <p class="freq" id="freq" hidden><span class="text-text-2">ความถี่: </span><span class="font-medium text-text">ทุก 3 เดือน หรือ 500 ชม. แล้วแต่ถึงก่อน</span></p></div>`) +
+      V.card('3. ระดับงาน เช็กลิสต์ และอะไหล่ <span id="tierN"></span>', `<p class="mb-3 text-base text-text-2">รอบที่ตรงกันหลายระดับ ออกใบเดียวและใช้เช็กลิสต์ของระดับที่ใหญ่ที่สุด · "ทุกกี่รอบ" 2 = รอบเว้นรอบ</p><div class="flex flex-col gap-4">` +
+        tier('t1', 'รายเดือน', 'ทุก 1 เดือน', 'CL-CMP-01-M · ตรวจประจำเดือน 6 ข้อ', T1) +
+        tier('t2', 'ราย 3 เดือน', 'ทุก 3 เดือน หรือ 500 ชม.', 'CL-CMP-01-Q · 9 ข้อ', T2) +
+        tier('t3', 'รายปี', 'ทุก 4 รอบ (≈ ทุก 12 เดือน)', 'CL-CMP-01-Y · ยกเครื่อง 14 ข้อ', T3) + `</div>`, { right: V.btn('เพิ่มระดับงาน', 'plus', 's', 'id="bTier"') });
+
+    st.querySelector('#hdPlan').innerHTML = V.pagehead('แผน PM', 'PM คอมเพรสเซอร์ GA37 · CMP-01', { code: 'PM-CMP-GA37 · บำรุงรักษาตามแผน', badge: V.badge('ok', 'ใช้งาน'), right: `<span id="tst2"></span>` + V.btn('แก้ไขแผน', 'pencil', 'p') });
+    const bomRows = PB.map((r, i) => `<tr class="${V.TR}" id="pb${i}">${V.td(`<span class="num text-sm text-muted">${i + 1}</span>`)}${V.td(`<span class="block truncate">${r[1]}</span><span class="block text-xs tabular-nums text-text-2">${r[0]}</span>`)}${V.td(r[2])}${V.td(r[3])}${V.td(r[4])}${V.td(`<span class="tabular-nums n" data-v="${r[5]}">–</span>`, { r: 1 })}${V.td(`<span class="tabular-nums a" data-v="${r[6]}">–</span>`, { r: 1 })}${V.td(`<span class="st"></span>`)}</tr>`).join('');
+    st.querySelector('#planBody').innerHTML = `<main class="flex min-w-0 flex-col gap-4">
+      <div class="vo-tabs-pill"><button type="button" aria-selected="true">ภาพรวมแผน</button><button type="button">ประวัติรอบ (0)</button></div>
+      ${V.card('ครบครั้งถัดไป', `<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1"><span class="text-4xl font-medium tabular-nums text-text">7 ธ.ค. 69</span><span class="text-lg text-text-2">อีก 18 วัน</span><span class="text-base text-text-2">ตามวัน (ครบ 3 เดือน ก่อนมิเตอร์ถึง 500 ชม.)</span></div>`)}
+      ${V.card('พยากรณ์ 12 รอบถัดไป', `<ol class="fc grid gap-2" style="grid-template-columns:repeat(4,1fr)">${FC.map(f => `<li class="${f[2] ? 'yr' : ''}" hidden><span class="block tabular-nums font-medium">${f[0]}</span><span class="block text-text-2">CMP-01 · ${f[1]}</span></li>`).join('')}</ol>`)}
+      <section class="vo-card" id="bomCard"><div class="mb-2 flex items-center justify-between gap-3 px-4 pt-4"><h2 class="text-base font-medium text-text">อะไหล่และวัสดุต่อรอบ (BOM · 5)</h2><span id="short"></span></div>
+        <p class="px-4 pb-3 text-base text-text-2">"ใช้ใน 90 วัน" = รวมรอบที่จะครบภายใน 90 วัน ตาม "ทุกกี่รอบ" · เทียบของพร้อมจ่ายในคลัง</p>
+        ${V.table(V.th('#', { w: 44 }) + V.th('อะไหล่/วัสดุ') + V.th('ระดับงาน', { w: 104 }) + V.th('ทำอะไร', { w: 140 }) + V.th('ทุกกี่รอบ', { w: 92 }) + V.th('ใช้ใน 90 วัน', { w: 106, r: 1 }) + V.th('พร้อมจ่าย', { w: 96, r: 1 }) + V.th('สต็อก', { w: 128 }), bomRows)}</section>
+      </main>
+      <aside class="flex min-w-0 flex-col gap-4">
+      ${V.card('ข้อมูลแผน', `<dl class="divide-y divide-line">${[['ความถี่', 'ทุก 3 เดือน หรือ 500 ชม. แล้วแต่ถึงก่อน'], ['ระดับงาน', 'รายเดือน · ราย 3 เดือน · รายปี'], ['วิธีนับ', 'นับจากวันที่ทำเสร็จจริง'], ['ออกใบล่วงหน้า', '7 วัน'], ['ทีม', 'ทีมซ่อมอาคาร A'], ['เวลาประมาณ', '2 ชม. ต่อเครื่อง'], ['มิเตอร์', 'MT-CMP-01 · ตอนนี้ 2,640 ชม.']].map(d => `<div class="grid gap-3 py-1.5 text-base" style="grid-template-columns:7.5rem 1fr"><dt class="text-text-2">${d[0]}</dt><dd class="min-w-0 break-words text-text">${d[1]}</dd></div>`).join('')}</dl>`)}
+      ${V.card('เครื่องในแผน (1)', `<ul><li class="flex items-start justify-between gap-3 py-2 text-base"><span class="min-w-0"><span class="block"><span class="tabular-nums">CMP-01</span> · คอมเพรสเซอร์ GA37</span><span class="block text-text-2">ห้องคอมเพรสเซอร์ อาคาร A</span></span><span class="shrink-0 text-right tabular-nums">7 ธ.ค. 69<span class="block text-text-2">อีก 18 วัน</span></span></li></ul>`)}
+      </aside>`;
+  },
+  steps: [
+    { cap: 'หัวหน้าเปิดฟอร์มสร้างแผน PM ใหม่', run: async a => {} },
+    { cap: 'ตั้งชื่อแผน แล้วเลือกเครื่อง CMP-01 คอมเพรสเซอร์ GA37', run: async a => {
+      await a.click('#fName'); await a.type('#fName', 'PM คอมเพรสเซอร์ GA37 · CMP-01', 30);
+      await a.click('#fFind'); await a.type('#fFind', 'CMP-01', 60); await a.w(200);
+      a.text('#fFind', ''); a.show('#chip', 'fx-pop');
+    } },
+    { cap: 'นับรอบแบบ ทุก 3 เดือน หรือ 500 ชม. แล้วแต่อะไรถึงก่อน', run: async a => {
+      await a.click('#oBoth', el => a.pick(el)); a.show('#freqIn');
+      await a.click('#fMon'); await a.type('#fMon', '3', 80);
+      await a.click('#fHr'); await a.type('#fHr', '500', 80); await a.w(150);
+      a.show('#freq', 'fx-pop');
+    } },
+    { cap: 'ระดับรายเดือน: เช็กลิสต์ตรวจประจำเดือน และจาระบี EP2', run: async a => {
+      await a.scroll('#sc', topIn(a, '#sc', '#formBody > section:nth-child(3)') - 6);
+      await a.click('#bTier'); a.show('#t1'); a.set('#tierN', '(1 ระดับ)');
+      await a.w(300); await a.stagger('[data-r=t1]', 140);
+    } },
+    { cap: 'ระดับราย 3 เดือน: เปลี่ยนไส้กรองอากาศทุกรอบ น้ำมันคอมเพรสเซอร์ทุก 2 รอบ', run: async a => {
+      a.show('#t2'); a.set('#tierN', '(2 ระดับ)');
+      await a.scroll('#sc', botTo(a, '#sc', '#t2'));
+      await a.stagger('[data-r=t2]', 220);
+    } },
+    { cap: 'ระดับรายปี: ไส้กรองแยกน้ำมันและชุดซ่อมวาล์ว', run: async a => {
+      a.show('#t3'); a.set('#tierN', '(3 ระดับ)');
+      await a.scroll('#sc', botTo(a, '#sc', '#t3'));
+      await a.stagger('[data-r=t3]', 220);
+    } },
+    { cap: 'กดบันทึกแผน', run: async a => {
+      await a.click('#bSave'); a.toast('#tst', 'บันทึกแล้ว'); await a.w(700);
+    } },
+    { cap: 'หน้าแผนพยากรณ์ 12 รอบถัดไปให้ทันที', run: async a => {
+      a.off(); a.$('#vForm').style.display = 'none'; a.$('#vPlan').style.display = 'flex'; a.show('#vPlan');
+      await a.w(400); await a.stagger('.fc li', 110);
+    } },
+    { cap: 'เทียบอะไหล่ที่ต้องใช้ใน 90 วันกับของพร้อมจ่าย — ไส้กรองน้ำมันขาด', run: async a => {
+      await a.scroll('#sc2', botTo(a, '#sc2', '#bomCard'), 700);
+      for (let i = 0; i < PB.length; i++) {
+        const r = PB[i], dec = String(r[5]).includes('.') || String(r[6]).includes('.') ? 1 : 0;
+        await a.count(`#pb${i} .n`, r[5], { dec, dur: 450 }); await a.count(`#pb${i} .a`, r[6], { dec, dur: 450 });
+        const st = a.$(`#pb${i} .st`);
+        st.innerHTML = r[5] === 0 ? V.badge('mute', 'ยังไม่ถึงคิว') : r[6] >= r[5] ? V.badge('ok', 'พอ') : V.badge('bad', 'ขาด ' + (r[5] - r[6]));
+        if (!a.fast) { st.classList.remove('fx-pop'); void st.offsetWidth; st.classList.add('fx-pop'); }
+        if (r[6] < r[5]) a.cls(`#pb${i}`, 'row-hl');
+        await a.w(120);
+      }
+      a.set('#short', V.badge('bad', 'ขาด 1 รายการ ก่อน 7 ธ.ค.'));
+    } },
+  ]
+});
+</script>
+</body>
+</html>

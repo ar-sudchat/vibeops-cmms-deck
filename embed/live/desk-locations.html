@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="th" data-vo-theme="erp" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สถานที่และโซน · จอคอม</title>
+<link rel="stylesheet" href="vibeops-themes.css">
+<link rel="stylesheet" href="vibeops-app.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#fff}
+.stage{position:absolute;left:0;top:0;width:1440px;height:810px;transform-origin:0 0;overflow:hidden;background:var(--vo-shell-bg,#fff);font-family:var(--vo-font,"Sarabun",sans-serif)}
+.stage [data-desktop-nav]{position:relative}
+.scr{height:734px;overflow:hidden}
+.cur{position:absolute;z-index:200;pointer-events:none;transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1),opacity .25s;transform:translate(-5px,-3px);filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.rip{position:absolute;z-index:199;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:color-mix(in srgb,var(--vo-primary,#5B2BE0) 45%,transparent);pointer-events:none;animation:rip .65s ease-out forwards}
+@keyframes rip{to{transform:scale(5);opacity:0}}
+.pressed{transform:scale(.97)}
+.fx-in{animation:fxin .42s ease-out both}
+@keyframes fxin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fx-flash{animation:fxflash 1s ease-out}
+@keyframes fxflash{0%{background:color-mix(in srgb,var(--vo-primary,#5B2BE0) 18%,transparent)}100%{background:transparent}}
+.fx-pop{animation:fxpop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes fxpop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.nofx *,.nofx{transition:none!important;animation:none!important}
+.focus{outline:2px solid var(--vo-primary,#5B2BE0);outline-offset:0;border-color:var(--vo-primary,#5B2BE0)!important}
+.toast{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 4px 14px rgba(20,20,40,.12)}
+.toast.ok{background:var(--vo-ok-bg,#e8f6ee);color:var(--vo-ok,#13804a)}
+.toast.info{background:var(--vo-primary-soft,#efe9ff);color:var(--vo-primary,#5B2BE0)}
+[hidden]{display:none!important}
+.lv-cap{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:300;background:rgba(20,20,30,.82);color:#fff;padding:8px 16px;border-radius:10px;font:16px "Sarabun",sans-serif}
+
+.lc-hi td{background:var(--vo-primary-soft)!important}
+.lc-hi td:first-child{box-shadow:inset 3px 0 0 var(--vo-primary)}
+.lc-down{display:inline-flex;align-items:center;gap:6px;padding:1px 10px;border-radius:999px;background:var(--vo-bad-bg,#fde8e8);color:var(--vo-bad,#c62828);font-weight:500}
+.lc-down i{width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block}
+.lc-pulse{animation:lcp 1.2s ease-in-out 2}
+@keyframes lcp{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--vo-bad,#c62828) 22%,transparent)}}
+.vo-super-table{border-collapse:separate!important;border-spacing:0}
+.vo-super-table td{height:37px;box-sizing:border-box;padding-top:4px!important;padding-bottom:4px!important}
+</style>
+<style>*{caret-color:transparent!important}.caret,.cursor-blink{display:none!important}</style></head>
+<body>
+<div class="stage">
+<div data-desktop-nav="true" class="flex sticky top-0 z-40"><div class="floor-brand-tier"><div class="floor-header-inner"><div class="floor-brand flex items-center"><a title="บริษัทตัวอย่าง" class="flex items-center gap-2 text-white" href="/" data-discover="true"><div class="border-2 border-white/90 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg></div><div><span class="font-medium">VibeOps</span></div></a></div><div class="floor-account flex items-center"><span class="flex items-center"></span><div class="relative" data-testid="notification-bell"><button type="button" title="การแจ้งเตือน" aria-label="การแจ้งเตือน 14 เรื่อง" aria-expanded="false" aria-haspopup="true" class="relative p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg><span data-testid="notification-badge" class="absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-bad px-1 text-center text-[11px] font-semibold leading-[18px] text-on-bad">14</span></button></div><label class="floor-language"><select aria-label="ภาษาเมนู"><option value="th">TH</option><option value="en">EN</option></select><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></label><div class="relative" data-testid="user-menu"><button type="button" data-testid="user-menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="เมนูผู้ใช้ วรวุฒิ เจริญผล" title="วรวุฒิ เจริญผล" class="floor-profile flex min-h-11 items-center gap-2 rounded-control text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span class="truncate" data-testid="user-menu-name">วรวุฒิ เจริญผล</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg><div class="rounded-full bg-[#f87969] flex items-center justify-center shrink-0" aria-hidden="true">ว</div></button></div></div></div></div><div class="floor-nav-tier"><div class="floor-nav-inner"><nav aria-label="เมนูหลัก" class="flex items-center"><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-sales" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg><span>ขาย</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-purchase" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart" aria-hidden="true"><path d="m2.05 2.05 1.099-.028a1 1 0 0 1 1.008.815l2.69 14.347A1 1 0 0 0 7.83 18H18"></path><path d="M4.563 5h16.435a1 1 0 0 1 .981 1.204l-1.026 6.226A2 2 0 0 1 18.962 14H6.25"></path><circle cx="18" cy="20" r="2"></circle><circle cx="8" cy="20" r="2"></circle></svg><span>จัดซื้อ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-planning" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg><span>วางแผน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-production" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-factory" aria-hidden="true"><path d="M12 16h.01"></path><path d="M16 16h.01"></path><path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M8 16h.01"></path></svg><span>ผลิต</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-maint" class="flex items-center justify-center whitespace-nowrap" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg><span>ซ่อมบำรุง</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-costing" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coins" aria-hidden="true"><path d="M13.744 17.736a6 6 0 1 1-7.48-7.48"></path><path d="M15 6h1v4"></path><path d="m6.134 14.768.866-.5 2 3.464"></path><circle cx="16" cy="8" r="6"></circle></svg><span>ต้นทุน</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-inventory" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-package" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg><span>คลังสินค้า</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-master" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact" aria-hidden="true"><path d="M16 2v2"></path><path d="M7 21v-2a2 2 0 012-2h6a2 2 0 012 2v2"></path><path d="M8 2v2"></path><circle cx="12" cy="10" r="3"></circle><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg><span>ข้อมูลหลัก</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div><div class="relative"><button type="button" aria-expanded="false" aria-controls="nav-admin" class="flex items-center justify-center whitespace-nowrap"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><span>ผู้ดูแลระบบ</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button></div></nav></div></div></div>
+<div class="scr">
+<main class="mx-auto w-full flex-1 px-8 pt-6 max-w-[1920px]">
+<div data-testid="page-root" data-screen="locations" class="mx-auto max-w-none"><div class="vo-doc vo-list-shell flex flex-col min-h-0">
+  <header class="z-20 bg-surface-2 border-b border-line px-6 py-2 flex items-center justify-between gap-4 min-h-tap">
+    <div class="flex items-center gap-2 min-w-0"><h1 class="pl-2 pr-1 text-lg text-text truncate">สถานที่และโซน</h1></div>
+    <div class="flex items-center gap-3 shrink-0"><span id="toast-slot"></span>
+      <button type="button" class="vo-button inline-flex items-center justify-center rounded-control font-medium whitespace-nowrap shrink-0 bg-surface text-text border border-line-strong min-h-tap px-4 text-base gap-2"><i data-ic="printer"></i>พิมพ์ป้าย QR</button></div>
+  </header>
+  <div class="bg-surface px-6 py-3"><div class="vo-card px-1 py-2 flex flex-row items-center gap-5" role="search">
+    <div class="flex flex-1 items-center gap-2"><label class="shrink-0 text-sm font-medium text-text-2">ค้นหา</label>
+      <div class="relative w-full"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none" style="display:flex"><i data-ic="search"></i></span><input id="q" class="w-full bg-surface rounded-control border outline-none text-base text-text border-line-strong h-tap pl-10 px-3" type="search" value=""></div></div>
+    <div class="flex flex-1 items-center gap-2"><label class="shrink-0 text-sm font-medium text-text-2">อาคาร</label>
+      <div class="relative w-full rounded-control border bg-surface border-line-strong h-tap flex items-center pl-5 pr-2 text-base text-muted">ทุกอาคาร<span class="ml-auto" style="display:flex"><i data-ic="updown" data-s="18"></i></span></div></div>
+  </div></div>
+  <div class="bg-surface flex flex-col">
+    <div class="flex items-center justify-between px-3 py-1.5 border-b border-line shrink-0"><span class="text-xs text-muted"><span id="nrows">5</span> แถว</span>
+      <div class="flex items-center gap-1 text-muted"><span class="p-1.5" style="display:flex"><i data-ic="expand" data-s="14"></i></span><span class="p-1.5" style="display:flex"><i data-ic="cols" data-s="14"></i></span><span class="p-1.5" style="display:flex"><i data-ic="dl" data-s="14"></i></span></div></div>
+    <div class="overflow-hidden flex-1 min-h-0 min-w-0 max-w-full">
+      <table aria-label="สถานที่และโซน" class="vo-super-table w-full text-left border-collapse table-fixed">
+        <thead><tr id="thead"></tr></thead>
+        <tbody class="divide-y divide-line" id="tb"></tbody>
+      </table>
+    </div>
+  </div>
+</div></div>
+</main>
+</div>
+</div>
+<script src="live.js"></script>
+<script>
+/* หัวหน้า วรวุฒิ เจริญผล ดูผังสถานที่ — ไล่จากอาคาร A ลงถึงไลน์ 2 ที่ IMM-06 หยุดอยู่ (ข้อมูลตัวอย่าง) */
+const I = (n, s) => LIVE.ic(n, s);
+const TH = 'px-3 py-3 text-sm font-semibold text-on-primary select-none border-b border-primary bg-primary-bg relative';
+const COLS = [['#', 56], ['', 48], ['สถานที่'], ['รหัส', 120], ['ระดับ', 110], ['ทีมรับผิดชอบ', 300], ['เครื่อง', 100, 1], ['เรื่องที่เปิดอยู่', 140, 1], ['เครื่องหยุด', 120, 1]];
+document.getElementById('thead').innerHTML = COLS.map((c, i) => `<th class="${TH}${c[2] ? ' text-right' : ''}"${c[1] ? ` style="width:${c[1]}px"` : ''}>${i === 1 ? `<span style="display:flex;justify-content:center;opacity:.85">${I('updown', 18)}</span>` : c[0]}</th>`).join('');
+const TD = 'px-3 text-sm text-text transition-colors whitespace-nowrap border-b border-line border-r border-line last:border-r-0 py-2';
+const dash = '<span class="text-muted">—</span>';
+const val = (v, red) => v === '—' ? dash : red ? `<span class="font-medium text-bad">${v}</span>` : v;
+function row(r) {
+  // r: {id, no, n, name, code, lvl, team, as, op, dn, depth, exp, kids, hidden}
+  const pad = [0, 28, 56][r.depth];
+  const exp = r.kids ? `<button class="absolute inset-0 flex items-center justify-center text-muted" aria-expanded="${r.exp ? 'true' : 'false'}" id="x-${r.id}">${I(r.exp ? 'down' : 'right', 20)}</button>` : '';
+  const name = r.depth === 0 ? `<span class="font-medium text-text">${r.name}</span>` : `<span class="shrink-0 tabular-nums text-sm text-text-2">${r.n}</span><span class="text-text">${r.name}</span>`;
+  return `<tr id="r-${r.id}" class="group bg-surface"${r.hidden ? ' hidden' : ''}>
+    <td class="${TD}"><span class="num text-sm text-muted">${r.no || ''}</span></td>
+    <td class="relative p-0! ${TD}">${exp || '&nbsp;'}</td>
+    <td class="${TD}"><span class="flex min-w-0 items-baseline gap-2" style="padding-left:${pad}px">${name}</span></td>
+    <td class="${TD}"><span class="tabular-nums text-text-2">${r.code}</span></td>
+    <td class="${TD} hidden xl:table-cell">${r.lvl}</td>
+    <td class="${TD} hidden lg:table-cell"><span class="${r.depth ? 'text-text-2' : 'text-text'}" id="t-${r.id}">${r.team}</span></td>
+    <td class="${TD} text-right" id="a-${r.id}">${val(r.as)}</td>
+    <td class="${TD} text-right" id="o-${r.id}">${val(r.op)}</td>
+    <td class="${TD} text-right" id="d-${r.id}">${val(r.dn, 1)}</td></tr>`;
+}
+const TA = 'ทีมซ่อมอาคาร A (ฉีด)', TB = 'ทีมซ่อมอาคาร B–C (เป่า บรรจุ คลัง)', TU = 'ทีมสาธารณูปโภคและอาคาร';
+const A0 = { kids: 1, depth: 0, lvl: 'อาคาร' };
+const Z = (o) => Object.assign({ depth: 1, lvl: 'โซน', team: TA, hidden: 1 }, o);
+const ROWS = [
+  Object.assign({ id: 'A', no: 1, name: 'อาคาร A ฉีดพลาสติก', code: 'A', team: TA, as: '19', op: '24', dn: '1' }, A0),
+  Z({ id: 'A-INJ1', n: '1.1', name: 'โซนฉีด 1', code: 'A-INJ1', as: '8', op: '11', dn: '1', kids: 1 }),
+  Object.assign(Z({ id: 'L1', n: '1.1.1', name: 'ไลน์ 1', code: 'A-INJ1-L1', as: '4', op: '5', dn: '—' }), { depth: 2, lvl: 'ไลน์' }),
+  Object.assign(Z({ id: 'L2', n: '1.1.2', name: 'ไลน์ 2', code: 'A-INJ1-L2', as: '0', op: '0', dn: '—' }), { depth: 2, lvl: 'ไลน์' }),
+  Z({ id: 'A-INJ2', n: '1.2', name: 'โซนฉีด 2', code: 'A-INJ2', as: '6', op: '6', dn: '—', kids: 1 }),
+  Z({ id: 'A-DRY', n: '1.3', name: 'โซนอบเม็ด', code: 'A-DRY', as: '3', op: '3', dn: '—' }),
+  Z({ id: 'A-MOLD', n: '1.4', name: 'ห้องแม่พิมพ์', code: 'A-MOLD', as: '1', op: '1', dn: '—' }),
+  Z({ id: 'A-FAC', n: '1.5', name: 'ส่วนกลางอาคาร A', code: 'A-FAC', as: '1', op: '3', dn: '—', kids: 1 }),
+  Object.assign({ id: 'B', no: 2, name: 'อาคาร B เป่าและบรรจุ', code: 'B', team: TB, as: '12', op: '11', dn: '1' }, A0),
+  Object.assign({ id: 'C', no: 3, name: 'อาคาร C คลัง', code: 'C', team: TB, as: '3', op: '3', dn: '—' }, A0),
+  Object.assign({ id: 'U', no: 4, name: 'อาคารสาธารณูปโภค', code: 'U', team: TU, as: '10', op: '4', dn: '—' }, A0),
+  Object.assign({ id: 'O', no: 5, name: 'อาคารสำนักงาน', code: 'O', team: TU, as: '5', op: '5', dn: '—' }, A0),
+];
+document.getElementById('tb').innerHTML = ROWS.map(row).join('');
+
+const flip = (a, id, open) => { const b = a.$('#x-' + id); b.setAttribute('aria-expanded', open); b.innerHTML = I(open ? 'down' : 'right', 20); };
+const rows = (a, n) => a.text('#nrows', String(n));
+
+LIVE.run({ steps: [
+  { cap: 'ผังสถานที่ของโรงงาน — 5 อาคาร พร้อมจำนวนเครื่องและงานที่เปิดอยู่', run: async a => {} },
+  { cap: 'กางอาคาร A ฉีดพลาสติก เห็นโซนข้างใน', run: async a => {
+      await a.click('#x-A', () => flip(a, 'A', true));
+      await a.stagger(['#r-A-INJ1', '#r-A-INJ2', '#r-A-DRY', '#r-A-MOLD', '#r-A-FAC'].map(s => a.$(s)), 90);
+      rows(a, 10);
+    } },
+  { cap: 'กางโซนฉีด 1 ลงไปถึงระดับไลน์', run: async a => {
+      await a.click('#x-A-INJ1', () => flip(a, 'A-INJ1', true));
+      await a.stagger([a.$('#r-L1'), a.$('#r-L2')], 110);
+      rows(a, 12);
+    } },
+  { cap: 'เลือกไลน์ 2 — จุดที่ IMM-06 ตั้งอยู่', run: async a => {
+      await a.click('#r-L2 td:nth-child(3)', () => a.cls('#r-L2', 'lc-hi'));
+    } },
+  { cap: 'ไลน์ 2 มีเครื่อง 4 ตัว งานที่เปิดอยู่ 6 เรื่อง', run: async a => {
+      await a.move('#a-L2');
+      await a.count('#a-L2', 4, { dur: 700 });
+      await a.move('#o-L2');
+      await a.count('#o-L2', 6, { dur: 800 });
+    } },
+  { cap: 'IMM-06 หยุดอยู่ — ช่องเครื่องหยุดขึ้นแดงไล่ถึงโซนและอาคาร', run: async a => {
+      await a.move('#d-L2');
+      a.set('#d-L2', '<span class="lc-down lc-pulse"><i></i>1 · IMM-06</span>');
+      a.show('#d-L2 .lc-down', 'fx-pop');
+      await a.w(500);
+      ['#d-A-INJ1', '#d-A'].forEach(s => a.set(s, '<span class="lc-down"><i></i>1</span>'));
+      a.show(['#d-A-INJ1 .lc-down', '#d-A .lc-down'].map(s => a.$(s)), 'fx-pop');
+      await a.w(400);
+    } },
+  { cap: 'ทุกจุดมีทีมรับผิดชอบ — แจ้งซ่อมจากไลน์ 2 ส่งถึงทีมซ่อมอาคาร A เอง', run: async a => {
+      await a.move('#t-L2');
+      a.cls('#t-L2', 'text-primary font-medium', 'text-text-2');
+      a.toast('#toast-slot', 'RQ-2026-0217 ส่งถึงทีมซ่อมอาคาร A แล้ว', 'info');
+      await a.w(300); a.off();
+    } },
+] });
+</script>
+</body>
+</html>
