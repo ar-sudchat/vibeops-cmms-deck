@@ -76,12 +76,17 @@
           nx.classList.add('pr-on');
           return;
         }
+        // กันจอค้างซ้อน: จอที่ไม่ใช่จอเก่า/จอใหม่ ต้องไม่ค้าง pr-on/pr-out (เกิดเมื่อกดถัดไปเร็วระหว่างเลื่อนจอ)
+        Object.entries(screens).forEach(([k, s]) => { if (s !== nx && s !== old) s.classList.remove('pr-on', 'pr-out', 'pr-in', 'pr-back'); });
         nx.classList.remove('pr-on', 'pr-out'); nx.classList.add('pr-in'); if (dir === 'back') nx.classList.add('pr-back');
         void nx.offsetWidth;
         old.classList.add('pr-out'); if (dir === 'back') old.classList.add('pr-back');
         nx.classList.add('pr-on'); nx.classList.remove('pr-in');
+        // เก็บกวาดด้วยตัวจับเวลาที่ไม่ผูกกับขั้น — ถ้าขั้นถูกยกเลิกกลางทาง จอเก่าจะไม่ค้างซ้อนอยู่ข้างหลัง
+        setTimeout(() => { Object.entries(screens).forEach(([k, s]) => { if (k !== cur) s.classList.remove('pr-on', 'pr-out', 'pr-in', 'pr-back'); }); }, 480);
         await W(460);
-        old.classList.remove('pr-on', 'pr-out', 'pr-back'); nx.classList.remove('pr-back');
+        Object.entries(screens).forEach(([k, s]) => { if (k !== cur) s.classList.remove('pr-on', 'pr-out', 'pr-in', 'pr-back'); });
+        screens[cur].classList.remove('pr-back', 'pr-in', 'pr-out'); screens[cur].classList.add('pr-on');
       },
       async tap(x, opt = {}) {
         chk();
