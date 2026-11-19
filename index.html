@@ -1751,6 +1751,24 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
   const st = f => { if (!ST.has(f)) ST.set(f, { n: null, i: 0, busy: false, caps: [], cap: '' }); return ST.get(f); };
   const send = (f, m) => { try { f.contentWindow && f.contentWindow.postMessage(m, '*'); } catch (e) {} };
   let active = new WeakMap();  // sheet → index ของจอที่เพิ่งเล่น
+  /* โหมดนำเสนอ (ค่าเริ่มต้น 19 พ.ย.): เข้าสไลด์แล้วจอเล่นทุกขั้นเอง · กด next ครั้งเดียว = ไปสไลด์ถัดไป
+     ใส่ ?step ท้ายลิงก์ = โหมดเดิม กด next ทีละขั้น */
+  const AUTO = !/[?&]step\b/.test(location.search);
+  const HOLD = 1500;   // เวลาให้อ่านคำบรรยายก่อนเล่นขั้นถัดไป (มิลลิวินาที)
+  let autoTok = 0;
+  function autoplay(sh) {
+    if (!AUTO || document.documentElement.classList.contains('cap')) return;
+    const my = ++autoTok, t0 = Date.now();
+    (function tick() {
+      if (my !== autoTok || curSheet() !== sh) return;
+      const fs = frames(sh);
+      if (!fs.length) return;
+      if (fs.some(f => st(f).n == null) && Date.now() - t0 < 8000) return setTimeout(tick, 200);
+      if (fs.some(f => st(f).busy)) return setTimeout(tick, 200);
+      if (!forward()) return;               // เล่นครบทุกจอแล้ว
+      setTimeout(tick, HOLD);
+    })();
+  }
 
   function paint(sh) {
     if (!sh) return;
@@ -1787,7 +1805,8 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
     if (m.type === 'live-state') { s.n = m.steps; s.i = m.i; s.cap = m.cap || s.caps[m.i] || ''; }
     if (m.type === 'live-done') { s.busy = false; }
     if (m.type === 'live-key') {
-      if (FW.includes(m.key) || m.key === 'Enter') { if (!forward()) clickNav('next'); }
+      if (AUTO) { if (FW.includes(m.key) || m.key === 'Enter') clickNav('next'); else if (BK.includes(m.key)) clickNav('prev'); }
+      else if (FW.includes(m.key) || m.key === 'Enter') { if (!forward()) clickNav('next'); }
       else if (BK.includes(m.key)) { if (!backward()) clickNav('prev'); }
       return;
     }
@@ -1832,11 +1851,12 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
     });
     active.set(sh, atEnd ? Math.max(0, fs.length - 1) : 0);
     paint(sh);
+    if (!atEnd) setTimeout(() => autoplay(sh), 700);
   }
   const overlayOpen = () => (document.getElementById('aif') || {}).classList?.contains('on') || (document.getElementById('lb') || {}).classList?.contains('on');
 
   addEventListener('keydown', e => {
-    if (overlayOpen() || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (AUTO || overlayOpen() || e.metaKey || e.ctrlKey || e.altKey) return;
     if (FW.includes(e.key) && forward()) { e.preventDefault(); e.stopImmediatePropagation(); }
     else if (BK.includes(e.key) && backward()) { e.preventDefault(); e.stopImmediatePropagation(); }
   }, true);
@@ -1844,6 +1864,7 @@ html.cap [data-key="n7-flow"] .dot:not(.pmd){offset-distance:100%}
     const b = e.target.closest && e.target.closest('#next,#prev');
     if (!b) return;
     if (passNext) { passNext = false; return; }
+    if (AUTO) return;
     const ok = b.id === 'next' ? forward() : backward();
     if (ok) { e.preventDefault(); e.stopImmediatePropagation(); }
   }, true);
